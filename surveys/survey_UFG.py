@@ -295,5 +295,6 @@ plt.xlabel('Número de Instituições')
 plt.ylabel('Tipo de Sistema de Segurança')
 
 # Exibir gráfico
+plt.savefig("tipos_sist_seg.png")
 plt.show()
 # %%
