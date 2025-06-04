@@ -8,7 +8,7 @@ from matplotlib.ticker import MaxNLocator
 # %%
 # ---------------------
 # Leitura dos dados
-df = pd.read_csv('../data/base_ilpi.csv')
+df = pd.read_csv('../../data/base_ilpi.csv')
 # %%
 # ---------------------
 # Configurações Globais dos Gráficos
@@ -52,6 +52,7 @@ plot_barh(
     'ILPIs',
     '01_camas_norma.png'
 )
+# %%
 # ---------------------------------------------------------------------
 # VEÍCULOS
 # Criando e mapeando as colunas diretamente, com renomeação incluída para veículos
@@ -130,7 +131,7 @@ plt.show()
 #-------------------------------------------------------------
 # VINCULO
 # Criando e mapeando as colunas diretamente, com renomeação incluída para vinculo empregaticio
-# %%
+
 vinculo_empreg = (
     df[['institution_name', 'employment_relatioship___1', 'employment_relatioship___2', 'employment_relatioship___3']]
     .assign(
@@ -148,9 +149,8 @@ vinculo_empreg = (
 # Visualizando o DataFrame resultante
 vinculo_empreg
 # %%
-
-# Gráfico 04 - Vínculo Empregatício
 # ---------------------
+# Gráfico 04 - Vínculo Empregatício
 # Tamanho da figura
 plt.figure(figsize=(10, 6))
 
@@ -178,7 +178,6 @@ plt.savefig("04_vinculo_empreg.png")
 plt.show()
 # %%
 # -------------
-
 # Criando e mapeando as colunas diretamente, com renomeação incluída para 
 # Plano/programa semanal de atividade física e reabilitação funcional
 
@@ -339,14 +338,32 @@ disp_chamada = (df[["institution_name", "safety_device_availability"]]
 disp_chamada
 # %%
 # Gráfico 9 Dispositivo/mecanismo (digital/analógico) de chamada
-disp_chamada_counts = disp_chamada["Disponibilidade_dispositivo_chamada"].value_counts()
+#disp_counts = disp_chamada["Disponibilidade_dispositivo_chamada"].value_counts()
+#
+#plot_barh(
+#    disp_chamada,
+#    'Dispositivo/mecanismo (digital/analógico) de chamada pelo residente',
+#    'ILPIs',
+#    '09_disp_chamada.png'
+#)
+# %%
+# Contando os valores
+counts = disp_chamada["Disponibilidade_dispositivo_chamada"].value_counts()
 
-plot_barh(
-    disp_chamada,
-    'Dispositivo/mecanismo (digital/analógico) de chamada pelo residente',
-    'ILPIs',
-    '09_disp_chamada.png'
-)
+# Criando o gráfico de barras horizontais
+counts.plot(kind='barh', color=['#4E79A7', '#F28E2B'])
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Adicionando título e rótulos
+plt.title('Disponibilidade de dispositivo de chamada pelo residente')
+plt.xlabel('ILPIS')
+plt.ylabel('')
+
+# Exibindo o gráfico
+plt.savefig('09_disp_chamada.png')
+plt.show()
 # -------------------
 # %%
 # Iluminação adequada
@@ -362,14 +379,35 @@ iluminacao
 # -------------------
 # Gráfico 10 - iluminação adequada
 
-iluminacao_counts = iluminacao['Iluminacao_adequada'].value_counts()
+#iluminacao_counts = iluminacao['Iluminacao_adequada'].value_counts()
 
-plot_barh(
-    iluminacao,
-    'A iluminição é adequada?',
-    'ILPIs',
-    '10_ilumincacao.png'
-)
+#plot_barh(
+#   iluminacao,
+#   'A iluminição é adequada?',
+#   'ILPIs',
+#   '10_ilumincacao.png'
+#
+
+# %%
+# Contando os valores
+counts = iluminacao["Iluminacao_adequada"].value_counts()
+
+# Criando o gráfico de barras horizontais
+counts.plot(kind='barh', color=['#4E79A7', '#F28E2B'])
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Adicionando título e rótulos
+plt.title('A iluminação é adequada?')
+plt.text(0.02, 1.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIS')
+plt.ylabel('')
+
+# Exibindo o gráfico
+plt.savefig('10_ilumincacao.png')
+plt.show()
 # %%
 # --------------------
 
@@ -392,7 +430,7 @@ plt.figure(figsize=(10,6))
 # Agrupar e plotar o g'rafico de barras horizontais
 ventilacao.groupby("Ventilacao_adequada").size().plot(
     kind="barh",
-    color=["blue", "orange"]
+    color=['#4E79A7', '#F28E2B']
 )
 
 # Ajustar as bordas
@@ -411,6 +449,7 @@ plt.ylabel('')
 # Exibir o gráfico
 plt.savefig("11_ventilacao.png")
 plt.show()
+
 # %%
 # -----------------------
 # Pintura do quarto tons pastéis
@@ -425,14 +464,14 @@ pintura_quartos
 # %%
 # ---------------------
 # Gráfico 12 - Pintura quartos tons pastéis
-pintura_quartos_counts = pintura_quartos["Pintura_tons_pasteis"].value_counts()
-
-plot_barh(
-    pintura_quartos,
-    "Pintura quartos tons pastéis",
-    "ILPIs"
-    "12_pintura.png"
-)
+#pintura_quartos_counts = pintura_quartos["Pintura_tons_pasteis"].value_counts()
+#
+#plot_barh(
+#    pintura_quartos,
+#    "Pintura quartos tons pastéis",
+#    "ILPIs",
+#    "12_pintura.png"
+#)
 
 # %%
 # -------------------
@@ -443,8 +482,8 @@ acessib_quarto = (df[["institution_name", "room_access___1", "room_access___2", 
                   .assign(
                         acessib_quarto_list=(
                               df["room_access___1"].map(lambda x: 'Portas largas para cadeirante' if x == 1 else '') +
-                              df["room_access___2"].map(lambda x: 'Rampas' if x == 1 else '') +
-                              df["room_access___3"].map(lambda x: 'Corrimão para apoio' if x == 1 else '')
+                              df["room_access___2"].map(lambda x: ', Rampas' if x == 1 else '') +
+                              df["room_access___3"].map(lambda x: ', Corrimão para apoio' if x == 1 else '')
                         )
                   )
                   .assign(acessib_quarto_list=lambda x: x['acessib_quarto_list'].str.lstrip(', '))  # Limpar vírgula no início da string
@@ -453,7 +492,7 @@ acessib_quarto = (df[["institution_name", "room_access___1", "room_access___2", 
 )
 
 acessib_quarto
-
+# %%
 # -------------------
 # Gráfico 13 - Acessíbilidade do quarto
 # Tamanho da figura
@@ -473,7 +512,7 @@ plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
 
 # Título e rótulos
 plt.title('Tipo de acessibilidade ao quarto do residente')
-plt.text(-2.5, 2.3,'* Uma das instituíções é composta por unidades de moradia',
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
         color='red',ha='left', va='bottom', wrap=True)
 plt.xlabel('ILPIs')
 plt.ylabel('')
@@ -489,8 +528,8 @@ acessib_banheiro = (df[["institution_name", "bathroom_access___1", "bathroom_acc
                   .assign(
                         acessib_banheiro_list=(
                               df["bathroom_access___1"].map(lambda x: 'Portas largas para cadeirante' if x == 1 else '') +
-                              df["bathroom_access___2"].map(lambda x: 'Rampas' if x == 1 else '') +
-                              df["bathroom_access___3"].map(lambda x: 'Corrimão para apoio' if x == 1 else '')
+                              df["bathroom_access___2"].map(lambda x: ', Rampas' if x == 1 else '') +
+                              df["bathroom_access___3"].map(lambda x: ', Corrimão para apoio' if x == 1 else '')
                         )
                   )
                   .assign(acessib_banheiro_list=lambda x: x['acessib_banheiro_list'].str.lstrip(', '))  # Limpar vírgula no início da string
@@ -499,7 +538,7 @@ acessib_banheiro = (df[["institution_name", "bathroom_access___1", "bathroom_acc
 )
 
 acessib_banheiro
-
+# %%
 # -------------------
 # Gráfico 14 - Acessíbilidade do banheiro
 # Tamanho da figura
@@ -519,7 +558,7 @@ plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
 
 # Título e rótulos
 plt.title('Tipo de acessibilidade ao banheiro do residente')
-plt.text(-2.5, 2.3,'* Uma das instituíções é composta por unidades de moradia',
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
         color='red',ha='left', va='bottom', wrap=True)
 plt.xlabel('ILPIs')
 plt.ylabel('')
@@ -530,12 +569,12 @@ plt.show()
 # %%
 # Refeitório
 
-acessib_refeitorio = (df[["institution_name", "cafeteria_access___1", "cafeteria_access___2", "cafeteria_access___3"]]
+acessib_refeitorio = (df[["institution_name", "cafeteria___1", "cafeteria___2", "cafeteria___3"]]
                   .assign(
                         acessib_refeitorio_list=(
-                              df["cafeteria_access___1"].map(lambda x: 'Portas largas para cadeirante' if x == 1 else '') +
-                              df["cafeteria_access___2"].map(lambda x: 'Rampas' if x == 1 else '') +
-                              df["cafeteria_access___3"].map(lambda x: 'Corrimão para apoio' if x == 1 else '')
+                              df["cafeteria___1"].map(lambda x: 'Portas largas para cadeirante' if x == 1 else '') +
+                              df["cafeteria___2"].map(lambda x: ', Rampas' if x == 1 else '') +
+                              df["cafeteria___3"].map(lambda x: ', Corrimão para apoio' if x == 1 else '')
                         )
                   )
                   .assign(acessib_refeitorio_list=lambda x: x['acessib_refeitorio_list'].str.lstrip(', '))  # Limpar vírgula no início da string
@@ -544,7 +583,7 @@ acessib_refeitorio = (df[["institution_name", "cafeteria_access___1", "cafeteria
 )
 
 acessib_refeitorio
-
+# %%
 # -------------------
 # Gráfico 15 - Acessíbilidade do refeitório
 # Tamanho da figura
@@ -564,23 +603,23 @@ plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
 
 # Título e rótulos
 plt.title('Tipo de acessibilidade ao refeitorio do residente')
-plt.text(-2.5, 2.3,'* Uma das instituíções é composta por unidades de moradia',
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
         color='red',ha='left', va='bottom', wrap=True)
 plt.xlabel('ILPIs')
 plt.ylabel('')
 
 # Exibir gráfico
-plt.savefig("13_acessib_refeitorio.png")
+plt.savefig("15_acessib_refeitorio.png")
 plt.show()
 # %%
 # Outras áreas
 
-acessib_outras_areas = (df[["institution_name", "other_areas_access___1", "other_areas_access___2", "other_areas_access___3"]]
+acessib_outras_areas = (df[["institution_name", "other_areas___1", "other_areas___2", "other_areas___3"]]
                   .assign(
                         acessib_outras_areas_list=(
-                              df["other_areas_access___1"].map(lambda x: 'Portas largas para cadeirante' if x == 1 else '') +
-                              df["other_areas_access___2"].map(lambda x: 'Rampas' if x == 1 else '') +
-                              df["other_areas_access___3"].map(lambda x: 'Corrimão para apoio' if x == 1 else '')
+                              df["other_areas___1"].map(lambda x: 'Portas largas para cadeirante' if x == 1 else '') +
+                              df["other_areas___2"].map(lambda x: ', Rampas' if x == 1 else '') +
+                              df["other_areas___3"].map(lambda x: ', Corrimão para apoio' if x == 1 else '')
                         )
                   )
                   .assign(acessib_outras_areas_list=lambda x: x['acessib_outras_areas_list'].str.lstrip(', '))  # Limpar vírgula no início da string
@@ -589,14 +628,14 @@ acessib_outras_areas = (df[["institution_name", "other_areas_access___1", "other
 )
 
 acessib_outras_areas
-
+# %%
 # -------------------
 # Gráfico 16 - Acessíbilidade de outras áreas
 # Tamanho da figura
 plt.figure(figsize=(10, 6))
 
 # Agrupar e plotar o gráfico de barras horizontais
-acessib_outras_areas.groupby('tipos_sist_seguranca').size().plot(
+acessib_outras_areas.groupby('acessib_outras_areas_list').size().plot(
     kind='barh',
     color=sns.palettes.mpl_palette('Dark2')
 )
@@ -609,13 +648,13 @@ plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
 
 # Título e rótulos
 plt.title('Tipo de acessibilidade ao outras areas do residente')
-plt.text(-2.5, 2.3,'* Uma das instituíções é composta por unidades de moradia',
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
         color='red',ha='left', va='bottom', wrap=True)
 plt.xlabel('ILPIs')
 plt.ylabel('')
 
 # Exibir gráfico
-plt.savefig("13_acessib_outras_areas.png")
+plt.savefig("16_acessib_outras_areas.png")
 plt.show()
 # %%
 # ------------------------
@@ -642,13 +681,39 @@ uso_epi
 # ----------------
 # Gráfico 17 - Uso de Equipamento de Proteção Individual
 
-uso_epi_counts = uso_epi["Uso_equip_prot_individual"].value_counts()
+#uso_epi_counts = uso_epi["Uso_equip_prot_individual"].value_counts()
 
-plot_barh(
-    uso_epi,
-    "Uso de Equipamento de Proteção Individual",
-    "17_uso_epi.png"
+#plot_barh(
+#    uso_epi,
+#    "Uso de Equipamento de Proteção Individual",
+#    "ILPIs",
+#    "17_uso_epi.png"
+#)
+# Tamanho da figura
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+uso_epi.groupby('Uso_equip_prot_individual').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
 )
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Uso de Equipamento de Proteção Individual')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("17_uso_epi.png")
+plt.show()
 # %%
 # -------------------
 # Medicamentos
@@ -665,13 +730,39 @@ medic_prazo_val
 # -------------------
 # Gráfico 18 - Medicamento dentro do prazo de validade
 
-medic_prazo_val_counts = medic_prazo_val["Medicacao_prazo_validade"].value_counts()
+#medic_prazo_val_counts = medic_prazo_val["Medicacao_prazo_validade"].value_counts()
+#
+#plot_barh(
+#    medic_prazo_val,
+#    "Medicamento dentro do prazo de validade",
+#    "ILPIs",
+#    "18_medic_prazo.png"
+#)
+# Tamanho da figura
+plt.figure(figsize=(10, 6))
 
-plot_barh(
-    medic_prazo_val,
-    "Medicamento dentro do prazo de validade",
-    "18_medic_prazo.png"
+# Agrupar e plotar o gráfico de barras horizontais
+medic_prazo_val.groupby('Medicacao_prazo_validade').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
 )
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Medicamento dentro do prazo de validade')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("18_medic_prazo")
+plt.show()
 # %%
 # ---------------------
 # Embalagem violada
@@ -681,17 +772,43 @@ emb_viol = (df[["institution_name", "violeted_pakage"]]
             [["institution_name", "df_filtered"]]
             .rename(columns={"institution_name": "ILPI", "df_filtered": "Embalagem_violada"})
 )
+emb_viol
 # %%
 # -------------------
 # Gráfico 19 - Medicamento com embalagem violada
 
-emb_viol_counts = emb_viol["Embalagem_violada"].value_counts()
+#emb_viol_counts = emb_viol["Embalagem_violada"].value_counts()
+#
+#plot_barh(
+#    emb_viol,
+#    "Medicamento com embalagem violada",
+#    "19_medic_emb_violada.png"
+#)
+# Tamanho da figura
+plt.figure(figsize=(10, 6))
 
-plot_barh(
-    emb_viol,
-    "Medicamento com embalagem violada",
-    "19_medic_emb_violada.png"
+# Agrupar e plotar o gráfico de barras horizontais
+emb_viol.groupby('Embalagem_violada').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
 )
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Medicamento com embalagem violada')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("19_medic_emb_violada.png")
+plt.show()
 # %%
 # ------------------
 # Geladeira exclusiva ao armazenamento de medicamentos
@@ -703,16 +820,42 @@ geladeira_medic = (df[['institution_name', 'medicine_refrigerator']]
 )
 
 geladeira_medic
+# %%
 # ------------------
 # Gráfico 20 - Geladeira exclusiva ao armazenamento de medicamentos
 
-geladeira_medic_counts = geladeira_medic["Geladeira_exclusiva_medicamentos"].value_counts()
+#geladeira_medic_counts = geladeira_medic["Geladeira_exclusiva_medicamentos"].value_counts#()
+#
+#plot_barh(
+#    geladeira_medic,
+#    "Geladeira exclusiva ao armazenamento de medicamentos",
+#    "20_geladeira_medic.png"
+#)
+# Tamanho da figura
+plt.figure(figsize=(10, 6))
 
-plot_barh(
-    geladeira_medic,
-    "Geladeira exclusiva ao armazenamento de medicamentos",
-    "20_geladeira_medic.png"
+# Agrupar e plotar o gráfico de barras horizontais
+geladeira_medic.groupby('Geladeira_exclusiva_medicamentos').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
 )
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Geladeira exclusiva ao armazenamento de medicamentos')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("20_geladeira_medic.png")
+plt.show()
 # %%
 # ----------------------
 # Registro temperatura da geladeira
@@ -728,13 +871,38 @@ reg_temp_geladeira
 # ---------------------
 # Gráfico 21 - Registro temperatura da geladeira
 
-reg_temp_geladeira_counts = reg_temp_geladeira["Registro_temperatura_geladeira"].value_counts()
+#reg_temp_geladeira_counts = reg_temp_geladeira["Registro_temperatura_geladeira"].#value_counts()
+#
+#plot_barh(
+#    reg_temp_geladeira,
+#    "Registro temperatura da geladeira",
+#    "21_reg_temp_geladeira.png"
+#)
+# Tamanho da figura
+plt.figure(figsize=(10, 6))
 
-plot_barh(
-    reg_temp_geladeira,
-    "Registro temperatura da geladeira",
-    "21_reg_temp_geladeira.png"
+# Agrupar e plotar o gráfico de barras horizontais
+reg_temp_geladeira.groupby('Registro_temperatura_geladeira').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
 )
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Registro temperatura da geladeira')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("21_reg_temp_geladeira.png")
+plt.show()
 # %%
 # ----------------------
 # Registro de utilização e frequência uso medicação
@@ -744,17 +912,43 @@ reg_medic = (df[["institution_name", "medication_register"]]
              [["institution_name", "df_filtered"]]
              .rename(columns={"institution_name": "ILPI", "df_filtered": "Registro_uso_medicacao"})
 )
+
+reg_medic
 # %%
 # ---------------------
 # Gráfico 22 - Registro de utilização e frequência uso medicação
 
-reg_medic_counts = reg_medic["Registro_uso_medicacao"].value_counts()
+#reg_medic_counts = reg_medic["Registro_uso_medicacao"].value_counts()
+#
+#plot_barh(
+#    reg_medic,
+#    "Registro de utilização e frequência uso medicação",
+#    "22_reg_uso_medicacao.png"
+#)
+plt.figure(figsize=(10, 6))
 
-plot_barh(
-    reg_medic,
-    "Registro de utilização e frequência uso medicação",
-    "22_reg_uso_medicacao.png"
+# Agrupar e plotar o gráfico de barras horizontais
+reg_medic.groupby('Registro_uso_medicacao').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
 )
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Registro de utilização e frequência uso medicação')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("22_reg_uso_medicacao.png")
+plt.show()
 # %%
 # ---------------------
 # Tipo de registro da medicação
@@ -763,8 +957,8 @@ tipo_reg_medic = (df[["institution_name", "medication_register_type___1", "medic
                   .assign(
                         tipo_reg_medic_list=(
                               df["medication_register_type___1"].map(lambda x: 'livro ata' if x == 1 else '') +
-                              df["medication_register_type___2"].map(lambda x: 'registro individual em papel' if x == 1 else '') +
-                              df["medication_register_type___3"].map(lambda x: 'registro individual digital' if x == 1 else '')
+                              df["medication_register_type___2"].map(lambda x: ',  registro individual em papel' if x == 1 else '') +
+                              df["medication_register_type___3"].map(lambda x: ', registro individual digital' if x == 1 else '')
                         )
                   )
                   .assign(tipo_reg_medic_list=lambda x: x['tipo_reg_medic_list'].str.lstrip(', '))  # Limpar vírgula no início da string
@@ -781,7 +975,7 @@ tipo_reg_medic
 plt.figure(figsize=(10, 6))
 
 # Agrupar e plotar o gráfico de barras horizontais
-tipo_reg_medic.groupby('tipo_reg_medicaticio').size().plot(
+tipo_reg_medic.groupby('tipo_reg_medic_list').size().plot(
     kind='barh',
     color=sns.palettes.mpl_palette('Dark2')
 )
@@ -794,7 +988,7 @@ plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
 
 # Título e rótulos
 plt.title('Tipo de registro da medicação')
-plt.text(2.5, 2.3,'* Uma das instituíções é composta por unidades de moradia',
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
          color='red',ha='left', va='bottom', wrap=True)
 plt.xlabel('ILPIs')
 plt.ylabel('Tipo de Registro')
@@ -811,16 +1005,303 @@ med_psico_separado = (df[["institution_name", "psico_drugs_segregation"]]
              [["institution_name", "df_filtered"]]
              .rename(columns={"institution_name": "ILPI", "df_filtered": "Subst_psico_segregada"})
 )
+
+med_psico_separado
 # %%
 # ---------------------
 # Gráfico 24 - Substâncias Psicoativas/Psicotrópicas estão guardadas separadamente
 
-med_psico_separado_counts = med_psico_separado["Subst_psico_segregada"].value_counts()
+#med_psico_separado_counts = med_psico_separado["Subst_psico_segregada"].value_counts()
+#
+#plot_barh(
+#    med_psico_separado,
+#    "Substâncias Psicoativas/Psicotrópicas estão guardadas separadamente",
+#    "22_subst_psico_segregada.png"
+#)
+plt.figure(figsize=(10, 6))
 
-plot_barh(
-    med_psico_separado,
-    "Substâncias Psicoativas/Psicotrópicas estão guardadas separadamente",
-    "22_subst_psico_segregada.png"
+# Agrupar e plotar o gráfico de barras horizontais
+med_psico_separado.groupby('Subst_psico_segregada').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
 )
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Substâncias Psicoativas/Psicotrópicas estão guardadas separadamente')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("24_subst_psico_segregada.png")
+plt.show()
 # %%
+# ------------------------
 # Como são armazenadas as substâncias psicoativas
+
+psico_armaz = (df[["institution_name", "psico_drugs_storage"]]
+               .rename(columns={"institution_name": "ILPI", "psico_drugs_storage": "Onde_sao_armazenados_psicoativos"})
+)
+
+psico_armaz
+# %%
+# -------------------------
+# Gráfico 25 - Como são armazenadas as substâncias psicoativas
+
+#plot_barh(
+#    psico_armaz,
+#    "Como são armazenadas as substâncias psicoativas",
+#    "25_psico_armazenamento.png"
+#)
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+psico_armaz.groupby('Onde_sao_armazenados_psicoativos').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Como são armazenadas as substâncias psicoativas')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("25_psico_armazenamento.png")
+plt.show()
+# %%
+# ------------------------
+# Profissional que faz a separação da medicação a ser tomada pelos idosos
+
+prof_manip_medic = (df[["institution_name", "medication_manipulation___1", "medication_manipulation___2", "medication_manipulation___3",
+                         "medication_manipulation___4", "medication_manipulation___5", "medication_manipulation___6", "medication_manipulation___7"]]
+                  .assign(
+                        prof_manip_medic_list=(
+                              df["medication_manipulation___1"].map(lambda x: 'técnico da farmácia' if x == 1 else '') +
+                              df["medication_manipulation___2"].map(lambda x: ', farmacêutico(a)' if x == 1 else '') +
+                              df["medication_manipulation___3"].map(lambda x: ', auxiliar de enfermagem' if x == 1 else '') +
+                              df["medication_manipulation___4"].map(lambda x: ', técnico de enfermagem' if x == 1 else '') +
+                              df["medication_manipulation___5"].map(lambda x: ', enfermeiro(a)' if x == 1 else '') +
+                              df["medication_manipulation___6"].map(lambda x: ', cuidador(a)' if x == 1 else '') +
+                              df["medication_manipulation___7"].map(lambda x: ', outro' if x == 1 else '') 
+                        )
+                  )
+                  .assign(prof_manip_medic_list=lambda x: x['prof_manip_medic_list'].str.lstrip(', '))  # Limpar vírgula no início da string
+                  .rename(columns={"institution_name": "ILPI"})  # Renomeando a coluna
+                  [["ILPI", "prof_manip_medic_list"]]  # Selecionando apenas as colunas finais
+)
+prof_manip_medic
+# %%
+# ---------------------
+# Gráfico 26 - Profissional que faz a separação da medicação a ser tomada pelos idosos
+# Tamanho da figura
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+prof_manip_medic.groupby('prof_manip_medic_list').size().plot(
+    kind='barh',
+    color=sns.palettes.mpl_palette('Dark2')
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Profissional que faz a separação da medicação a ser tomada pelos idosos')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+         color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('Profissional')
+
+# Exibir gráfico
+plt.savefig("26_prof_manipula_medic.png")
+plt.show()
+# %%
+# ----------------------
+# Qual é o outro profissional?
+outro_profis = (df[["institution_name", "other_meditation_manip"]]
+               .rename(columns={"institution_name": "ILPI", "other_meditation_manip": "Outro_prof_dispensa"})
+)
+
+outro_profis
+# %%
+# -------------------------
+# Gráfico 27 - Outro profissional dispensa medicamento
+
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+outro_profis.groupby('Outro_prof_dispensa').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Qual é o outro profissional?')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("27_outro_prof_dispensa.png")
+plt.show()
+# %%
+# -------------------
+# Quadro geral dispensação medicação
+
+quadro_geral_disp = (prof_manip_medic.merge(outro_profis, on="ILPI", how="right"))
+quadro_geral_disp
+
+# %%
+# ---------------------
+# Serviço Lavanderia
+# Separação de roupas limpas e sujas
+
+roupa_segreg = (df[["institution_name", "dirty_clothing_segregation"]]
+                .assign(df_filtered=df["dirty_clothing_segregation"].map({1: "Sim", 2: "Não"}))
+                [["institution_name", "df_filtered"]]
+                .rename(columns={"institution_name": "ILPI", "df_filtered": "Separacao_roupas_sujas_limpas"})
+)
+
+roupa_segreg
+# %%
+# -------------------------
+# Gráfico 28 - Separação de roupas limpas e sujas
+
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+roupa_segreg.groupby('Separacao_roupas_sujas_limpas').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Separação de roupas limpas e sujas')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("28_roupa_segreg.png")
+plt.show()
+# %%
+# Frequência de troca de roupas de cama e toalhas
+
+freq_troca_roupa_cama = (df[["institution_name", "dirty_clothing_change"]]
+                  .assign(
+                        freq_troca_roupa_cama_list=(
+                              df["dirty_clothing_change"].map(lambda x: 'diario' if x == 1 else '') +
+                              df["dirty_clothing_change"].map(lambda x: ', semanal' if x == 2 else '') +
+                              df["dirty_clothing_change"].map(lambda x: ', quinzenal' if x == 3 else '') +
+                              df["dirty_clothing_change"].map(lambda x: ', mensal' if x == 2 else '')
+                        )
+                  )
+                  .assign(freq_troca_roupa_cama_list=lambda x: x['freq_troca_roupa_cama_list'].str.lstrip(', '))  # Limpar vírgula no início da string
+                  .rename(columns={"institution_name": "ILPI"})  # Renomeando a coluna
+                  [["ILPI", "freq_troca_roupa_cama_list"]]  # Selecionando apenas as colunas finais
+)
+
+freq_troca_roupa_cama
+# %%
+# --------------------
+# Gráfico 29 - Frequência de troca de roupas de cama e toalhas
+
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+freq_troca_roupa_cama.groupby('freq_troca_roupa_cama_list').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Frequência de troca de roupas de cama e toalhas')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("29_freq_troca_roupa_cama.png")
+plt.show()
+
+# %%
+# Gerenciamento Resíduos
+# ---------------------------
+# Separação do lixo (orgânico/reciclável)
+
+reciclagem_lixo = (df[["institution_name", "trash_recicling"]]
+                   .assign(df_filtered=df["trash_recicling"].map({1: "Sim", 2: "Não"}))
+                   [["institution_name", "df_filtered"]]
+                .rename(columns={"institution_name": "ILPI", "df_filtered": "Reciclagem_lixo"})
+)
+
+reciclagem_lixo
+# %%
+# Gráfico 30 - Reciclagem de lixo
+# --------------------------
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+reciclagem_lixo.groupby('Reciclagem_lixo').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Separação de lixo (orgânico/reciclável)')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("29_reciclagem_lixo.png")
+plt.show()
+# %%
+# Recipientes adequados e devidamente rotulados para descarte dos diferentes tipos de resíduos

@@ -4,7 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 # %%
-df = pd.read_csv("../data/base_ilpi.csv")
+df = pd.read_csv("../../data/base_ilpi.csv")
 df.head()
 
 # %%
@@ -442,7 +442,7 @@ plt.show()
 ventilacao = (df[["institution_name", "ventilation"]]
              .assign(df_filtered=df["ventilation"].map({1:"Sim", 2:"Não"}))
              [["institution_name", "df_filtered"]]
-             .rename(columns={"insitution_name": "ILPI", "df_filtered": "Ventilacao_adequada"})
+             .rename(columns={"institution_name": "ILPI", "df_filtered": "Ventilacao_adequada"})
 
 )
 
@@ -476,4 +476,3 @@ plt.ylabel('')
 plt.savefig("ventilacao.png")
 plt.show()
 # %%
-# Pintura do quarto tons pastéis
