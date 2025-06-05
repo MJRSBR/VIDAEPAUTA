@@ -1226,7 +1226,7 @@ freq_troca_roupa_cama = (df[["institution_name", "dirty_clothing_change"]]
                               df["dirty_clothing_change"].map(lambda x: 'diario' if x == 1 else '') +
                               df["dirty_clothing_change"].map(lambda x: ', semanal' if x == 2 else '') +
                               df["dirty_clothing_change"].map(lambda x: ', quinzenal' if x == 3 else '') +
-                              df["dirty_clothing_change"].map(lambda x: ', mensal' if x == 2 else '')
+                              df["dirty_clothing_change"].map(lambda x: ', mensal' if x == 4 else '')
                         )
                   )
                   .assign(freq_troca_roupa_cama_list=lambda x: x['freq_troca_roupa_cama_list'].str.lstrip(', '))  # Limpar vírgula no início da string
@@ -1301,7 +1301,504 @@ plt.xlabel('ILPIs')
 plt.ylabel('')
 
 # Exibir gráfico
-plt.savefig("29_reciclagem_lixo.png")
+plt.savefig("30_reciclagem_lixo.png")
 plt.show()
 # %%
 # Recipientes adequados e devidamente rotulados para descarte dos diferentes tipos de resíduos
+# ---------------------------
+
+container_adequados = (df[["institution_name", "trash_container___1", "trash_container___2", "trash_container___3", 
+                           "trash_container___4","trash_container___5"]]
+                  .assign(
+                        container_adequados_list=(
+                              df["trash_container___1"].map(lambda x: 'Resíduo infectante' if x == 1 else '') +
+                              df["trash_container___2"].map(lambda x: ', Resíduo químico' if x == 1 else '') +
+                              df["trash_container___3"].map(lambda x: ', Resíduo radioativo' if x == 1 else '') +
+                              df["trash_container___4"].map(lambda x: ', Resíduo perfurocortante' if x == 1 else '') +
+                              df["trash_container___5"].map(lambda x: ', Resíduo comum' if x == 1 else '') 
+                        )
+                  )
+                  .assign(container_adequados_list=lambda x: x['container_adequados_list'].str.lstrip(', '))  # Limpar vírgula no início da string
+                  .rename(columns={"institution_name": "ILPI"})  # Renomeando a coluna
+                  [["ILPI", "container_adequados_list"]]  # Selecionando apenas as colunas finais
+)
+
+container_adequados
+# %%
+# --------------------
+# Gráfico 31 - Recipientes adequados e devidamente rotulados para descarte dos diferentes
+# tipos de resíduos
+
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+container_adequados.groupby('container_adequados_list').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Recipientes adequados/rotulados para descarte dos diferentes tipos de resíduos')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("31_container_adequados.png")
+plt.show()
+# %%
+# Processos de Cuidado
+# Área para que o residente possa tomar um banho de sol
+# ---------------------
+banho_sol = (df[["institution_name", "sunbathing"]]
+                   .assign(df_filtered=df["sunbathing"].map({1: "Sim", 2: "Não"}))
+                   [["institution_name", "df_filtered"]]
+                .rename(columns={"institution_name": "ILPI", "df_filtered": "banho_sol"})
+)
+
+banho_sol
+# %%
+# Gráfico 32 - Área banho de sol
+# --------------------------
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+banho_sol.groupby('banho_sol').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Área para que o residente possa tomar um banho de sol')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("32_banho_sol.png")
+plt.show()
+# %%
+# Área recebimento de visitas e familiares
+# ----------------------
+area_vis_familia = (df[["institution_name", "visiting_area"]]
+                   .assign(df_filtered=df["visiting_area"].map({1: "Sim", 2: "Não"}))
+                   [["institution_name", "df_filtered"]]
+                .rename(columns={"institution_name": "ILPI", "df_filtered": "area_vis_familia"})
+)
+
+area_vis_familia
+# %%
+# Gráfico 33 - Área recebimento de visitas e familiares
+# --------------------------
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+area_vis_familia.groupby('area_vis_familia').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Área recebimento de visitas e familiares')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("33_area_vis_familia.png")
+plt.show()
+# %%
+
+# Área de atividades sociais
+# ---------------------
+area_ativ_social = (df[["institution_name", "social_area"]]
+                   .assign(df_filtered=df["social_area"].map({1: "Sim", 2: "Não"}))
+                   [["institution_name", "df_filtered"]]
+                .rename(columns={"institution_name": "ILPI", "df_filtered": "area_ativ_social"})
+)
+
+area_ativ_social
+# %%
+# Gráfico 34 - Área de atividades sociais
+# --------------------------
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+area_ativ_social.groupby('area_ativ_social').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Área de atividades sociais')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("34_area_ativ_social.png")
+plt.show()
+# %%
+# Música ambiente na ILPI
+# ---------------------------
+musica_ambiente = (df[["institution_name", "ambient_music"]]
+                   .assign(df_filtered=df["ambient_music"].map({1: "Sim", 2: "Não"}))
+                   [["institution_name", "df_filtered"]]
+                .rename(columns={"institution_name": "ILPI", "df_filtered": "musica_ambiente"})
+)
+
+musica_ambiente
+# %%
+# Gráfico 35 - Área de atividades sociais
+# --------------------------
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+musica_ambiente.groupby('musica_ambiente').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Área de atividades sociais')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("35_musica_ambiente.png")
+plt.show()
+# %%
+# Cardápio visível para consulta
+# ---------------------------
+cardapio_visivel = (df[["institution_name", "menu"]]
+                   .assign(df_filtered=df["menu"].map({1: "Sim", 2: "Não"}))
+                   [["institution_name", "df_filtered"]]
+                .rename(columns={"institution_name": "ILPI", "df_filtered": "cardapio_visivel"})
+)
+
+cardapio_visivel
+# %%
+# Gráfico 36 - Cardápio visível para consulta
+# --------------------------
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+cardapio_visivel.groupby('cardapio_visivel').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Cardápio visível para consulta')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("36_cardapio_visivel.png")
+plt.show()
+# %%
+# Frequência que o cardápio é atualizado
+# ----------------------------------
+atualiz_cardapio = (df[["institution_name", "semanal_menu"]]
+                   .assign(df_filtered=df["semanal_menu"].map({1: "Sim", 2: "Não"}))
+                   [["institution_name", "df_filtered"]]
+                .rename(columns={"institution_name": "ILPI", "df_filtered": "atualiz_cardapio"})
+)
+
+atualiz_cardapio
+# %%
+# Gráfico 37 - Cardápio visível para consulta
+# --------------------------
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+atualiz_cardapio.groupby('atualiz_cardapio').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Frequência que o cardápio é atualizado')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("37_atualiz_cardapio.png")
+plt.show()
+# %%
+# Realização de oficinas e atividades
+# ---------------------------
+oficinas_atividades = (df[["institution_name", "recreation_type___1", "recreation_type___2", "recreation_type___3",
+                      "recreation_type___4", "recreation_type___5", "recreation_type___6", "recreation_type___7"]]
+                  .assign(
+                        oficinas_atividades_list=(
+                              df["recreation_type___1"].map(lambda x: 'Oficina de jardinagem' if x == 1 else '') +
+                              df["recreation_type___2"].map(lambda x: ', Oficina de costura' if x == 1 else '') +
+                              df["recreation_type___3"].map(lambda x: ', Oficina de artesanato' if x == 1 else '') +
+                              df["recreation_type___4"].map(lambda x: ', Oficina de marcenaria' if x == 1 else '') +
+                              df["recreation_type___5"].map(lambda x: ', Dança de salão' if x == 1 else '') +
+                              df["recreation_type___6"].map(lambda x: ', Datas comemorativas' if x == 1 else '') +
+                              df["recreation_type___7"].map(lambda x: ', Missas/Cultos Ecumênicos' if x == 1 else '')
+                        )
+                  )
+                  .assign(oficinas_atividades_list=lambda x: x['oficinas_atividades_list'].str.lstrip(', '))  # Limpar vírgula no início da string
+                  .rename(columns={"institution_name": "ILPI"})  # Renomeando a coluna
+                  [["ILPI", "oficinas_atividades_list"]]  # Selecionando apenas as colunas finais
+)
+
+oficinas_atividades
+
+# %%
+# --------------------
+# Gráfico 38 - Realização de oficinas e atividades
+
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+oficinas_atividades.groupby('oficinas_atividades_list').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Realização de oficinas e atividades')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("38_oficinas_atividades.png")
+plt.show()
+# %%
+
+# Verificação aleatória de prontuários/fichas
+# ----------------------------
+# %%
+# Regulação
+# UBS que o residente é encaminhado quando necessário
+# -----------------------------
+
+ubs = (df[["institution_name", "ubs", "ubs_1", "ubs_2"]]
+       .rename(columns={"institution_name": "ILPI"})
+)
+
+ubs
+# %%
+# --------------------
+# Gráfico 40 - UBS que o residente é encaminhado quando necessário
+
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+ubs.groupby('ubs_list').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('UBS que o residente é encaminhado quando necessário')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("40_ubs.png")
+plt.show()
+# %%
+# -----------------------------
+# UPA que o residente é encaminhado quando necessário
+upa = (df[["institution_name", "upa", "upa_1", "upa_2"]]
+       .rename(columns={"institution_name": "ILPI"})
+)
+upa
+# %%
+# Tratar os dados UPA
+# ---------------------------
+
+# Função para dividir a coluna `upa` em partes com base nos delimitadores
+def split_upa(value):
+    if pd.isna(value):
+        return []
+    # Dividir o valor da coluna usando os delimitadores "/" e ";"
+    parts = [part.strip() for part in re.split(r"[;/]", value)]
+    return parts
+
+# Aplicar a função para dividir a coluna `upa` em múltiplas colunas
+upa_split = upa['upa'].apply(split_upa)
+
+# Expandir a lista resultante em novas colunas
+max_splits = upa_split.map(len).max()  # Número máximo de partes para ajustar o número de colunas
+upa_cols = pd.DataFrame(upa_split.tolist(), columns=[f"upa_{i}" for i in range(max_splits)])
+
+# Concatenar com o DataFrame original
+df_upa = pd.concat([upa[['institution_name']], upa_cols], axis=1)
+
+# Exibir o resultado
+df_upa
+# %%
+# Gráfico 41 - UPA que o residente é encaminhado quando necessário
+# --------------------
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+upa.groupby('upa_list').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('UPA que o residente é encaminhado quando necessário')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("41_upa.png")
+plt.show()
+# %%
+# ILPI é campo de estágio
+# -------------------------
+estagio = (df[["institution_name", "internship"]]
+           .assign(df_filtered=df["internship"].map({1:"Sim", 2:"Não"}))
+           [["institution_name", "df_filtered"]]
+           .rename(columns={"institution_name": "ILPI", "internship" : "campo_estágio"})
+)
+# %%
+# Gráfico 42 - ILPI é campo de estágio
+# -------------------------
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+estagio.groupby('campo_estágio').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('ILPI é campo de estágio')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("42_estagio.png")
+plt.show()
+# %%
+# Quais são as instituíções de ensino e cursos
+# -------------------------
+inst_curso = (df[["institution_name", "internship_institution", "internship_institution_2", "internship_institution_3",
+                "internship_institution_4","internship_course","internship_course_2","internship_course_3","internship_course_4"]]
+                .rename(columns={"institution_name": "ILPI", "internship_institution" : "Instituíção A", "internship_institution_2" : "Instituíção B",
+                                 "internship_institution_3": "Instituíção C", "internship_institution_4":"Instituíção D","internship_course":"Curso A",
+                                 "internship_course_2": "Curso B","internship_course_3": "Curso C","internship_course_4": "Curso C"})
+)
+
+inst_curso
+# %%
+# Gráfico 43 - Quais são as instituíções de ensino e cursos
+# -------------------------
+plt.figure(figsize=(10, 6))
+
+# Agrupar e plotar o gráfico de barras horizontais
+inst_curso.groupby('ILPI').size().plot(
+    kind='barh',
+    color=['#4E79A7', '#F28E2B']
+)
+
+# Ajustar bordas
+plt.gca().spines[['top', 'right']].set_visible(False)
+
+# Garantir que o eixo X seja inteiro
+plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
+
+# Título e rótulos
+plt.title('Quais são as instituíções de ensino e cursos')
+plt.text(0.02, 0.3,'* Uma das instituíções é composta por unidades de moradia',
+        color='red',ha='left', va='bottom', wrap=True)
+plt.xlabel('ILPIs')
+plt.ylabel('')
+
+# Exibir gráfico
+plt.savefig("43_inst_curso.png")
+plt.show()
+# %%
