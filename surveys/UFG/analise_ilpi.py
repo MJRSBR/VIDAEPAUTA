@@ -1543,20 +1543,20 @@ plt.show()
 # %%
 # Frequência que o cardápio é atualizado
 # ----------------------------------
-atualiz_cardapio = (df[["institution_name", "semanal_menu"]]
+freq_atualiz_cardapio = (df[["institution_name", "semanal_menu"]]
                    .assign(df_filtered=df["semanal_menu"].map({1: "Sim", 2: "Não"}))
                    [["institution_name", "df_filtered"]]
                 .rename(columns={"institution_name": "ILPI", "df_filtered": "atualiz_cardapio"})
 )
 
-atualiz_cardapio
+freq_atualiz_cardapio
 # %%
 # Gráfico 37 - Cardápio visível para consulta
 # --------------------------
 plt.figure(figsize=(10, 6))
 
 # Agrupar e plotar o gráfico de barras horizontais
-atualiz_cardapio.groupby('atualiz_cardapio').size().plot(
+freq_atualiz_cardapio.groupby('atualiz_cardapio').size().plot(
     kind='barh',
     color=['#4E79A7', '#F28E2B']
 )
