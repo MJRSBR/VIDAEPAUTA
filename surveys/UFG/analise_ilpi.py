@@ -9,6 +9,7 @@ from matplotlib.ticker import MaxNLocator
 # ---------------------
 # Leitura dos dados
 df = pd.read_csv('../../data/base_ilpi.csv')
+
 # %%
 # ---------------------
 # Configurações Globais dos Gráficos
