@@ -533,7 +533,7 @@ salvar_tabela_como_imagem(
     '../tables/17_tab_uso_epi.png'
 )
  # CORRIGIR NAN
-uso_epi_counts = uso_epi['Uso_equip_seguranca'].value_counts
+uso_epi_counts = uso_epi['Uso_equip_seguranca'].value_counts()
 plot_barh(uso_epi_counts, 'Uso de Equipamentos de Segurança', 'ILPI',
           '../plots/17_uso_epi.png')
 
@@ -973,7 +973,136 @@ salvar_tabela_como_imagem(
     df_admiss_file,
     '../tables/41_tab_verif_ficha_admissao.png'
 )
+# %%
 
+dic_renomear_banho = {
+    'institution_name': 'ILPI',
+    'patient_bath___1': 'Não se aplica'
+}
+
+df_banho = verif_reg[['institution_name']].copy()
+df_banho = (df_banho.join(criar_df_com_soma_por_prefixo(verif_reg, "patient_bath___"))
+            .rename(columns=dic_renomear_banho))
+
+salvar_tabela_como_imagem(
+    df_banho,
+    '../tables/42_tab_verif_banho_resid.png'
+)
+# %%
+dic_renomear_imc_index = {
+    'institution_name': 'ILPI',
+    'imc_index___1': 'Não se aplica'
+}
+
+df_imc_index = verif_reg[['institution_name']].copy()
+df_imc_index = (df_imc_index.join(criar_df_com_soma_por_prefixo(verif_reg, "imc_index___"))
+            .rename(columns=dic_renomear_imc_index))
+
+salvar_tabela_como_imagem(
+    df_imc_index,
+    '../tables/43_tab_verif_imc_index_resid.png'
+)
+# %%
+dic_renomear_reg_fisico = {
+    'institution_name': 'ILPI',
+    'physical_cont_record___1': 'Não se aplica'
+}
+
+df_reg_fisico = verif_reg[['institution_name']].copy()
+df_reg_fisico = (df_reg_fisico.join(criar_df_com_soma_por_prefixo(verif_reg, "physical_cont_record___"))
+            .rename(columns=dic_renomear_reg_fisico))
+
+salvar_tabela_como_imagem(
+    df_reg_fisico,
+    '../tables/44_tab_verif_reg_fisico_resid.png'
+)
+# %%
+dic_renomear_escala_mem = {
+    'institution_name': 'ILPI',
+    'mem_scale___1': 'Não se aplica'
+}
+
+df_escala_mem = verif_reg[['institution_name']].copy()
+df_escala_mem = (df_escala_mem.join(criar_df_com_soma_por_prefixo(verif_reg, "mem_scale___"))
+            .rename(columns=dic_renomear_escala_mem))
+
+salvar_tabela_como_imagem(
+    df_escala_mem,
+    '../tables/45_tab_verif_escala_mem.png'
+)
+# %%
+dic_renomear__mem_ac_prev = {
+    'institution_name': 'ILPI',
+    'mem_prev_actions___1': 'Não se aplica'
+}
+
+df_mem_ac_prev = verif_reg[['institution_name']].copy()
+df_mem_ac_prev = (df_mem_ac_prev.join(criar_df_com_soma_por_prefixo(verif_reg, "mem_prev_actions___"))
+            .rename(columns=dic_renomear__mem_ac_prev))
+
+salvar_tabela_como_imagem(
+    df_mem_ac_prev,
+    '../tables/45_tab_verif__mem_ac_prev.png'
+)
+# %%
+dic_renomear_reg_dor = {
+    'institution_name': 'ILPI',
+    'pain_register___1': 'Não se aplica'
+}
+
+df_reg_dor = verif_reg[['institution_name']].copy()
+df_reg_dor = (df_reg_dor.join(criar_df_com_soma_por_prefixo(verif_reg, "pain_register___"))
+            .rename(columns=dic_renomear_reg_dor))
+
+salvar_tabela_como_imagem(
+    df_reg_dor,
+    '../tables/46_tab_verif_reg_dor.png'
+)
+# %%
+
+dic_renomear_mem_acao_cuid = {
+    'institution_name': 'ILPI',
+    'meem_care_actions___1': 'Não se aplica'
+}
+
+df_mem_acao_cuid = verif_reg[['institution_name']].copy()
+df_mem_acao_cuid = (df_mem_acao_cuid.join(criar_df_com_soma_por_prefixo(verif_reg, "meem_care_actions___"))
+            .rename(columns=dic_renomear_mem_acao_cuid))
+
+salvar_tabela_como_imagem(
+    df_mem_acao_cuid,
+    '../tables/47_tab_verif_mem_acao_cuid.png'
+)
+# %%
+
+dic_renomear_reg_ativ_reab = {
+    'institution_name': 'ILPI',
+    'rehab_activities_register___1': 'Não se aplica'
+}
+
+df_reg_ativ_reab = verif_reg[['institution_name']].copy()
+df_reg_ativ_reab = (df_reg_ativ_reab.join(criar_df_com_soma_por_prefixo(verif_reg, "rehab_activities_register___"))
+            .rename(columns=dic_renomear_reg_ativ_reab))
+
+salvar_tabela_como_imagem(
+    df_reg_ativ_reab,
+    '../tables/48_tab_verif_reg_ativ_reab.png'
+)
+# %%
+
+dic_renomeaf_ativ_reab = {
+    'institution_name': 'ILPI',
+    'rehab_activities___1': 'Não se aplica'
+}
+
+df_ativ_reab = verif[['institution_name']].copy()
+df_ativ_reab = (df_ativ_reab.join(criar_df_com_soma_por_prefixo(verif, "rehab_activities___"))
+            .rename(columns=dic_renomeaf_ativ_reab))
+
+salvar_tabela_como_imagem(
+    df_ativ_reab,
+    '../tables/49_tab_verif_ativ_reab.png'
+)
 # %%
 ## - Regulação
 ## - UBS que o residente é encaminhado quando necessário
@@ -993,7 +1122,7 @@ ubs
 # %%
 salvar_tabela_como_imagem(
     ubs,
-    '../tables/40_tab_ubs.png'
+    '../tables/50_tab_ubs.png'
 )
 
 # %%
@@ -1036,7 +1165,7 @@ df_upa
 
 salvar_tabela_como_imagem(
     df_upa,
-    '../tables/41_tab_upa.png'
+    '../tables/51_tab_upa.png'
 )
 # %%
 
@@ -1048,7 +1177,7 @@ quadro_geral_ubs_upa
 salvar_tabela_como_imagem(
 
     quadro_geral_ubs_upa,
-    '../tables/42_tab_quadro_geral_ubs_upa.png'
+    '../tables/52_tab_quadro_geral_ubs_upa.png'
 )
 # %%
 ## - ILPI é campo de estágio
@@ -1057,13 +1186,13 @@ estagio = processa_binario(df, 'internship', 'Campo_estagio', {1: 'Sim', 2:'Não
 
 salvar_tabela_como_imagem(
     estagio,
-    '../tables/43_tab_campo_estagio.png'
+    '../tables/53_tab_campo_estagio.png'
 )
 
 estagio_counts = estagio['Campo_estagio'].value_counts()
 plot_barh(
     estagio_counts, 'A ILPI é campo de estágio', 'ILPI',
-    '../plots/43_campo_estagio.png'
+    '../plots/53_campo_estagio.png'
 )
 # %%
 ## - Quais são as instituíções de ensino e cursos
@@ -1100,6 +1229,6 @@ inst_curso
 # %%
 salvar_tabela_como_imagem(
     inst_curso,
-    '../tables/44_tab_inst_cursos.png'
+    '../tables/54_tab_inst_cursos.png'
 )
 # %%
