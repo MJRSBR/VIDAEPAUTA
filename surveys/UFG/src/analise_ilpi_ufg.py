@@ -1095,8 +1095,8 @@ dic_renomeaf_ativ_reab = {
     'rehab_activities___1': 'Não se aplica'
 }
 
-df_ativ_reab = verif[['institution_name']].copy()
-df_ativ_reab = (df_ativ_reab.join(criar_df_com_soma_por_prefixo(verif, "rehab_activities___"))
+df_ativ_reab = verif_reg[['institution_name']].copy()
+df_ativ_reab = (df_ativ_reab.join(criar_df_com_soma_por_prefixo(verif_reg, "rehab_activities___"))
             .rename(columns=dic_renomeaf_ativ_reab))
 
 salvar_tabela_como_imagem(
