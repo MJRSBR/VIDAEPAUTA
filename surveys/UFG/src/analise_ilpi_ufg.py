@@ -160,7 +160,22 @@ def processa_uma_variavel(df, colunas_dict):
 
 
 def processa_binario(df, coluna, legenda, rename_dict):
-    """Processa variáveis binárias para análise."""
+    """
+    Processa variáveis binárias para análise.
+
+    Parâmetros:
+    - df: Data Frame
+    - coluna: coluna da variável
+    - legenda: str, nome da nova coluna de saída
+    - rename_dict: dict, ex: {1: 'Sim', 0: 'Não'}
+    
+    Exemplo de uso:
+    tabela_camas = processa_binario(
+        df,
+        'residents_bedroom',
+        'Camas segundo a Norma',
+        rename_dict)
+    """
     temp = (df[['institution_name', coluna]]
                 # Cria uma coluna cujo nome é o valor da variável legenda 
                 # populacionando com o mapeamento
@@ -170,17 +185,7 @@ def processa_binario(df, coluna, legenda, rename_dict):
                 )
     return temp
 
-# Exemplo de uso
-# rename_dict = {1: 'Sim', 0: 'Não'}
-#
-#tabela_camas = processa_binario(
-#    df,
-#    'residents_bedroom',
-#    'Camas segundo a Norma',
-#    rename_dict
-#)
 
-#print(tabela_camas)
 
 def processa_uma_variavel_com_opcoes(df, coluna_original, nome_saida, mapa_valores):
     """
