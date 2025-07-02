@@ -36,6 +36,8 @@ def criar_diretorios():
     os.makedirs('../tables', exist_ok=True)
     os.makedirs('../plots', exist_ok=True)
 
+# Cria diretórios para plots e tabelas
+criar_diretorios()
 
 # usando matplotlib
 matplotlib.rc('font', size=10)
@@ -167,8 +169,7 @@ def processa_binario(df, coluna, legenda, rename_dict):
                 )
     return temp
 
-
-
+# %%
 def processa_uma_variavel_com_opcoes(df, coluna_original, nome_saida, mapa_valores):
     """
     Processa códigos inteiros para uma string descritiva (concatenada) com base em um dicionário de mapeamento.
@@ -210,114 +211,129 @@ def processa_multiresposta(df, colunas_dict, legenda):
     )
     return resultado
 
-
-def criar_df_com_soma_por_prefixo(df, prefixo, nome_coluna_soma=None):
-    """
-    Retorna um novo DataFrame com as colunas que começam com o prefixo e uma coluna de soma.
-
-    Parâmetros:
-    - df: DataFrame original.
-    - prefixo: Prefixo das colunas a incluir.
-    - nome_coluna_soma: Nome da nova coluna de soma. Se None, será 'soma_' + prefixo.
-
-    Retorna:
-    - Novo DataFrame com as colunas selecionadas + coluna de soma.
-    """
-    # Filtra colunas com o prefixo
-    colunas = [col for col in df.columns if col.startswith(prefixo)]
-
-    # Garante que os dados sejam numéricos
-    df_filtrado = df[colunas].apply(pd.to_numeric, errors='coerce')
-
-    # Nome da nova coluna de soma
-    if nome_coluna_soma is None:
-        nome_coluna_soma = f'soma_{prefixo.rstrip("_")}'
-
-    # Adiciona a soma por linha
-    df_filtrado[nome_coluna_soma] = df_filtrado.sum(axis=1, numeric_only=True)
-
-    return df_filtrado
 # %%
 
-def extrair_morbidades(df, morbidade_dict):
+import re
+
+def extrair_morbidades(df, morbidade_dict, nome_coluna_soma=None):
     """
     Filtra e retorna os dados de morbidades legíveis,
     agrupados por institution_name, full_name, cpf.
-    A coluna 'other_morbidities' é normalizada para minúsculas
-    e unificada por paciente, separando múltiplas entradas por vírgula.
+    A coluna 'other_morbidities' é normalizada (minúsculas, sem espaços),
+    separando múltiplas entradas por vírgula, ponto e vírgula ou barra vertical.
+    Soma final inclui morbidades binárias + textuais distintas.
     """
-    morbidities_cols = list(morbidade_dict.keys())
 
-    # Converte os dados de morbidades para numérico
+    morbidities_cols = list(morbidade_dict.keys())
     df[morbidities_cols] = df[morbidities_cols].apply(pd.to_numeric, errors='coerce')
 
-    # Propaga dados relevantes
     campos_para_propagacao = ['institution_name', 'full_name', 'cpf']
     for campo in campos_para_propagacao:
         df[campo] = df[campo].ffill()
 
-    # Filtra linhas que possuem ao menos uma morbidade
-    df_filtrado = df[df[morbidities_cols].eq(1).any(axis=1)].copy()
+    # Inclui linhas que tenham morbidades binárias OU outras textuais
+    df_filtrado = df[df[morbidities_cols].eq(1).any(axis=1) | df['other_morbidities'].notna()].copy()
 
-    # Traduz morbidades marcadas para nomes legíveis
+    if nome_coluna_soma is None:
+        nome_coluna_soma = 'soma_morbidities'
+
+    df_filtrado['soma_binarias'] = df_filtrado[morbidities_cols].sum(axis=1, numeric_only=True)
+
     def nomes_morbidades(row):
         return ', '.join([morbidade_dict[col] for col in morbidities_cols if row.get(col) == 1])
 
     df_filtrado['Morbidades'] = df_filtrado.apply(nomes_morbidades, axis=1)
 
-    # Padroniza e limpa a coluna 'other_morbidities'
-    df_filtrado['other_morbidities'] = (df_filtrado['other_morbidities']
-                                        .astype(str)
-                                        .str.lower()
-                                        .str.strip()
-                                        .replace('nan', '')
-                                        )
+    # Padroniza a coluna 'other_morbidities'
+    df_filtrado['other_morbidities'] = (
+        df_filtrado['other_morbidities']
+        .astype(str)
+        .str.lower()
+        .replace('nan', '')
+    )
 
-    # Agrupa os dados por paciente e une os textos da coluna 'other_morbidities' (sem duplicatas)
-    df_resultado = df_filtrado.groupby(['institution_name', 'full_name', 'cpf'], as_index=False).agg(
-        {
-        'Morbidades': ', '.join,
-        'other_morbidities': lambda x: ', '.join(sorted(set(filter(None, map(str.strip, x)))))
+    # Agrupamento
+    df_resultado = df_filtrado.groupby(['institution_name', 'full_name', 'cpf'], as_index=False).agg({
+        'Morbidades': lambda x: ', '.join(sorted(set(', '.join(x).split(', ')))),
+        'other_morbidities': lambda x: ', '.join(sorted(set(filter(None, map(str.strip, x))))),
+        'soma_binarias': 'sum'
     })
 
-    # Ordena o resultado final
+    # Conta as morbidades textuais, com separadores: , ; |
+    def contar_textuais(texto):
+        if not texto:
+            return 0
+        itens = re.split(r'[;,|]', texto)  # divide por vírgula, ponto e vírgula ou barra vertical
+        return len([item.strip() for item in itens if item.strip()])
+
+    df_resultado['soma_other'] = df_resultado['other_morbidities'].apply(contar_textuais)
+    df_resultado[nome_coluna_soma] = df_resultado['soma_binarias'] + df_resultado['soma_other']
+
+    # Limpa colunas auxiliares
+    df_resultado = df_resultado.drop(columns=['soma_binarias', 'soma_other'])
     df_resultado = df_resultado.sort_values(by=['institution_name', 'full_name', 'cpf'])
 
     return df_resultado
-
 
 # %%
 ## ---------------------
 ## Análises e Gráficos
 ## ---------------------
 
-# Cria diretórios para plots e tabelas
-criar_diretorios()
+## ---- Gênero
+
 # %%
+
+## Filtra os valores válidos (1 = Masculino, 2 = Feminino)
+df_filtered = df[df['sex'].isin([1, 2])].copy()
+
+# Mapeia os valores de sexo para strings
+df_filtered['sex'] = df_filtered['sex'].map({1: 'Masculino', 2: 'Feminino'})
+
+# Transformar a coluna 'institution_name' em int    
+df_filtered['institution_name'] = df_filtered['institution_name'].astype(int)
+
+# Agrupa por institution_name e sexo e reorganiza com unstack
+gender = df_filtered.groupby(['institution_name', 'sex']).size().unstack(fill_value=0).reset_index()
+
+# 
+
+# Remove o nome do eixo de colunas
+gender.columns.name = None
+gender
+
+# %%
+# Calcula a porcentagem de cada sexo por instituição
+gender_percent = round(gender[['Feminino', 'Masculino']].div(gender[['Feminino', 'Masculino']].sum(axis=1), axis=0) * 100, 2)
+gender_percent.insert(0, 'institution_name', gender['institution_name'])
+gender_percent
+# %%
+
 # Salvando como imagem
 salvar_tabela_como_imagem(
-    camas,
-    '../tables/01_tabela_camas.png',
-    titulo='Camas segundo a Norma nas ILPIs',
+    gender,
+    '../tables/01_tabela_genero_abs.png',
     largura_max_coluna=25
 )
 
+# Salvando a tabela de porcentagens
+salvar_tabela_como_imagem(
+    gender_percent,
+    '../tables/01_tabela_genero_perc.png',
+    largura_max_coluna=25
+)
+# %%
 # Gráfico 01
-camas_counts = camas['Camas segundo a Norma?'].value_counts()
 
-plot_barh(camas_counts, 
-          'Distribuição de Camas segundo a Norma', 
-          'ILPIs', '../plots/01_tabela_cama.png'
+plot_barh(gender_percent.set_index('institution_name').T, 
+          'Gênero dos Residentes da ILPI', 
+          'ILPIs', '../plots/01_tabela_genero.png'
 )
 # %%
 ## --------------------
 ##  Morbidades
-## --------------------
-
-#df_morb = criar_df_com_soma_por_prefixo(df_exemplo, prefixo="morbidities___")
-#df_morb
-
-# Definindo um dicionário para morbidades
+## -------------------
+# Definindo um dicionário para morbidades binárias
 morb_dict = {
     "morbidities___1" : "Hipertensão Arterial",
     "morbidities___2" : "Diabetes Mellitus",
@@ -342,8 +358,10 @@ morb_dict = {
 }
 
 # %%
-df_resultado = extrair_morbidades(df, morb_dict)
-df_resultado
+# Extraindo morbidades
+df_morbidades = extrair_morbidades(df, morb_dict)
+# Exibindo o DataFrame resultante   
+df_morbidades.head()
 # %%
 ## --------------------
 ##  Medicamentos

@@ -78,20 +78,20 @@ df_filtered.head()
 # %%
 ## - Reordenando as colunas 
 df_final = df_filtered[['record_id', 'redcap_repeat_instrument', 'redcap_repeat_instance', 'visit_date', 
-                                'latitude', 'longitude', 'institution_name', 'cpf', 'full_name', 'sex', 'date_of_birth', 
-                                'elder_age', 'race', 'scholarship', 'institut_time_years', 'time_months', 'institut_time_months', 
-                                'family_support', 'dependence_degree', 'link_type___1', 'link_type___2', 'link_type___3', 
-                                'elder_income_source', 'med_name', 'dosage', 'recorded', 'combination_of_medicines', 
-                                'combination_1', 'combination_dosage', 'combination_2', 'combination_dosage_2', 'combination_3', 
-                                'combination_dosage_3', 'combination_4', 'combination_dosage_4', 'combination_5', 
-                                'combination_dosage_5', 'combination_6', 'combination_dosage_6', 'taken_daily', 'morbidities___1', 
-                                'morbidities___2', 'morbidities___3', 'morbidities___4', 'morbidities___5', 'morbidities___6', 
-                                'morbidities___7', 'morbidities___8', 'morbidities___9', 'morbidities___10', 'morbidities___11', 
-                                'morbidities___12', 'morbidities___13', 'morbidities___14', 'morbidities___15', 'morbidities___16', 
-                                'morbidities___17', 'morbidities___18', 'morbidities___19', 'morbidities___20', 'morbidities___21', 
-                                'other_morbidities', 'health_condition', 'elder_visitors', 'physical_desabilities___1', 'physical_desabilities___2', 
-                                'physical_desabilities___3', 'weight_loss', 'amount_weight_loss', 'elder_strenght', 'elder_hospitalized', 
-                                'elder_difficulties', 'elder_mobility', 'basic_activities_diffic', 'falls_number', 'interviewer_name']]
+                        'latitude', 'longitude', 'institution_name', 'cpf', 'full_name', 'sex', 'date_of_birth', 
+                        'elder_age', 'race', 'scholarship', 'institut_time_years', 'time_months', 'institut_time_months', 
+                        'family_support', 'dependence_degree', 'link_type___1', 'link_type___2', 'link_type___3', 
+                        'elder_income_source', 'med_name', 'dosage', 'recorded', 'combination_of_medicines', 
+                        'combination_1', 'combination_dosage', 'combination_2', 'combination_dosage_2', 'combination_3', 
+                        'combination_dosage_3', 'combination_4', 'combination_dosage_4', 'combination_5', 
+                        'combination_dosage_5', 'combination_6', 'combination_dosage_6', 'taken_daily', 'morbidities___1', 
+                        'morbidities___2', 'morbidities___3', 'morbidities___4', 'morbidities___5', 'morbidities___6', 
+                        'morbidities___7', 'morbidities___8', 'morbidities___9', 'morbidities___10', 'morbidities___11', 
+                        'morbidities___12', 'morbidities___13', 'morbidities___14', 'morbidities___15', 'morbidities___16', 
+                        'morbidities___17', 'morbidities___18', 'morbidities___19', 'morbidities___20', 'morbidities___21', 
+                        'other_morbidities', 'health_condition', 'elder_visitors', 'physical_desabilities___1', 'physical_desabilities___2', 
+                        'physical_desabilities___3', 'weight_loss', 'amount_weight_loss', 'elder_strenght', 'elder_hospitalized', 
+                        'elder_difficulties', 'elder_mobility', 'basic_activities_diffic', 'falls_number', 'interviewer_name']]
                         
 df_final
 
