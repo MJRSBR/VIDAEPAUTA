@@ -43,7 +43,7 @@ def etl_df_redcap(df, campos_chave, campo_discriminador='institution_name'):
 #
 #pd.set_option('display.max_colwidth', None)  # Permite exibir a coluna inteira
 # %%
-df = pd.read_csv("../../data/SMSap/PerfilEpidemiolgicos_DATA_2025-06-24_1507.csv",
+df = pd.read_csv("../../../data/SMSap/PerfilEpidemiolgicos_DATA_2025-06-24_1507.csv",
                  sep=";")
 df.head()
 
@@ -59,22 +59,39 @@ campos_para_propagar = ['cpf', 'full_name', 'institution_name']
 df_corrigido = etl_df_redcap(df, campos_para_propagar)
 df_corrigido
 # %%
-## - Lista de todas as colunas
-print(df_corrigido.columns.tolist())
+# ## - Verificando se o CPF foi propagado corretamente e listando as colunas
+
+print(df_corrigido[df_corrigido['cpf'].isna()])
 
 # %%
-## - Eliminado colunas 
-colunas_para_dropar = ['redcap_survey_identifier', 'identificao_da_ilpi_f650_timestamp', 'institution_type', 
-                        'identificao_da_ilpi_f650_complete', 'dados_sciodemogrficos_timestamp', 'name', 'surname', 
-                        'admission_date', 'dados_sciodemogrficos_complete', 'medicamentos_em_uso_timestamp',
-                        'medicamentos_em_uso_complete', 'morbidades_prvias_timestamp', 'morbidities___nan',
-                        'morbidades_prvias_complete', 'estado_de_sade_timestamp', 'estado_de_sade_complete', 
-                        'componentes_de_fragilidade_timestamp', 'physical_desabilities___nan', 
-                        'componentes_de_fragilidade_complete', 'responsvel_pelo_preenchimento_timestamp', 
-                        'responsvel_pelo_preenchimento_complete']
 
-df_filtered = df_corrigido.drop(columns=colunas_para_dropar)
-df_filtered.head()
+# Transformando colunas em int
+cols_to_convert = ['record_id','redcap_repeat_instance', 'institution_name', 'sex', 'elder_age', 
+       'race', 'scholarship', 'institut_time_years', 'institut_time_months', 'family_support', 'dependence_degree', 
+       'link_type___1', 'link_type___2', 'link_type___3', 'elder_income_source', 'taken_daily', 'morbidities___1', 
+       'morbidities___2', 'morbidities___3', 'morbidities___4', 'morbidities___5', 'morbidities___6', 'morbidities___7',
+       'morbidities___8', 'morbidities___9', 'morbidities___10', 'morbidities___11', 'morbidities___12', 'morbidities___13', 
+       'morbidities___14', 'morbidities___15', 'morbidities___16', 'morbidities___17', 'morbidities___18', 
+       'morbidities___19', 'morbidities___20', 'morbidities___21', 'health_condition', 'elder_visitors', 
+       'physical_desabilities___1', 'physical_desabilities___2', 'physical_desabilities___3', 'weight_loss', 
+       'amount_weight_loss', 'elder_strenght', 'elder_hospitalized', 'elder_difficulties', 'elder_mobility', 
+       'basic_activities_diffic', 'falls_number']
+
+df_corrigido[cols_to_convert] = df_corrigido[cols_to_convert].astype('Int64') 
+
+# %%
+## - Eliminado colunas que não são necessárias para a análise
+cols_to_drop = ['redcap_survey_identifier', 'identificao_da_ilpi_f650_timestamp', 'institution_type', 
+                'identificao_da_ilpi_f650_complete', 'dados_sciodemogrficos_timestamp', 'name', 'surname', 
+                'admission_date', 'dados_sciodemogrficos_complete', 'medicamentos_em_uso_timestamp',
+                'medicamentos_em_uso_complete', 'morbidades_prvias_timestamp', 'morbidities___nan',
+                'morbidades_prvias_complete', 'estado_de_sade_timestamp', 'estado_de_sade_complete', 
+                'componentes_de_fragilidade_timestamp', 'physical_desabilities___nan', 
+                'componentes_de_fragilidade_complete', 'responsvel_pelo_preenchimento_timestamp', 
+                'responsvel_pelo_preenchimento_complete']
+
+df_filtered = df_corrigido.drop(columns=cols_to_drop)
+
 # %%
 ## - Reordenando as colunas 
 df_final = df_filtered[['record_id', 'redcap_repeat_instrument', 'redcap_repeat_instance', 'visit_date', 
@@ -97,7 +114,7 @@ df_final
 
 # %%
 
-df_final.to_csv("../../data/SMSAp/base_perfil_epidemiologico.csv",
+df_final.to_csv("../../../data/SMSAp/base_perfil_epidemiologico.csv",
                    index=False,
                    sep=";")
 # %%
