@@ -3,9 +3,11 @@ import os
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
+import numpy as np
 import seaborn as sns
 import textwrap # serve para formatar textos, ajustando-os para caber em uma largura específica, com a possibilidade de quebrar linhas e aplicar recuo.
 from matplotlib.ticker import MaxNLocator
+
 
 # %%
 # ---------------------
@@ -297,263 +299,6 @@ def extrair_morbidades(df, morbidade_dict, nome_coluna_soma=None):
 
     return df_resultado
 
-# %%
-## ---------------------
-## Análises e Gráficos
-## ---------------------
-
-## ---- Gênero
-
-## Filtra os valores válidos (1 = Masculino, 2 = Feminino)
-df_filtered = df[df['sex'].isin([1, 2])].copy()
-
-# Mapeia os valores de sexo para strings
-df_filtered['sex'] = df_filtered['sex'].map({1: 'Masculino', 2: 'Feminino'})
-
-# Agrupa por institution_name e sexo e reorganiza com unstack
-gender = df_filtered.groupby(['institution_name', 'sex']).size().unstack(fill_value=0).reset_index()
-
-# Remove o nome do eixo de colunas
-gender.columns.name = None
-gender
-
-# %%
-# Calcula a porcentagem de cada sexo por instituição
-gender_prop = (round(gender[['Feminino', 'Masculino']]
-                        .div(gender[['Feminino', 'Masculino']]
-                        .sum(axis=1), axis=0), 2))
-
-# Adiciona a coluna de nome da instituição
-gender_prop.insert(0, 'institution_name', gender['institution_name'])
-gender_prop
-# %%
-
-# Salvando como imagem
-salvar_tabela_como_imagem(
-    gender,
-    '../tables/01_tabela_genero_abs.png',
-    largura_max_coluna=25
-)
-
-# Salvando a tabela de porcentagens
-salvar_tabela_como_imagem(
-    gender_prop,
-    '../tables/01_tabela_genero_prop.png',
-    largura_max_coluna=25
-)
-# %%
-# Gráfico 01
-
-plot_barh(gender_prop.set_index('institution_name'), 
-          title='Gênero dos Residentes da ILPI', 
-          xlabel='Proporção', ylabel='ILPIs',
-          filename='../plots/01_grafico_genero_perc.png')
-
-# %%
-## ---- Idade
-
-# Cria um DataFrame para a idade dos residentes
-df_idade = df[['institution_name', 'elder_age']]
-
-# Filtra apenas as linhas com idade dos residentes
-df_idade = df_idade[df_idade['elder_age'].notna()].astype({'elder_age': 'int64'})
-df_idade
-# %%
-## ----- Plotando a idade dos residentes com linha de média
-# Calcula a média geral
-media_idade = df_idade['elder_age'].mean().__round__(1)
-media_idade
-# %%
-# Cria um eixo X com base no índice dos residentes
-x = range(len(df_idade))
-
-# Plot
-plt.figure(figsize=(12, 6))
-
-# Pontos individuais
-plt.scatter(x, df_idade['elder_age'], color='gray', alpha=0.6, label='Residentes')
-
-# Linha de média
-plt.axhline(y=media_idade, color='red', linestyle='--', linewidth=1.5, label=f'Média: {media_idade:.1f}')
-
-# Eixos
-plt.xlabel('Idade')
-plt.ylabel('Idade')
-plt.title('Idade dos Residentes com Linha de Média')
-
-# Legenda
-plt.legend()
-
-# Layout e salvamento
-plt.tight_layout()
-plt.savefig('../plots/02_grafico_idades_residentes_com_media.png', dpi=300, bbox_inches='tight')
-print("✅ Gráfico de Idade dos Residentes salvo como imagem.")
-plt.show()
-# %%
-
-## ---- Idade por ILPI
-# Agrupa por ILPI e calcula a média de idade dos residentes
-
-# Calcula a média por ILPI
-media_idade = df_idade.groupby('institution_name')['elder_age'].mean().reset_index()
-media_idade.columns = ['institution_name', 'Média']
-
-# Define ILPIs únicos e ordenados (para o eixo X)
-ilpis = sorted(df_idade['institution_name'].unique())
-
-# Plot
-plt.figure(figsize=(12, 6))
-
-# Pontos individuais
-plt.scatter(df_idade['institution_name'], df_idade['elder_age'], color='gray', alpha=0.6, label='Residentes')
-
-# Médias por ILPI em vermelho
-plt.scatter(media_idade['institution_name'], media_idade['Média'], color='red', s=100, marker='D', label='Média por ILPI')
-
-# Eixos e rótulos
-plt.xlabel('ILPI')
-plt.ylabel('Idade dos Residentes')
-plt.title('Idade dos Residentes por ILPI com Média Destacada')
-
-# Definir o eixo X com os valores inteiros das ILPIs
-plt.xticks(ilpis)
-
-# Legenda, layout e salvamento
-plt.legend()
-plt.tight_layout()
-plt.savefig('../plots/02_grafico_idades_residentes_por_ilpi.png', dpi=300, bbox_inches='tight')
-print("✅ Gráfico de Idade dos Residentes por ILPI salvo como imagem.")
-plt.show()
-
-# %%
-## ---- Faixa Etária por ILPI
-# Agrupa por institution_name e idade, contando os residentes
-idade = df_idade['elder_age'].value_counts().reset_index()
-idade
-# %%
-idade
-# %%
-# Define os intervalos de idade para as categorias
-
-elder_age_bins = {
-    '61 a 65 anos': (60, 65),
-    '66 a 70 anos': (65, 70),
-    '71 a 75 anos': (70, 75),
-    '76 a 80 anos': (75, 80),
-    '81 a 85 anos': (80, 85),
-    '86 a 90 anos': (85, 90),
-    '91 a 95 anos': (90, 95),
-    '96 a 100 anos': (95, 100)       
-}
-
-# Gera a lista de bins e labels
-bins = [60] + [v[1] for v in elder_age_bins.values()]
-labels = list(elder_age_bins.keys())
-
-# Garante que estamos trabalhando com uma cópia
-df_idade = df_idade.copy()
-
-# Cria a coluna de faixa etária
-df_idade['elder_age_bin'] = pd.cut(df_idade['elder_age'],bins=bins,labels=labels,right=False)
-
-# Deleta a coluna 'elder_age' original
-df_idade = df_idade.drop(columns=['elder_age'])
-
-# Filtra apenas as linhas com faixa etária atribuída (i.e., que não são NaN) e
-# Exibe a contagem de residentes por faixa etária
-df_idade = df_idade[df_idade['elder_age_bin'].notna()].value_counts().sort_index()
-df_idade
-
-# %%
-# Cria um DataFrame a partir da série de contagem
-df_idade = df_idade.reset_index()
-df_idade
-# %%
-# Renomeia as colunas
-df_idade = df_idade.rename(columns={'institution_name': 'ILPI', 'elder_age_bin': 'Faixa Etária', 'count': 'Número de Residentes'}) 
-df_idade
-
-# %%
-# Salvando a tabela de idades
-salvar_tabela_como_imagem(
-    df_idade,
-    '../tables/02_tabela_idade.png',
-    largura_max_coluna=25
-)
-# %%
-
-# Pivot da tabela para formato wide (um DataFrame por faixa etária por ILPI)
-pivot_df = df_idade.pivot(index='institution_name', columns='elder_age_bin', values='count')
-
-# Paleta de cores personalizada (1 cor por faixa etária — total 8 faixas)
-custom_colors = [
-    '#4E79A7',  # Azul escuro
-    "#092436",  # Azul claro
-    "#A7794C",  # Laranja
-    "#E6811C",  # Laranja claro
-    "#24D20D",  # Verde
-    '#8CD17D',  # Verde claro
-    "#9D7E0E",  # Amarelo escuro
-    "#B72A56"   # Rosa claro
-]
-
-# Plot
-pivot_df.plot(kind='bar', stacked=True, figsize=(12, 6), color=custom_colors)
-
-# Eixos e legenda
-plt.xlabel('ILPI')
-plt.ylabel('Número de Residentes')
-plt.title('Distribuição de Faixa Etária por ILPI')
-plt.xticks(rotation=0)
-plt.legend(title='Faixa Etária', bbox_to_anchor=(1.05, 1), loc='upper left')
-
-# Adiciona legenda para a linha média
-#plt.text(len(pivot_df) - 0.6, media_residentes + 0.5, f'Média = {media_residentes:.1f}', color='black')
-
-# Salvar e exibir
-plt.tight_layout()
-plt.savefig('02_grafico_faixa_etaria_por_ilpi.png', dpi=300, bbox_inches='tight')
-print("✅ Gráfico de Faixa Etária por ILPI salvo como imagem.")
-plt.show()
-# %%
-## ---- Raça
-# %%
-## --------------------
-##  Morbidades
-## -------------------
-# Definindo um dicionário para morbidades binárias
-morb_dict = {
-    "morbidities___1" : "Hipertensão Arterial",
-    "morbidities___2" : "Diabetes Mellitus",
-    "morbidities___3" : "Hipercolesterolemia",
-    "morbidities___4" : "Doença na coluna",
-    "morbidities___5" : "Insuficiência cardíaco",
-    "morbidities___6" : "Infarto",
-    "morbidities___7" : "Insuficiência renal",
-    "morbidities___8" : "Câncer",
-    "morbidities___9" : "Enfisema pulmonar",
-    "morbidities___10":	"Asma",
-    "morbidities___11":	"Bronquite",
-    "morbidities___12":	"Transtorno Mental",
-    "morbidities___13":	"Osteoporose",
-    "morbidities___14":	"Artrite",
-    "morbidities___15":	"Demência",
-    "morbidities___16":	"Alzheimer",
-    "morbidities___17":	"Parkinson",
-    "morbidities___18":	"Etilismo",
-    "morbidities___19":	"Tabagismo",
-    "morbidities___20":	"Usuário de drogas",
-}
-
-# %%
-# Extraindo morbidades
-df_morbidades = extrair_morbidades(df, morb_dict)
-# Exibindo o DataFrame resultante   
-df_morbidades.head()
-# %%
-## --------------------
-##  Medicamentos
-## --------------------
 
 def extrair_medicamentos(df):
     """
@@ -638,6 +383,829 @@ def extrair_medicamentos(df):
 
     return df_resultado
 
+def classificar_risco(df, condicoes_critico, condicoes_alerta, condicoes_atencao, incluir_sem_risco=True):
+    """
+    Aplica condições de risco e retorna:
+    - DataFrame agrupado por 'cpf' com colunas: institution_name, cpf, full_name, risco (colorido em HTML)
+    - Resumo com contagem por nível de risco (rótulos limpos, sem HTML)
+   
+     Parâmetros:
+    - df: DataFrame original
+    - condicoes_critico, condicoes_alerta, condicoes_atencao: dicionários de condições
+    
+    - incluir_sem_risco: se True, classifica como 'Sem Risco' os registros que não se encaixam em nenhuma categoria
+    OBS: Para visualizar cores no Jupyter, usar `display(HTML(resultado.to_html(escape=False)))`
+    """
+
+    df_copia = df.copy()
+
+    df_copia['risco'] = None
+
+    cores_por_risco = {
+        'Crítico': 'red',
+        'Alerta': 'orange',
+        'Atenção': 'yellow',
+        'Sem Risco': 'green'
+    }
+
+    def aplicar_classificacao(df_local, condicoes_dict, label):
+        cond = pd.Series(True, index=df_local.index)
+        for col, func in condicoes_dict.items():
+            cond &= df_local[col].apply(func)
+        return cond.replace({True: label, False: None})
+
+    for condicoes, label in [
+        (condicoes_critico, 'Crítico'),
+        (condicoes_alerta, 'Alerta'),
+        (condicoes_atencao, 'Atenção')
+    ]:
+        mask = aplicar_classificacao(df_copia, condicoes, label)
+        condicao_vazia = df_copia['risco'].isna()
+        df_copia.loc[mask.notna() & condicao_vazia, 'risco'] = label
+
+    # Preencher com "Sem Risco", se solicitado
+    if incluir_sem_risco:
+        df_copia.loc[df_copia['risco'].isna(), 'risco'] = 'Sem Risco'
+
+    # Define a ordem de severidade
+    ordem_prioridade = {'Crítico': 0, 'Alerta': 1, 'Atenção': 2, 'Sem Risco': 3}
+    df_copia['prioridade'] = df_copia['risco'].map(ordem_prioridade)
+
+    agrupado = (
+        df_copia
+        .sort_values('prioridade')
+        .groupby('cpf', as_index=False)
+        .first()[['institution_name', 'cpf', 'full_name', 'risco']]
+    )
+
+    # Aplica cor HTML na coluna 'risco'
+    def colorir(valor):
+        cor = cores_por_risco.get(valor, 'black')
+        return f'<span style="color: {cor}; font-weight: bold;">{valor}</span>'
+
+    agrupado['Score_Fragilidade'] = agrupado['risco'].apply(colorir)
+
+    # Resumo por grupo de risco
+    resumo = (
+        agrupado
+        .groupby(['institution_name', 'risco'], as_index=False)
+        .size()
+        .rename(columns={'size': 'total'})
+    )
+
+    return agrupado.drop(columns=['risco']), resumo
+
+# %%
+## ---------------------
+## Análises e Gráficos
+## ---------------------
+
+## --------------------
+## ---- Gênero
+## -------------------
+
+
+## Filtra os valores válidos (1 = Masculino, 2 = Feminino)
+df_filtered = df[df['sex'].isin([1, 2])].copy()
+
+# Mapeia os valores de sexo para strings
+df_filtered['sex'] = df_filtered['sex'].map({1: 'Masculino', 2: 'Feminino'})
+
+# Agrupa por institution_name e sexo e reorganiza com unstack
+gender = df_filtered.groupby(['institution_name', 'sex']).size().unstack(fill_value=0).reset_index()
+
+# Remove o nome do eixo de colunas
+gender.columns.name = None
+gender
+
+# %%
+# Calcula a porcentagem de cada sexo por instituição
+gender_prop = (round(gender[['Feminino', 'Masculino']]
+                        .div(gender[['Feminino', 'Masculino']]
+                        .sum(axis=1), axis=0), 2))
+
+# Adiciona a coluna de nome da instituição
+gender_prop.insert(0, 'institution_name', gender['institution_name'])
+gender_prop
+# %%
+
+# Salvando como imagem
+salvar_tabela_como_imagem(
+    gender,
+    '../tables/01_tabela_genero_abs.png',
+    largura_max_coluna=25
+)
+
+# Salvando a tabela de porcentagens
+salvar_tabela_como_imagem(
+    gender_prop,
+    '../tables/01_tabela_genero_prop.png',
+    largura_max_coluna=25
+)
+# %%
+# Gráfico 01 -- Gênero dos Residentes da ILPI
+
+plot_barh(gender_prop.set_index('institution_name'), 
+          title='Gênero dos Residentes da ILPI', 
+          xlabel='Proporção', ylabel='ILPIs',
+          filename='../plots/01_grafico_genero_perc.png')
+
+# %%
+
+## --------------------
+## ---- Idade 
+## -------------------
+
+# Cria um DataFrame para a idade dos residentes
+df_idade = df[['institution_name', 'elder_age']]
+
+# Filtra apenas as linhas com idade dos residentes
+df_idade = df_idade[df_idade['elder_age'].notna()].astype({'elder_age': 'int64'})
+df_idade
+# %%
+## ----- Plotando a idade dos residentes com linha de média
+# Calcula a média geral
+media_idade = df_idade['elder_age'].mean().__round__(1)
+media_idade
+# %%
+# Cria um eixo X com base no índice dos residentes
+x = range(len(df_idade))
+
+# Plot
+plt.figure(figsize=(12, 6))
+
+# Pontos individuais
+plt.scatter(x, df_idade['elder_age'], color='gray', alpha=0.6, label='Residentes')
+
+# Linha de média
+plt.axhline(y=media_idade, color='red', linestyle='--', linewidth=1.5, label=f'Média: {media_idade:.1f}')
+
+# Eixos
+plt.xlabel('Idade')
+plt.ylabel('Idade')
+plt.title('Idade dos Residentes com Linha de Média')
+
+# Legenda
+plt.legend()
+
+# Layout e salvamento
+plt.tight_layout()
+plt.savefig('../plots/02_grafico_idades_residentes_com_media.png', dpi=300, bbox_inches='tight')
+print("✅ Gráfico de Idade dos Residentes salvo como imagem.")
+plt.show()
+# %%
+## --------------------
+## ---- Idade por ILPI
+## -------------------
+
+# Agrupa por ILPI e calcula a média de idade dos residentes
+
+# Calcula a média por ILPI
+media_idade = df_idade.groupby('institution_name')['elder_age'].mean().reset_index()
+media_idade.columns = ['institution_name', 'Média']
+
+# Define ILPIs únicos e ordenados (para o eixo X)
+ilpis = sorted(df_idade['institution_name'].unique())
+
+# Plot
+plt.figure(figsize=(12, 6))
+
+# Pontos individuais
+plt.scatter(df_idade['institution_name'], df_idade['elder_age'], color='gray', alpha=0.6, label='Residentes')
+
+# Médias por ILPI em vermelho
+plt.scatter(media_idade['institution_name'], media_idade['Média'], color='red', s=100, marker='D', label='Média por ILPI')
+
+# Eixos e rótulos
+plt.xlabel('ILPI')
+plt.ylabel('Idade dos Residentes')
+plt.title('Idade dos Residentes por ILPI com Média Destacada')
+
+# Definir o eixo X com os valores inteiros das ILPIs
+plt.xticks(ilpis)
+
+# Legenda, layout e salvamento
+plt.legend()
+plt.tight_layout()
+plt.savefig('../plots/02_grafico_idades_residentes_por_ilpi.png', dpi=300, bbox_inches='tight')
+print("✅ Gráfico de Idade dos Residentes por ILPI salvo como imagem.")
+plt.show()
+
+# %%
+## --------------------
+## ---- Faixa Etária por ILPI
+## -------------------
+
+# Agrupa por institution_name e idade, contando os residentes
+idade = df_idade['elder_age'].value_counts().reset_index()
+idade
+# %%
+# Define os intervalos de idade para as categorias
+
+elder_age_bins = {
+    '61 a 65 anos': (60, 65),
+    '66 a 70 anos': (65, 70),
+    '71 a 75 anos': (70, 75),
+    '76 a 80 anos': (75, 80),
+    '81 a 85 anos': (80, 85),
+    '86 a 90 anos': (85, 90),
+    '91 a 95 anos': (90, 95),
+    '96 a 100 anos': (95, 100)       
+}
+
+# Gera a lista de bins e labels
+bins = [60] + [v[1] for v in elder_age_bins.values()]
+labels = list(elder_age_bins.keys())
+
+# Garante que estamos trabalhando com uma cópia
+df_idade = df_idade.copy()
+
+# Cria a coluna de faixa etária
+df_idade['elder_age_bin'] = pd.cut(df_idade['elder_age'],bins=bins,labels=labels,right=False)
+
+# Deleta a coluna 'elder_age' original
+df_idade = df_idade.drop(columns=['elder_age'])
+
+# Filtra apenas as linhas com faixa etária atribuída (i.e., que não são NaN) e
+# Exibe a contagem de residentes por faixa etária
+df_idade = df_idade[df_idade['elder_age_bin'].notna()].value_counts().sort_index()
+df_idade
+
+# %%
+# Cria um DataFrame a partir da série de contagem
+df_idade = df_idade.reset_index()
+df_idade
+# %%
+# Renomeia as colunas
+df_idade = df_idade.rename(columns={'institution_name': 'ILPI', 'elder_age_bin': 'Faixa Etária', 'count': 'Número de Residentes'}) 
+df_idade
+
+# %%
+# Salvando a tabela de idades
+salvar_tabela_como_imagem(
+    df_idade,
+    '../tables/02_tabela_idade.png',
+    largura_max_coluna=25
+)
+# %%
+
+# Pivot da tabela para formato wide (um DataFrame por faixa etária por ILPI)
+pivot_df = df_idade.pivot(index='ILPI', columns='Faixa Etária', values='Número de Residentes')
+
+# Paleta de cores personalizada (1 cor por faixa etária — total 8 faixas)
+custom_colors = [
+    '#4E79A7',  # Azul escuro
+    "#092436",  # Azul claro
+    "#A7794C",  # Laranja
+    "#E6811C",  # Laranja claro
+    "#24D20D",  # Verde
+    '#8CD17D',  # Verde claro
+    "#9D7E0E",  # Amarelo escuro
+    "#B72A56"   # Rosa claro
+]
+
+# Plot
+pivot_df.plot(kind='bar', stacked=True, figsize=(12, 6), color=custom_colors)
+
+# Eixos e legenda
+plt.xlabel('ILPI')
+plt.ylabel('Número de Residentes')
+plt.title('Distribuição de Faixa Etária por ILPI')
+plt.xticks(rotation=0)
+plt.legend(title='Faixa Etária', bbox_to_anchor=(1.05, 1), loc='upper left')
+
+# Adiciona legenda para a linha média
+#plt.text(len(pivot_df) - 0.6, media_residentes + 0.5, f'Média = {media_residentes:.1f}', color='black')
+
+# Salvar e exibir
+plt.tight_layout()
+plt.savefig('../plots/02_grafico_faixa_etaria_por_ilpi.png', dpi=300, bbox_inches='tight')
+print("✅ Gráfico de Faixa Etária por ILPI salvo como imagem.")
+plt.show()
+# %%
+## --------------------
+## ---- Raça e Cor
+## -------------------
+
+# Cria um DataFrame para a raça dos residentes
+df_raca = df[['institution_name', 'race']]
+df_raca
+# %%
+# Filtra apenas as linhas com raça dos residentes       
+df_raca = df_raca[df_raca['race'].notna()].astype({'race': 'int64'})
+df_raca
+# %%
+# Agrupa por 'race', usa .size() para contar quantas vezes cada raça aparece e
+# renomeia a coluna de contagem para 'total'
+df_raca_grouped = df_raca.groupby('race').size().reset_index(name='total')
+df_raca_grouped
+# %%
+# Calcula proporção de cada raça
+df_raca_grouped['proporcao'] = df_raca_grouped['total'] / df_raca_grouped['total'].sum()
+df_raca_grouped['proporcao'] = (df_raca_grouped['proporcao']).round(2)
+df_raca_grouped
+# %%
+# Define um dicionário para mapear os códigos de raça para strings
+df_raca_grouped['race'] = df_raca_grouped['race'].replace({ 
+    1: 'Branca',
+    2: 'Preta',
+    3: 'Parda',
+    4: 'Amarela',
+    5: 'Indígena',
+    6: 'Não Informado',
+})
+
+df_raca_grouped 
+
+# %%
+# Salvando a tabela de raça 
+# A tabela df_raca_grouped contém a proporção de raça geral
+salvar_tabela_como_imagem(
+    df_raca_grouped,
+    '../tables/04_tabela_raca_geral.png', 
+    largura_max_coluna=25,
+)                             
+# %%
+
+# Paleta de cores personalizada (1 cor por faixa etária — total 8 faixas)
+custom_colors = [
+    '#4E79A7',  # Azul escuro
+    "#092436",  # Azul claro
+    "#A7794C",  # Laranja
+    "#E6811C",  # Laranja claro
+    "#24D20D",  # Verde
+    '#8CD17D',  # Verde claro
+    "#9D7E0E",  # Amarelo escuro
+    "#B72A56"   # Rosa claro
+]
+# %%
+# Criando gráfico de raça geral
+plt.figure(figsize=(10, 6))
+plt.bar(df_raca_grouped['race'], df_raca_grouped['total'], color=custom_colors)
+plt.title('Número de Residentes por Raça')
+plt.xlabel('Raça')
+plt.ylabel('Total de Residentes')
+plt.tight_layout()
+print("✅ Gráfico de Raça dos Residentes salvo como imagem.")
+plt.savefig('../plots/04_grafico_raca_geral.png', dpi=300, bbox_inches='tight')
+plt.show()
+          
+# Criando gráfico proporção de raça 
+plt.figure(figsize=(10, 6))
+plt.bar(df_raca_grouped['race'], df_raca_grouped['proporcao'], color=custom_colors)
+plt.title('Número de Residentes por Raça')
+plt.xlabel('Raça')
+plt.ylabel('Total de Residentes')
+plt.tight_layout()
+print("✅ Gráfico de Proporção por Raça dos Residentes salvo como imagem.")
+plt.savefig('../plots/04_grafico_proporcao_raca_geral.png', dpi=300, bbox_inches='tight')
+plt.show()
+# %%
+# Cria um DataFrame raça por ILPI
+df_raca_inst = df_raca.groupby(['institution_name', 'race']).size().reset_index(name='total')
+df_raca_inst
+# %%
+# Calcula proporção dentro de cada instituição
+df_raca_inst['proporcao'] = df_raca_inst['total'] / df_raca_inst['total'].sum()
+df_raca_inst['proporcao'] = (df_raca_inst['proporcao']).round(2)
+df_raca_inst        
+# %%
+# Define um dicionário para mapear os códigos de raça para strings por ILPI
+df_raca_inst['race'] = df_raca_inst['race'].replace({ 
+    1: 'Branca',
+    2: 'Preta',
+    3: 'Parda',
+    4: 'Amarela',
+    5: 'Indígena',
+    6: 'Não Informado',
+})
+
+df_raca_inst
+# %%
+# Salvando a tabela de raça 
+# A tabela df_raca_grouped contém a proporção de raça geral
+salvar_tabela_como_imagem(
+    df_raca_inst,
+    '../tables/04_tabela_raca_por_ILPI.png', 
+    largura_max_coluna=25,
+)                             
+# %%
+import seaborn as sns
+
+# Configura o tamanho do gráfico
+plt.figure(figsize=(10, 6))
+
+# Gráfico de barras com seaborn
+sns.barplot(
+    data=df_raca_inst,
+    x='institution_name',
+    y='total',
+    hue='race', 
+)
+
+# Eixos e rótulos
+plt.xticks(rotation=0, ha='right')
+plt.xlabel('Instituição')
+plt.ylabel('Número de Residentes')
+plt.title('Residentes por raça por instituição')
+plt.legend(title='Raça')
+#
+plt.tight_layout()
+print("✅ Gráfico Raça dos Residentes por ILPI salvo como imagem.")
+plt.savefig('../plots/04_grafico_geral_raca_por_ILPI.png', dpi=300, bbox_inches='tight')
+plt.show()
+# %%          
+# Criando gráfico proporção de raça 
+
+plt.figure(figsize=(10, 6))
+
+# Gráfico de barras com seaborn
+sns.barplot(
+    data=df_raca_inst,
+    x='institution_name',
+    y='proporcao',
+    hue='race', 
+)
+
+# Eixos e rótulos
+plt.xticks(rotation=0, ha='right')
+plt.xlabel('Instituição')
+plt.ylabel('Proporção')
+plt.title('Proporção por raça por instituição')
+plt.legend(title='Raça')
+
+plt.tight_layout()
+print("✅ Gráfico Raça dos Residentes por ILPI salvo como imagem.")
+plt.savefig('../plots/04_grafico_proporcao_raca_por_ILPI.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+# %%
+## --------------------
+## ---- Escolaridade
+## -------------------
+
+# Cria um DataFrame para a escolaridade dos residentes
+df_escolaridade = df[['institution_name', 'scholarship']]
+df_escolaridade
+# %%
+# Filtra apenas as linhas com escolaridade dos residentes
+df_escolaridade = df_escolaridade[df_escolaridade['scholarship'].notna()].astype({'scholarship': 'int64'})
+df_escolaridade
+# %%
+# Agrupa por 'scholarshiphip, usa .size() para contar quantas vezes cada escolaridade aparece e
+# renomeia a coluna de contagem para 'total'
+df_escolaridade_grouped = df_escolaridade.groupby('scholarship').size().reset_index(name='total')
+df_escolaridade_grouped
+# %%
+# Calcula proporção de cada escolaridade
+df_escolaridade_grouped['proporcao'] = df_escolaridade_grouped['total'] / df_escolaridade_grouped['total'].sum()
+df_escolaridade_grouped['proporcao'] = (df_escolaridade_grouped['proporcao']).round(2)
+df_escolaridade_grouped
+# %%
+# Define um dicionário para mapear os códigos de escolaridade para strings
+df_escolaridade_grouped['scholarship'] = df_escolaridade_grouped['scholarship'].replace({ 
+    1: 'nenhuma',
+    2: '1 a 3 anos',
+    3: '4 a 7 anos',
+    4: '8 anos ou mais',
+    5: 'não há registro',
+})
+df_escolaridade_grouped
+# %%
+salvar_tabela_como_imagem(
+    df_escolaridade_grouped,
+    '../tables/05_tabela_escolaridade_geral.png',
+    largura_max_coluna=25,
+                          )
+# %%
+# Configura o tamanho do gráfico
+plt.figure(figsize=(10, 6))
+
+# Gráfico de barras com seaborn
+sns.barplot(
+    data=df_escolaridade_grouped,
+    x='scholarship',
+    y='total',
+    palette="coolwarm",
+    hue='scholarship', 
+)
+
+# Eixos e rótulos
+plt.xticks(rotation=45, ha='right')
+plt.xlabel('Tempo de estudo')
+plt.ylabel('Número de Residentes')
+plt.title('Escolaridade Geral dos Residentes')
+
+#
+plt.tight_layout()
+print("✅ Gráfico Escolaridade dos Residentes por ILPI salvo como imagem.")
+plt.savefig('../plots/05_grafico_escolaridade_residente_por_ILPI.png', dpi=300, bbox_inches='tight')
+plt.show()
+# %%
+# Cria um Data Frame escolaridade por ILPI
+df_escolar_inst = df_escolaridade.groupby(['institution_name', 'scholarship']).size().reset_index(name='total')
+df_escolar_inst
+# %%
+# Calcula a proporção de cada escolaridade
+df_escolar_inst['proporcao'] = df_escolar_inst['total'] /  df_escolar_inst['total'].sum() 
+df_escolar_inst['proporcao'] = df_escolar_inst['proporcao'].round(2)
+df_escolar_inst        
+# %%
+# Define um dicionário para mapear os códigos de escolaridade para strings
+df_escolar_inst['scholarship'] = df_escolar_inst['scholarship'].replace({ 
+    1: 'nenhuma',
+    2: '1 a 3 anos',
+    3: '4 a 7 anos',
+    4: '8 anos ou mais',
+    5: 'não há registro',
+})
+df_escolar_inst
+# %%
+salvar_tabela_como_imagem(
+    df_escolar_inst,
+     '../tables/05_tabela_escolaridade_por_ILPI.png',
+    largura_max_coluna=25,
+)
+# %%
+# Criando gráfico proporção de raça 
+
+plt.figure(figsize=(10, 6))
+
+# Gráfico de barras com seaborn
+sns.barplot(
+    data=df_escolar_inst,
+    x='scholarship',
+    y='proporcao',
+    palette="coolwarm",
+    hue='scholarship', 
+)
+
+# Eixos e rótulos
+plt.xticks(rotation=0)
+plt.xlabel('Tempo de estudo')
+plt.ylabel('Proporção')
+plt.title('Proporção por escolaridade por instituição')
+#plt.legend(title='Tempo de estudo')
+
+plt.tight_layout()
+print("✅ Gráfico Escolaridade dos Residentes por ILPI salvo como imagem.")
+plt.savefig('../plots/05_grafico_proporcao_escolaridade_por_ILPI.png', dpi=300, bbox_inches='tight')
+plt.show()
+# %%
+
+## --------------------
+## Tempo institucionalizado
+## --------------------
+# Estatística básica
+df['institut_time_years'].describe()
+# %%
+# Acha os registros que provavelmente estejam errados
+df.loc[df['institut_time_years'] > 30]
+# %%
+temp_instit = df[['institution_name', 'institut_time_years']]
+temp_instit
+# %%
+# Filtra apenas as linhas com tempo de institucionalização
+temp_instit = temp_instit[temp_instit['institut_time_years'].notna()].astype({'institut_time_years':'int64'})
+temp_instit
+# %%
+# Agrupa por 'institut_time_years', usa .size() para contar quantas vezes cada escolaridade aparece e
+# renomeia a coluna de contagem para 'total'
+temp_instit_grouped = temp_instit.groupby('institut_time_years').size().reset_index(name='total')
+temp_instit_grouped 
+# %%
+# Calcula proporcao de tempo de institucionalização
+temp_instit_grouped['proporcao'] = temp_instit_grouped['total'] / temp_instit_grouped['total'].sum()
+temp_instit_grouped['proporcao'] = temp_instit_grouped['proporcao'].round(2)
+temp_instit_grouped
+# %%
+salvar_tabela_como_imagem(
+    temp_instit_grouped,
+    '../tables/06_tabela_tempo _institucionalização.png',
+    largura_max_coluna=25,
+)
+# %%
+# Configura o tamanho do gráfico
+plt.figure(figsize=(10, 6))
+
+# Cria gráfico de barras 
+
+sns.barplot(
+    data=temp_instit_grouped,
+    x='institut_time_years',
+    y='total',
+    palette="coolwarm",
+    hue='institut_time_years', 
+
+)
+
+# Remove a legenda
+plt.legend().remove()
+
+plt.title('Tempo de Institucionalização dos Residentes')
+plt.xlabel('Tempo de instituíção')
+plt.ylabel('Número de residentes')
+plt.tight_layout()
+print("✅ Gráfico Tempo de Institucão dos Residentes salvo como imagem.")
+plt.savefig('../plots/06_grafico_tempo_geral_instit.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+# %%
+# Define os intervalos tempo instituíção para as categorias
+
+inst_time_bins = {
+    '0 a 5 anos': (0, 5),
+    '6 a 10 anos': (5, 10),
+    '11 a 15 anos': (10, 15),
+    '16 a 20 anos': (15, 20),
+    '21 a 25 anos': (20, 25),
+    '26 a 30 anos': (25, 30),
+    'mais de 31 anos': (30, 50)       
+}
+
+# Gera a lista de bins e labels
+bins = [0] + [v[1] for v in inst_time_bins.values()]
+labels = list(inst_time_bins.keys())
+
+# Garante que estamos trabalhando com uma cópia
+temp_instit = temp_instit.copy()
+
+# Cria a coluna de faixa etária
+temp_instit['inst_time_bin'] = pd.cut(temp_instit['institut_time_years'],bins=bins,labels=labels,right=False)
+
+# Deleta a coluna 'institut_time_years' original
+temp_instit = temp_instit.drop(columns=['institut_time_years'])
+
+# Filtra apenas as linhas com faixa etária atribuída (i.e., que não são NaN) e
+# Exibe a contagem de residentes por faixa etária
+temp_instit = temp_instit[temp_instit['inst_time_bin'].notna()].value_counts().sort_index()
+temp_instit
+
+# %%
+# Cria um DataFrame a partir da série de contagem
+temp_instit = temp_instit.reset_index()
+temp_instit
+# %%
+# Renomeia as colunas
+temp_instit = temp_instit.rename(columns={'institution_name': 'ILPI', 'inst_time_bin': 'Faixa Tempo Instituíção', 'count': 'Número de Residentes'}) 
+temp_instit
+
+# %%
+# Salvando a tabela de idades
+salvar_tabela_como_imagem(
+    temp_instit,
+    '../tables/06_tabela_faixa_tempo_institucionalização.png',
+    largura_max_coluna=25
+)
+
+# %%
+
+# Pivot da tabela para formato wide (um DataFrame por faixa etária por ILPI)
+pivot_df = temp_instit.pivot(index='ILPI', columns='Faixa Tempo Instituíção', values='Número de Residentes')
+
+# Paleta de cores personalizada (1 cor por faixa etária — total 8 faixas)
+custom_colors = [
+    '#4E79A7',  # Azul escuro
+    "#092436",  # Azul claro
+    "#A7794C",  # Laranja
+    "#E6811C",  # Laranja claro
+    "#24D20D",  # Verde
+    '#8CD17D',  # Verde claro
+    "#9D7E0E",  # Amarelo escuro
+    "#B72A56"   # Rosa claro
+]
+
+# Criação do gráfico empilhado
+ax = pivot_df.plot(
+    kind='bar',
+    stacked=True,
+    figsize=(12, 6),
+    color=custom_colors
+)
+
+# Adiciona rótulos nos segmentos de barra
+for container in ax.containers: # ax.containers percorre cada grupo de barras empilhadas
+    for bar in container:
+        height = bar.get_height()
+        if height > 0:
+            x = bar.get_x() + bar.get_width() / 2 # centraliza o texto no segmento.
+            y = bar.get_y() + height / 2 # posiciona o texto no meio vertical.
+            font_size = max(7, min(12, height * 0.25))  # Ajuste conforme necessário
+            ax.text(
+                x, y,
+                f'{int(height)}',
+                ha='center',
+                va='center',
+                color='white',
+                fontweight='bold',
+                fontsize=font_size
+            )
+
+# Eixos e legenda
+plt.xlabel('ILPI')
+plt.ylabel('Número de Residentes')
+plt.title('Distribuição de Faixa Tempo de Instituíção por ILPI')
+plt.xticks(rotation=0)
+plt.legend(title='Faixa Tempo Instituíção', bbox_to_anchor=(1.0, 1), loc='upper left')
+
+# Salvar e exibir
+plt.tight_layout()
+plt.savefig('../plots/06_grafico_faixa_tempo_instituicao_por_ilpi.png', dpi=300, bbox_inches='tight')
+print("✅ Gráfico de Faixa Tempo de Instituíção por ILPI salvo como imagem.")
+plt.show()
+# %%
+#  Calcula os percentuais por ILPI (linha)
+pivot_percent = pivot_df.div(pivot_df.sum(axis=1), axis=0) * 100
+
+# Paleta de cores personalizada (1 cor por faixa etária — total 8 faixas)
+custom_colors = [
+    '#4E79A7',  # Azul escuro
+    "#092436",  # Azul claro
+    "#A7794C",  # Laranja
+    "#E6811C",  # Laranja claro
+    "#24D20D",  # Verde
+    '#8CD17D',  # Verde claro
+    "#9D7E0E",  # Amarelo escuro
+    "#B72A56"   # Rosa claro
+]
+
+# Criação do gráfico empilhado
+ax = pivot_df.plot(
+    kind='bar',
+    stacked=True,
+    figsize=(12, 6),
+    color=custom_colors
+)
+
+# Adiciona rótulos nos segmentos de barra
+for bars, col in zip(ax.containers, pivot_df.columns): # ax.containers percorre cada grupo de barras empilhadas
+    for bar, (ilpi, percent) in zip(bars, pivot_percent[col].items()):
+        height = bar.get_height()
+        if height > 0 and not pd.isna(percent):
+            x = bar.get_x() + bar.get_width() / 2 # centraliza o texto no segmento.
+            y = bar.get_y() + height / 2 # posiciona o texto no meio vertical.
+            font_size = max(8, min(12, height * 0.25))  # Ajuste conforme necessário
+            ax.text(
+                x, y,
+                f'{percent: .1f}%', #  .1f para uma casa decimal
+                ha='center',
+                va='center',
+                color='white',
+                fontweight='bold',
+                fontsize=font_size
+            )
+
+# Eixos e legenda
+plt.xlabel('ILPI')
+plt.ylabel('Número de Residentes')
+plt.title('Distribuição de Faixa Tempo de Instituíção por ILPI (% por ILPI)')
+plt.xticks(rotation=0)
+plt.legend(title='Faixa Tempo Instituíção', bbox_to_anchor=(1.0, 1), loc='upper left')
+
+# Salvar e exibir
+plt.tight_layout()
+plt.savefig('../plots/06_grafico_faixa_tempo_instituicao_por_ilpi_percentual.png', dpi=300, bbox_inches='tight')
+print("✅ Gráfico Percentual por Faixa Tempo de Instituíção por ILPI salvo como imagem.")
+plt.show()
+# %%
+## --------------------
+##  Morbidades
+## --------------------
+# Definindo um dicionário para morbidades binárias
+morb_dict = {
+    "morbidities___1" : "Hipertensão Arterial",
+    "morbidities___2" : "Diabetes Mellitus",
+    "morbidities___3" : "Hipercolesterolemia",
+    "morbidities___4" : "Doença na coluna",
+    "morbidities___5" : "Insuficiência cardíaco",
+    "morbidities___6" : "Infarto",
+    "morbidities___7" : "Insuficiência renal",
+    "morbidities___8" : "Câncer",
+    "morbidities___9" : "Enfisema pulmonar",
+    "morbidities___10":	"Asma",
+    "morbidities___11":	"Bronquite",
+    "morbidities___12":	"Transtorno Mental",
+    "morbidities___13":	"Osteoporose",
+    "morbidities___14":	"Artrite",
+    "morbidities___15":	"Demência",
+    "morbidities___16":	"Alzheimer",
+    "morbidities___17":	"Parkinson",
+    "morbidities___18":	"Etilismo",
+    "morbidities___19":	"Tabagismo",
+    "morbidities___20":	"Usuário de drogas",
+}
+
+# %%
+# Extraindo morbidades, outras morbidades e soma
+df_morbidades = extrair_morbidades(df, morb_dict)
+# Exibindo o DataFrame resultante   
+df_morbidades
+# %%
+## --------------------
+##  Medicamentos
+## --------------------
+
+
 # %%
 extrair_medicamentos(df)
 # %%
@@ -687,224 +1255,15 @@ condicao_critica = {
 }
 # %%
 
-def classificar_risco(df, condicao_critico, condicao_alerta, condicao_atencao, incluir_sem_risco=True):
-    """
-    Aplica condições de risco em uma cópia do DataFrame e retorna:
-    - Um DataFrame com as colunas ['institution_name', 'cpf', 'full_name', 'risco']
-    - Um DataFrame resumo com contagem por categoria de risco
-    
-    Parâmetros:
-    - df: DataFrame original
-    - condicoes_critico, condicoes_alerta, condicoes_atencao: dicionários de condições
-    - incluir_sem_risco: se True, classifica como 'Sem Risco' os registros que não se encaixam em nenhuma categoria
-    """
-
-    df_copia = df.copy()
-    df_copia['risco'] = None
-
-    def aplicar_classificacao(df_local, condicoes_dict, label):
-        cond = pd.Series(True, index=df_local.index)
-        for col, func in condicoes_dict.items():
-            cond &= df_local[col].apply(func)
-        return cond.replace({True: label, False: None})
-
-    for condicoes, label in [
-        (condicao_critico, 'Crítico'),
-        (condicao_alerta, 'Alerta'),
-        (condicao_atencao, 'Atenção')
-    ]:
-        mask = aplicar_classificacao(df_copia, condicoes, label)
-        df_copia.loc[mask.notna() & df_copia['risco'].isna(), 'risco'] = mask
-
-    # Preencher com "Sem Risco", se solicitado
-    if incluir_sem_risco:
-        df_copia['risco'] = df_copia['risco'].fillna('Sem Risco')
-
-
-# Define a ordem de severidade
-    ordem_prioridade = {'Crítico': 0, 'Alerta': 1, 'Atenção': 2, 'Sem Risco': 3}
-
-    # Agrupamento por CPF: pega a menor prioridade
-    df_copia['prioridade'] = df_copia['risco'].map(ordem_prioridade)
-
-    resultado = (
-        df_copia
-        .sort_values('prioridade')  # menor = mais severo
-        .groupby('cpf', as_index=False)
-        .first()[['institution_name', 'cpf', 'full_name', 'risco']]
-    )
-
-    # Resumo por grupo de risco
-    resumo = (
-    resultado
-    .groupby(['institution_name', 'risco'], as_index=False)
-    .size()
-    .rename(columns={'size': 'total'})
-)
-
-
-    return resultado, resumo
 
 
 # %%
-from IPython.display import HTML
-
-def classificar_risco(df, condicoes_critico, condicoes_alerta, condicoes_atencao, incluir_sem_risco=True):
-    """
-    Aplica condições de risco e retorna:
-    - DataFrame agrupado por 'cpf' com colunas: institution_name, cpf, full_name, risco (colorido em HTML)
-    - Resumo com contagem por nível de risco
-    
-    OBS: Para visualizar as cores no Jupyter, usar `display(HTML(resultado.to_html(escape=False)))`
-    """
-
-    df_copia = df.copy()
-
-    df_copia['risco'] = None
-
-    cores_por_risco = {
-        'Crítico': 'red',
-        'Alerta': 'orange',
-        'Atenção': 'yellow',
-        'Sem Risco': 'green'
-    }
-
-    def aplicar_classificacao(df_local, condicoes_dict, label):
-        cond = pd.Series(True, index=df_local.index)
-        for col, func in condicoes_dict.items():
-            cond &= df_local[col].apply(func)
-        return cond.replace({True: label, False: None})
-
-    for condicoes, label in [
-        (condicoes_critico, 'Crítico'),
-        (condicoes_alerta, 'Alerta'),
-        (condicoes_atencao, 'Atenção')
-    ]:
-        mask = aplicar_classificacao(df_copia, condicoes, label)
-        condicao_vazia = df_copia['risco'].isna()
-        df_copia.loc[mask.notna() & condicao_vazia, 'risco'] = label
-    # Preencher com "Sem Risco", se solicitado
-    if incluir_sem_risco:
-        df_copia.loc[df_copia['risco'].isna(), 'risco'] = 'Sem Risco'
-    # Define a ordem de severidade
-    ordem_prioridade = {'Crítico': 0, 'Alerta': 1, 'Atenção': 2, 'Sem Risco': 3}
-    df_copia['prioridade'] = df_copia['risco'].map(ordem_prioridade)
-
-    resultado = (
-        df_copia
-        .sort_values('prioridade')
-        .groupby('cpf', as_index=False)
-        .first()[['institution_name', 'cpf', 'full_name', 'risco']]
-    )
-
-    # Resumo por grupo de risco
-    resumo = (
-    resultado
-    .groupby(['institution_name', 'risco'], as_index=False)
-    .size()
-    .rename(columns={'size': 'total'})  
-    )
-
-    # Aplica cor HTML na coluna 'risco'
-    def colorir(valor):
-        cor = cores_por_risco.get(valor, 'black')
-        return f'<span style="color: {cor}; font-weight: bold;">{valor}</span>'
-
-    resultado['risco'] = resultado['risco'].apply(colorir)
-
-    resumo = resultado['risco'].apply(lambda x: x.lower()).value_counts().reset_index()
-    resumo.columns = ['risco_', 'total']
-
-    return resultado, resumo
-
-# %%
-
 resultado, resumo = classificar_risco(df, condicao_critica, condicao_alerta, condicao_atencao)
 
-# resultado: DataFrame com ['institution_name', 'cpf', 'full_name', 'risco']
-#resultado
+# %%
 from IPython.display import display, HTML
-display(HTML(resultado.to_html(escape=False)))
-# 
-
-# %%
-
-# resumo: contagem por risco
-#resumo
-
-display(HTML(resumo.to_html(escape=False)))
-# %%
-
-def classificar_risco(df, condicoes_critico, condicoes_alerta, condicoes_atencao, incluir_sem_risco=True):
-    """
-    Aplica condições de risco e retorna:
-    - DataFrame agrupado por 'cpf' com colunas: institution_name, cpf, full_name, risco (colorido em HTML)
-    - Resumo com contagem por nível de risco (rótulos limpos, sem HTML)
-    
-    OBS: Para visualizar cores no Jupyter, usar `display(HTML(resultado.to_html(escape=False)))`
-    """
-
-    df_copia = df.copy()
-
-    df_copia['risco'] = None
-
-    cores_por_risco = {
-        'Crítico': 'red',
-        'Alerta': 'orange',
-        'Atenção': 'yellow',
-        'Sem Risco': 'green'
-    }
-
-    def aplicar_classificacao(df_local, condicoes_dict, label):
-        cond = pd.Series(True, index=df_local.index)
-        for col, func in condicoes_dict.items():
-            cond &= df_local[col].apply(func)
-        return cond.replace({True: label, False: None})
-
-    for condicoes, label in [
-        (condicoes_critico, 'Crítico'),
-        (condicoes_alerta, 'Alerta'),
-        (condicoes_atencao, 'Atenção')
-    ]:
-        mask = aplicar_classificacao(df_copia, condicoes, label)
-        condicao_vazia = df_copia['risco'].isna()
-        df_copia.loc[mask.notna() & condicao_vazia, 'risco'] = label
-
-    if incluir_sem_risco:
-        df_copia.loc[df_copia['risco'].isna(), 'risco'] = 'Sem Risco'
-
-    ordem_prioridade = {'Crítico': 0, 'Alerta': 1, 'Atenção': 2, 'Sem Risco': 3}
-    df_copia['prioridade'] = df_copia['risco'].map(ordem_prioridade)
-
-    agrupado = (
-        df_copia
-        .sort_values('prioridade')
-        .groupby('cpf', as_index=False)
-        .first()[['institution_name', 'cpf', 'full_name', 'risco']]
-    )
-
-    # Aplica cor HTML na coluna 'risco'
-    def colorir(valor):
-        cor = cores_por_risco.get(valor, 'black')
-        return f'<span style="color: {cor}; font-weight: bold;">{valor}</span>'
-
-    agrupado['Score_Fragilidade'] = agrupado['risco'].apply(colorir)
-
-    # Resumo usando rótulos limpos (sem cor/HTML)
-    resumo = (
-        agrupado
-        .groupby(['institution_name', 'risco'], as_index=False)
-        .size()
-        .rename(columns={'size': 'total'})
-    )
-
-    return agrupado.drop(columns=['risco']), resumo
-
-# %%
-resultado, resumo = classificar_risco(df, condicao_critica, condicao_alerta, condicao_atencao)
 
 # Exibe o resultado com cores
-
 display(HTML(resultado.to_html(escape=False)))
 
 # Mostra o resumo correto
@@ -913,14 +1272,14 @@ display(HTML(resumo.to_html(escape=False)))
 # %%
 salvar_tabela_como_imagem(
     resumo,
-    '../tables/01_tabela_resummo_score_fragilidade.png',
+    '../tables/03_tabela_resummo_score_fragilidade.png',
     titulo='Score de Fragilidade do Residente por ILPI',
     largura_max_coluna=25
 )
-
+# %%
 # Gráfico 01
 
-plt.bar(x='institution_name', y='rico', height='total')
+plt.bar(x='institution_name', y='risco', height='total')
 
 
 
