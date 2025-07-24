@@ -549,7 +549,7 @@ def processa_uma_variavel_com_opcoes(df, coluna_original, nome_saida, mapa_valor
     # Concatena textos com base nos valores
     def construir_texto(valor):
         partes = [txt for cod, txt in mapa_valores.items() if valor == cod]
-        return ', '.join(partes) if partes else 'Não informado'
+        return ', '.join(partes) if partes else 'NaN'
     
     temp[nome_saida] = temp[coluna_original].map(construir_texto)
     temp = temp.rename(columns={"institution_name": "ILPI"})[["ILPI", nome_saida]]
@@ -1582,7 +1582,7 @@ plot_bar_flex_unificado(
     grau_dependencia_gruped,
     title='Frequência do Grau de Dependência dos Residentes',
     xlabel='', ylabel='Número de residentes',
-    filename='../plots/07_grafico_grau_dependencia_familiar_absoluto.png',
+    filename='../plots/07_grafico_grau_dependencia_absoluto.png',
     orientation='v',
     value_format='absolute',
     show_values=True,
@@ -1613,32 +1613,18 @@ grau_dependencia_inst
 # Salvando a tabela de grau_dependencia familiar por ILPI
 salvar_tabela_como_imagem(
     grau_dependencia_inst,
-    '../tables/07_tabela_grau_dependencia_famil_por_ILPI.png',
+    '../tables/07_tabela_grau_dependencia_por_ILPI.png',
     largura_max_coluna=25,
 )
 # %%
 # Gráfico grau_dependencia familiar por ILPI absoluto
 plot_bar_flex_unificado(
     grau_dependencia_inst,
-    title='Frequência do grau_dependencia Familiar dos Residentes por ILPI',
+    title='Frequência do Grau de Dependência dos Residentes por ILPI',
     xlabel='', ylabel='Número de residentes',
     filename='../plots/07_grafico_grau_dependencia_familiar_por_ILPI.png',
     orientation='v',
     value_format='absolute',
-    show_values=True,
-    show_text=False,
-    col_categoria='institution_name',
-    col_valor='total',
-)
-# %%
-# Gráfico grau_dependencia familiar por ILPI percentagem
-plot_bar_flex_unificado(
-    grau_dependencia_inst,
-    title='Frequência do grau_dependencia Familiar dos Residentes por ILPI',
-    xlabel='', ylabel='Número de residentes',
-    filename='../plots/07_grafico_grau_dependencia_familiar_por_ILPI_percent.png',
-    orientation='v',
-    value_format='percent',
     show_values=True,
     show_text=False,
     col_categoria='institution_name',
@@ -1924,7 +1910,7 @@ plot_bar_flex_unificado(
     fonte_renda_inst,
     title='Frequência do Registro de Medicamentos dos Residentes por ILPI',
     xlabel='', ylabel='Número de residentes',
-    filename='../plots/09_grafico_registro_medic_por_ILPI_percent.png',
+    filename='../plots/10_grafico_registro_medic_por_ILPI_percent.png',
     orientation='v',
     value_format='percent',
     show_values=True,
@@ -1944,7 +1930,7 @@ contagem_medic_por_residente.head(20)
 
 # %%
 ## --------------------
-##  Morbidades
+## ----- 11 - Morbidades
 ## --------------------
 # Definindo um dicionário para morbidades binárias
 morb_dict = {
@@ -1976,10 +1962,112 @@ df_morbidades = extrair_morbidades(df, morb_dict)
 # Exibindo o DataFrame resultante   
 df_morbidades
 # %%
+## ------------------------
+## ----- 12 - Estado de Sáude 
+## ------------------------
+# Cria um DataFrame para a estado_saude dos residentes
+estado_saude = df[['institution_name', 'health_condition']]
+estado_saude.head()
+# %%
+# Filtra apenas as linhas com estado_saude dos residentes
+estado_saude = estado_saude[estado_saude['health_condition'].notna()].astype({'health_condition': 'int64'})
+estado_saude.head()
+# %%
+# Agrupa por 'health_condition, usa .size() para contar quantas vezes cada estado_saude aparece e
+# renomeia a coluna de contagem para 'total'
+estado_saude_grouped = estado_saude.groupby('health_condition').size().reset_index(name='total')
+estado_saude_grouped.head()
+# %%
+# Calcula proporção dentro de cada instituição com .transform()
+# Para cada grupo (cada institution_name), ele calcula a soma dos valores na coluna total.
+# mas ao invés de reduzir o grupo a um único valor (como o .sum() padrão faria), ele replica 
+# esse valor para cada linha do grupo.
+estado_saude_grouped['proporcao'] = estado_saude_grouped['total'] / estado_saude_grouped['total'].sum()
+estado_saude_grouped['proporcao'] = (estado_saude_grouped['proporcao']).round(2)
+estado_saude_grouped
+# %%
+# Define um dicionário para mapear os códigos de estado_saude para strings
+estado_saude_grouped['health_condition'] = estado_saude_grouped['health_condition'].replace({ 
+    1 : 'ótimo',
+    2 : 'bom',
+    3 : 'regular',
+    4 : 'ruim ou péssimo',
+})
+estado_saude_grouped
+# %%
+salvar_tabela_como_imagem(
+    estado_saude_grouped,
+    '../tables/12_tabela_estado_saude_geral.png',
+    largura_max_coluna=25,
+                          )
+
+# %%
+plot_bar_flex_unificado(
+    estado_saude_grouped,
+    title='Frequência de Estado de Saúde do Residente',
+    xlabel='',ylabel='Registro',
+    filename='../plots/12_grafico_estado_saude_residentes.png',
+    orientation='v', 
+    value_format='absolute',
+    col_valor='total',
+    col_categoria='health_condition',
+    show_values=True,
+    show_text=False
+)
+# %%
+# Agrupa por 'health_condition', usa .size() para contar quantas vezes cada 'health_condition' aparece e
+# renomeia a coluna de contagem para 'total'
+estado_saude_instit = estado_saude.groupby(['institution_name', 'health_condition']).size().reset_index(name='total')
+estado_saude_instit
+# %%
+# Calcula a proporção de cada health_condition para cada ILPI
+estado_saude_instit['proporcao'] = estado_saude_instit['total'] / estado_saude_instit.groupby('institution_name')['total'].transform('sum')
+estado_saude_instit['proporcao'] = estado_saude_instit['proporcao'].round(2)
+estado_saude_instit
+# %%
+# Define um dicionário para mapear os códigos de estado_saude para strings
+estado_saude_instit['health_condition'] = estado_saude_instit['health_condition'].replace({ 
+    1 : 'ótimo',
+    2 : 'bom',
+    3 : 'regular',
+    4 : 'ruim ou péssimo',
+})
+estado_saude_instit
+# %%
+# Salva a tabela de Estado de Saúde por ILPI
+salvar_tabela_como_imagem(
+    estado_saude_instit,
+    '../tables/12_tabela_estado_saude_por_ILPI.png',
+    largura_max_coluna=25,
+)
+# %%
+# Gráfico Estado de Saúdes por ILPI percentagem
+plot_bar_flex_unificado(
+    estado_saude_instit,
+    title='Frequência do Estado de Saúde dos Residentes por ILPI',
+    xlabel='', ylabel='Número de residentes',
+    filename='../plots/12_grafico_estado_saude_por_ILPI_percent.png',
+    orientation='v',
+    value_format='percent',
+    show_values=True,
+    show_text=False,
+    col_categoria='institution_name',
+    col_valor='total',
+)
+# %%
 ## --------------------
 ##  - COMPONENTES DE FRAGILIDADE
 ## --------------------
 
+fragilidade_dic = {
+    'amount_weight_loss':'Perda de Peso',
+    'elder_strenght':(lambda x: x == 2),
+    'elder_hospitalized':(lambda x: x ==1),
+    'elder_difficulties':(lambda x: x == 1),
+    'elder_mobility':(lambda x: x == 2),
+    'basic_activities_diffic':(lambda x: x ==1),
+    'falls_number':(lambda x: x ==1)
+}
 
 #amount_weight_loss_dict ={1: "de 1 a 3 kg",2: "mais de 3 kg",}
 #elder_strenght_dict = {1:"Sim",2:"Não"}	
@@ -1989,39 +2077,166 @@ df_morbidades
 #basic_activities_diffic_dict = 	{1:	"Sim",2: "Não"}	
 #falls_number_dict = {1: " nenhuma", 2: "1 a 3 quedas", 3: "4 e mais",}
 
+# %%
+
+def extrair_comp_fragilidade(df, nome_coluna_soma='soma_fragilidades'):
+    """
+    Filtra e retorna os dados de componentes de fragilidade,
+    agrupados por institution_name, full_name, cpf.
+
+    Parâmetros:
+    - df: DataFrame.
+    - fragilidade_dict: dict, mapeamento de código -> texto.
+    - nome_coluna_soma: str, nome da coluna soma (Se None, usa 'soma_morbidities').
+
+    Retorna:
+    - DataFrame com as morbidades processadas, incluindo:
+      - 'Componentes de Fragilidade': lista de morbidades binárias e textuais.
+      - 'soma_morbidities': soma total de morbidades (binárias + textuais).
+    """
+    
+    # # Preenche valores ausentes nas colunas-chave com o valor anterior (forward fill)
+    campos_para_propagacao = ['institution_name', 'full_name', 'cpf']
+    for campo in campos_para_propagacao:
+        if campo in df.columns:
+            df[campo] = df[campo].ffill()
+
+    # Cria colunas de fragilidade binárias com base na lógica de interpretação de cada item
+    df['frag_dependence_degree'] = df['dependence_degree'].apply(lambda x: 1 if x >= 2 else 0)
+    df['frag_amount_weight_loss'] = df['amount_weight_loss'].apply(lambda x: 1 if x == 2 else 0)
+    df['frag_elder_strenght'] = df['elder_strenght'].apply(lambda x: 1 if x == 1 else 0)
+    df['frag_elder_hospitalized'] = df['elder_hospitalized'].apply(lambda x: 1 if x >= 2 else 0)
+    df['frag_elder_difficulties'] = df['elder_difficulties'].apply(lambda x: 1 if x >= 2 else 0)
+    df['frag_elder_mobility'] = df['elder_mobility'].apply(lambda x: 1 if x == 1 else 0)
+    df['frag_basic_activities_diffic'] = df['basic_activities_diffic'].apply(lambda x: 1 if x == 1 else 0)
+    df['frag_falls_number'] = df['falls_number'].apply(lambda x: 1 if x >= 2 else 0)
+
+    # Lista das colunas binárias de fragilidade
+    frag_cols = [
+        'frag_dependence_degree',
+        'frag_amount_weight_loss',
+        'frag_elder_strenght',
+        'frag_elder_hospitalized',
+        'frag_elder_difficulties',
+        'frag_elder_mobility',
+        'frag_basic_activities_diffic',
+        'frag_falls_number'
+    ]
+
+    # Mapeia nomes legíveis dos componentes de fragilidade
+    descricao_frag = {
+        'frag_dependence_degree': 'Grau dependência 2 ou 3',
+        'frag_amount_weight_loss': 'Perda de peso > 3kg',
+        'frag_elder_strenght': 'Fraqueza percebida',
+        'frag_elder_hospitalized': 'Internação recente',
+        'frag_elder_difficulties': 'Dificuldade ou incapacidade para levantar',
+        'frag_elder_mobility': 'Caminhada mais lenta',
+        'frag_basic_activities_diffic': 'Dificuldades em atividades diárias',
+        'frag_falls_number': 'Quedas frequentes'
+    }
+
+
+    # Soma o total de fragilidades identificadas por linha
+    df['soma_frag'] = df[frag_cols].sum(axis=1)
+
+    # Gera uma descrição textual dos componentes de fragilidade presentes em cada linha
+    def listar_componentes(row):
+        return ', '.join([descricao_frag[col] for col in frag_cols if row[col] == 1])
+    # Aplica a função acima a cada linha do DataFrame
+    df['Componentes de Fragilidade'] = df.apply(listar_componentes, axis=1)
+
+    # Função remove espaços extras e divide corretamente, evitando vírgulas sobrando
+    def agrupar_componentes(lista):
+        componentes = set()  # cria um conjunto vazio
+        for item in lista:
+            # Divide a string por vírgula, remove espaços e ignora valores vazios
+            partes = [s.strip() for s in item.split(',') if s.strip()]
+            # adiciona cada pedaço no conjunto
+            for parte in partes:
+                componentes.add(parte) 
+        # converte o conjunto para lista e junta numa string separada por vírgula
+        return ', '.join(sorted(componentes))
+
+    # Agrupa os dados por indivíduo e instituição e resume os componentes e a soma
+    resultado = df.groupby(['institution_name', 'full_name', 'cpf'], as_index=False).agg({
+        'Componentes de Fragilidade': agrupar_componentes,
+        'soma_frag': 'sum'
+    })
+
+    # Renomeia a coluna de soma, se for fornecido um nome alternativo
+    resultado = resultado.rename(columns={
+        'soma_frag': nome_coluna_soma
+    })
+
+    # Ordena os resultados por instituição, nome e CPF
+    resultado = resultado.sort_values(by=['institution_name', 'full_name', 'cpf'])
+
+    return resultado
+
+# %%
+
+# Extrai os componentes de fragilidade dos residentes
+comp_fragilidade = extrair_comp_fragilidade(df)
+comp_fragilidade
+
+# %%
+df['dependence_degree']
+
+# %%
+#amount_weight_loss_dict ={1: "de 1 a 3 kg",2: "mais de 3 kg",}
+#elder_strenght_dict = {1:"Sim",2:"Não"}	
+#elder_hospitalized_dict = {1: "nenhuma", 2: "1 a 2 vezes", 3: "3 vezes", 4: "4 ou mais",}
+#elder_difficulties_dict = {1:"nenhuma", 2: "alguma",3: "não consegue",}
+#elder_mobility_dict = {1: "Sim",2: "Não"}	
+#basic_activities_diffic_dict = 	{1:	"Sim",2: "Não"}	
+#falls_number_dict = {1: " nenhuma", 2: "1 a 3 quedas", 3: "4 e mais",}
+
+
+#condicao_atencao = {
+#    'amount_weight_loss':(lambda x: x == 1),
+#    'elder_strenght':(lambda x: x == 2),
+#    'elder_hospitalized':(lambda x: x ==1),
+#    'elder_difficulties':(lambda x: x == 1),
+#    'elder_mobility':(lambda x: x == 2),
+#    'basic_activities_diffic':(lambda x: x ==1),
+#    'falls_number':(lambda x: x ==1)
+#}
+#
+#condicao_alerta = {
+#    'amount_weight_loss':(lambda x: x == 1),
+#    'elder_strenght':(lambda x: x == 1),
+#    'elder_hospitalized':(lambda x: x in [2, 3] ),
+#    'elder_difficulties':(lambda x: x == 2),
+#    'elder_mobility':(lambda x: x == 1),
+#    'basic_activities_diffic':(lambda x: x == 1),
+#    'falls_number':(lambda x: x == 2)
+#}
+#
+#condicao_critica = {
+#    'amount_weight_loss':(lambda x: x == 2),
+#    'elder_strenght':(lambda x: x == 1),
+#    'elder_hospitalized':(lambda x: x in [3, 4]),
+#    'elder_difficulties':(lambda x: x == 1),
+#    'elder_mobility':(lambda x: x == 1),
+#    'basic_activities_diffic':(lambda x: x ==1),
+#    'falls_number':(lambda x: x == 3)
+#}
+# %%
 
 condicao_atencao = {
-    'amount_weight_loss':(lambda x: x == 1),
-    'elder_strenght':(lambda x: x == 2),
-    'elder_hospitalized':(lambda x: x ==1),
-    'elder_difficulties':(lambda x: x == 1),
-    'elder_mobility':(lambda x: x == 2),
-    'basic_activities_diffic':(lambda x: x ==1),
-    'falls_number':(lambda x: x ==1)
+    'soma_fragilidades': (lambda x: x in [2, 3]),
+
 }
 
 condicao_alerta = {
-    'amount_weight_loss':(lambda x: x == 1),
-    'elder_strenght':(lambda x: x == 1),
-    'elder_hospitalized':(lambda x: x in [2, 3] ),
-    'elder_difficulties':(lambda x: x == 2),
-    'elder_mobility':(lambda x: x == 1),
-    'basic_activities_diffic':(lambda x: x == 1),
-    'falls_number':(lambda x: x == 2)
+    'soma_fragilidades': (lambda x: x in [3, 4]),
+    
 }
 
 condicao_critica = {
-    'amount_weight_loss':(lambda x: x == 2),
-    'elder_strenght':(lambda x: x == 1),
-    'elder_hospitalized':(lambda x: x in [3, 4]),
-    'elder_difficulties':(lambda x: x == 1),
-    'elder_mobility':(lambda x: x == 1),
-    'basic_activities_diffic':(lambda x: x ==1),
-    'falls_number':(lambda x: x == 3)
+    'soma_fragilidades': (lambda x: x>= 4),
+    
 }
-# %%
-
-
 
 # %%
 resultado, resumo = classificar_risco(df, condicao_critica, condicao_alerta, condicao_atencao)
@@ -2038,8 +2253,10 @@ display(HTML(resumo.to_html(escape=False)))
 # %%
 salvar_tabela_como_imagem(
     resumo,
-    '../tables/12_tabela_resummo_score_fragilidade.png',
+    '../tables/13_tabela_resumo_score_fragilidade.png',
     titulo='Score de Fragilidade do Residente por ILPI',
     largura_max_coluna=25
 )
+# %%
+df.head()
 # %%

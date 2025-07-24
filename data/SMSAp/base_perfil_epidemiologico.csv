@@ -48,7 +48,7 @@ record_id;redcap_repeat_instrument;redcap_repeat_instance;visit_date;latitude;lo
 8;;;2025-06-05;;;5;19507887172;REMI FARIA FIRMINO;1;1953-01-20;72;3;3;15;182.0;2;3;3;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4;2;0;0;0;1;2;1;1;2;2;1;1;FABIANA RIBEIRO SANTANA E ARTHUR ANDRADE BRANDÃO
 8;medicamentos_em_uso;1;;;;5;19507887172;REMI FARIA FIRMINO;;;;;;;;;;;;;;;ácido fólico;5.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 8;medicamentos_em_uso;2;;;;5;19507887172;REMI FARIA FIRMINO;;;;;;;;;;;;;;;anlodipino;5.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-8;medicamentos_em_uso;3;;;;5;19507887172;REMI FARIA FIRMINO;;;;;;;;;;;;;;;complexo B;;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+8;medicamentos_em_uso;3;;;;5;19507887172;REMI FARIA FIRMINO;;;;;;;;;;;;;;;complexo B;0.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 8;medicamentos_em_uso;4;;;;5;19507887172;REMI FARIA FIRMINO;;;;;;;;;;;;;;;omeprazol;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 8;morbidades_prvias;1;;;;5;19507887172;REMI FARIA FIRMINO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;1;"DEFICIÊNCIA VISUAL; GOTA";;;;;;;;;;;;;;
 9;;;2025-06-05;-16.7182336;-49.2863488;5;35523930130;VITALINA CELESTINO DA COSTA;2;1960-04-28;65;3;1;15;178.0;10;2;3;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4;2;0;0;0;2;;1;1;3;2;1;1;Fernanda Ramos Parreira
@@ -114,7 +114,7 @@ record_id;redcap_repeat_instrument;redcap_repeat_instance;visit_date;latitude;lo
 17;medicamentos_em_uso;3;;;;5;30781078172;LOURIVAL  CORDEIRO DINIZ;;;;;;;;;;;;;;;Hemifumarato de Quetiapina;100.0;0.0;0.0;;;;;;;;;;;;;4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 17;medicamentos_em_uso;4;;;;5;30781078172;LOURIVAL  CORDEIRO DINIZ;;;;;;;;;;;;;;;Lorazepam;2.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 17;medicamentos_em_uso;5;;;;5;30781078172;LOURIVAL  CORDEIRO DINIZ;;;;;;;;;;;;;;;Olanzapina;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-17;medicamentos_em_uso;6;;;;5;30781078172;LOURIVAL  CORDEIRO DINIZ;;;;;;;;;;;;;;;haloperidol;;0.0;0.0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+17;medicamentos_em_uso;6;;;;5;30781078172;LOURIVAL  CORDEIRO DINIZ;;;;;;;;;;;;;;;haloperidol;70.52;0.0;0.0;;;;;;;;;;;;;6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 17;morbidades_prvias;1;;;;5;30781078172;LOURIVAL  CORDEIRO DINIZ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;1;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
 18;;;2025-06-10;;;2;12842052153;ALANCARDEC VIEIRA DOS SANTOS;1;1945-01-22;80;3;4;2;19.0;7;1;1;0;1;0;5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;0;2;;2;1;1;2;2;1;FABIANA RIBEIRO SANTANA E ISADORA RODRIGUES
 18;medicamentos_em_uso;1;;;;2;12842052153;ALANCARDEC VIEIRA DOS SANTOS;;;;;;;;;;;;;;;Betadine;48.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -742,7 +742,7 @@ record_id;redcap_repeat_instrument;redcap_repeat_instance;visit_date;latitude;lo
 83;;;2025-06-17;-16.6887424;-49.2732416;4;30713900172;ABELSON CAMILO LOPES;1;1943-09-21;81;1;5;0;0.0;0;1;2;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;0;1;0;2;;1;1;2;1;1;1;Fernanda Ramos Parreira
 83;medicamentos_em_uso;1;;;;4;30713900172;ABELSON CAMILO LOPES;;;;;;;;;;;;;;;Losartana ;50.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 83;morbidades_prvias;1;;;;4;30713900172;ABELSON CAMILO LOPES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;Gota;;;;;;;;;;;;;;
-84;;;2025-06-17;;;4;27677451187;FRANCISCA FERNANDES PEREIRA;2;1949-04-28;76;2;5;76;914.0;2;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;1;2;;2;1;1;2;2;1;TATIANE OLIVEIRA BRAZ
+84;;;2025-06-17;;;4;27677451187;FRANCISCA FERNANDES PEREIRA;2;1949-04-28;76;2;5;6;76.0;4;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;1;2;;2;1;1;2;2;1;TATIANE OLIVEIRA BRAZ
 84;medicamentos_em_uso;1;;;;4;27677451187;FRANCISCA FERNANDES PEREIRA;;;;;;;;;;;;;;;LOSARTANA;50.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 84;medicamentos_em_uso;2;;;;4;27677451187;FRANCISCA FERNANDES PEREIRA;;;;;;;;;;;;;;;OLANZAPINA;10.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 84;medicamentos_em_uso;3;;;;4;27677451187;FRANCISCA FERNANDES PEREIRA;;;;;;;;;;;;;;;OMEPRAZOL;20.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -833,7 +833,7 @@ record_id;redcap_repeat_instrument;redcap_repeat_instance;visit_date;latitude;lo
 95;medicamentos_em_uso;2;;;;4;39387720691;MARIA  JERONIMO;;;;;;;;;;;;;;;Hidroclorotiazida;25.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 95;medicamentos_em_uso;3;;;;4;39387720691;MARIA  JERONIMO;;;;;;;;;;;;;;;Anlodipino;10.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 95;morbidades_prvias;1;;;;4;39387720691;MARIA  JERONIMO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;;;;;;;;;;;;;;
-96;;;2025-06-17;;;4;19245203115;MARIA HELLENIS PAPA COSTA;2;1954-04-16;71;1;4;71;851.0;11;1;2;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;1;2;;2;1;1;2;1;2;TATIANE OLIVEIRA BRAZ
+96;;;2025-06-17;;;4;19245203115;MARIA HELLENIS PAPA COSTA;2;1954-04-16;71;1;4;1;12.0;0;1;2;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;1;2;;2;1;1;2;1;2;TATIANE OLIVEIRA BRAZ
 96;medicamentos_em_uso;1;;;;4;19245203115;MARIA HELLENIS PAPA COSTA;;;;;;;;;;;;;;;CITALOPRAM;10.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 96;medicamentos_em_uso;2;;;;4;19245203115;MARIA HELLENIS PAPA COSTA;;;;;;;;;;;;;;;MEMANTINA;10.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 96;medicamentos_em_uso;3;;;;4;19245203115;MARIA HELLENIS PAPA COSTA;;;;;;;;;;;;;;;QUETIAPINA;75.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -943,7 +943,7 @@ record_id;redcap_repeat_instrument;redcap_repeat_instance;visit_date;latitude;lo
 111;medicamentos_em_uso;1;;;;5;54935032120;CARLOS HENRIQUE  CORREIA;;;;;;;;;;;;;;;PROMETAZINA;25.0;1.0;0.0;;;;;;;;;;;;;3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 111;medicamentos_em_uso;2;;;;5;54935032120;CARLOS HENRIQUE  CORREIA;;;;;;;;;;;;;;;haloperidol;5.0;1.0;0.0;;;;;;;;;;;;;3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 111;medicamentos_em_uso;3;;;;5;54935032120;CARLOS HENRIQUE  CORREIA;;;;;;;;;;;;;;;NEOZINE;100.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-111;medicamentos_em_uso;4;;;;5;54935032120;CARLOS HENRIQUE  CORREIA;;;;;;;;;;;;;;;haloperidol;70.52;1.0;0.0;;;;;;;;;;;;;5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+111;medicamentos_em_uso;4;;;;5;54935032120;CARLOS HENRIQUE  CORREIA;;;;;;;;;;;;;;;haloperidol;70.52;1.0;0.0;;;;;;;;;;;;;6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 111;medicamentos_em_uso;5;;;;5;54935032120;CARLOS HENRIQUE  CORREIA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 111;morbidades_prvias;1;;;;5;54935032120;CARLOS HENRIQUE  CORREIA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;1;SEQUELA DE TRAUMATISMO CRANIANO E EX-ALCOOLISTA;;;;;;;;;;;;;;
 112;;;2025-06-18;;;5;48595217149;ROSEANE  DE CAMPOS SOUZA COST;2;1970-09-20;54;1;4;4;46.0;10;2;1;1;0;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;2;0;0;1;1;1;1;1;1;1;2;1;Arthur Andrade Brandão
@@ -956,3 +956,474 @@ record_id;redcap_repeat_instrument;redcap_repeat_instance;visit_date;latitude;lo
 112;medicamentos_em_uso;7;;;;5;48595217149;ROSEANE  DE CAMPOS SOUZA COST;;;;;;;;;;;;;;;Sinvastatina;40.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 112;medicamentos_em_uso;8;;;;5;48595217149;ROSEANE  DE CAMPOS SOUZA COST;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 112;morbidades_prvias;1;;;;5;48595217149;ROSEANE  DE CAMPOS SOUZA COST;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;1;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;1;Insônia;;;;;;;;;;;;;;
+113;;;2025-06-30;-16.7473391;-49.2289501;1;19510403172;HOZANA ALVES MARTINS;2;1951-05-20;74;1;2;0;2.0;2;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4;1;0;0;1;2;;1;1;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+113;medicamentos_em_uso;1;;;;1;19510403172;HOZANA ALVES MARTINS;;;;;;;;;;;;;;;insulina regular;10.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+113;medicamentos_em_uso;2;;;;1;19510403172;HOZANA ALVES MARTINS;;;;;;;;;;;;;;;insulina nph;10.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+113;medicamentos_em_uso;3;;;;1;19510403172;HOZANA ALVES MARTINS;;;;;;;;;;;;;;;pregabalina;75.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+113;medicamentos_em_uso;4;;;;1;19510403172;HOZANA ALVES MARTINS;;;;;;;;;;;;;;;quetiapina;100.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+113;morbidades_prvias;1;;;;1;19510403172;HOZANA ALVES MARTINS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+114;;;2025-06-30;-16.6887424;-49.2732416;1;19864817191;LUIZ ANTONIO  FERREIRA MARCONDES;1;1959-03-05;66;2;4;1;14.0;2;2;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;2;0;0;1;2;;2;1;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+114;medicamentos_em_uso;1;;;;1;19864817191;LUIZ ANTONIO  FERREIRA MARCONDES;;;;;;;;;;;;;;;losartana;50.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+114;medicamentos_em_uso;2;;;;1;19864817191;LUIZ ANTONIO  FERREIRA MARCONDES;;;;;;;;;;;;;;;carbamazepina;400.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+114;medicamentos_em_uso;3;;;;1;19864817191;LUIZ ANTONIO  FERREIRA MARCONDES;;;;;;;;;;;;;;;divalproato de sódio;500.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+114;medicamentos_em_uso;4;;;;1;19864817191;LUIZ ANTONIO  FERREIRA MARCONDES;;;;;;;;;;;;;;;lamotrigina;100.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+114;medicamentos_em_uso;5;;;;1;19864817191;LUIZ ANTONIO  FERREIRA MARCONDES;;;;;;;;;;;;;;;acebrofilina;5.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+114;morbidades_prvias;1;;;;1;19864817191;LUIZ ANTONIO  FERREIRA MARCONDES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;Epilepsia;;;;;;;;;;;;;;
+115;;;2025-06-30;-16.6887424;-49.2732416;1;11550970178;ANA SUELY  FERNANDES CARDIA;2;1956-04-30;69;1;4;1;12.0;0;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;1;2;;2;1;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+115;medicamentos_em_uso;1;;;;1;11550970178;ANA SUELY  FERNANDES CARDIA;;;;;;;;;;;;;;;;;1.0;1.0;cloridrato de metformina;25.0;Benzoato de alogliptina;25.0;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+115;medicamentos_em_uso;2;;;;1;11550970178;ANA SUELY  FERNANDES CARDIA;;;;;;;;;;;;;;;Dapagliflozina;10.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+115;medicamentos_em_uso;3;;;;1;11550970178;ANA SUELY  FERNANDES CARDIA;;;;;;;;;;;;;;; Levotiroxina Sódica;1000.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+115;medicamentos_em_uso;4;;;;1;11550970178;ANA SUELY  FERNANDES CARDIA;;;;;;;;;;;;;;;losartana potássica;50.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+115;morbidades_prvias;1;;;;1;11550970178;ANA SUELY  FERNANDES CARDIA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;Hipotireoidismo;;;;;;;;;;;;;;
+116;;;2025-06-30;-16.6887424;-49.2732416;1;08244073187;WALDIR  LOPES GUIRRA;1;1951-11-16;73;3;4;4;49.0;1;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;1;0;0;2;;2;1;2;1;2;1;Thaina Laune Rodrigues de Oliveira
+116;medicamentos_em_uso;1;;;;1;08244073187;WALDIR  LOPES GUIRRA;;;;;;;;;;;;;;;ácido acetilsalicílico;100.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+116;medicamentos_em_uso;2;;;;1;08244073187;WALDIR  LOPES GUIRRA;;;;;;;;;;;;;;;sinvastatina;40.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+116;medicamentos_em_uso;3;;;;1;08244073187;WALDIR  LOPES GUIRRA;;;;;;;;;;;;;;;captopril;25.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+116;medicamentos_em_uso;4;;;;1;08244073187;WALDIR  LOPES GUIRRA;;;;;;;;;;;;;;;Losartana Potássica;50.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+116;medicamentos_em_uso;5;;;;1;08244073187;WALDIR  LOPES GUIRRA;;;;;;;;;;;;;;;Hidroclorotiazida;25.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+116;morbidades_prvias;1;;;;1;08244073187;WALDIR  LOPES GUIRRA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+117;;;2025-06-30;-16.6887424;-49.2732416;1;44944551134;TEREZA DE JESUS  SOUZA DA ANUNCIAçãO;2;1951-08-06;73;1;1;0;3.0;3;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;1;0;0;2;;2;1;2;1;1;1;Thaina Laune Rodrigues de Oliveira
+117;medicamentos_em_uso;1;;;;1;44944551134;TEREZA DE JESUS  SOUZA DA ANUNCIAçãO;;;;;;;;;;;;;;;Hidroclorotiazida;25.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+117;medicamentos_em_uso;2;;;;1;44944551134;TEREZA DE JESUS  SOUZA DA ANUNCIAçãO;;;;;;;;;;;;;;;losartana potássica;50.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+117;morbidades_prvias;1;;;;1;44944551134;TEREZA DE JESUS  SOUZA DA ANUNCIAçãO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+118;;;2025-06-30;-16.7473279;-49.228953;1;76584151891;ANGELA APARECIDA  DE ALMEIDA SILVA;2;1952-10-30;72;1;4;3;36.0;0;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;1;2;;2;1;1;2;2;2;Thaina Laune Rodrigues de Oliveira
+118;medicamentos_em_uso;1;;;;1;76584151891;ANGELA APARECIDA  DE ALMEIDA SILVA;;;;;;;;;;;;;;;gliclazida;60.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+118;medicamentos_em_uso;2;;;;1;76584151891;ANGELA APARECIDA  DE ALMEIDA SILVA;;;;;;;;;;;;;;;levofloxacino;500.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+118;medicamentos_em_uso;3;;;;1;76584151891;ANGELA APARECIDA  DE ALMEIDA SILVA;;;;;;;;;;;;;;;nicotina;2.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+118;morbidades_prvias;1;;;;1;76584151891;ANGELA APARECIDA  DE ALMEIDA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;;;;;;;;;;;;;;;
+119;;;2025-06-30;-16.6887424;-49.2732416;1;67182836491;FRANCISCO OSWALDO  WALCZAK;1;1955-10-10;69;1;3;3;36.0;0;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;1;1;2;1;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+119;medicamentos_em_uso;1;;;;1;67182836491;FRANCISCO OSWALDO  WALCZAK;;;;;;;;;;;;;;;Hidroclorotiazida;25.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+119;medicamentos_em_uso;2;;;;1;67182836491;FRANCISCO OSWALDO  WALCZAK;;;;;;;;;;;;;;;losartana potássica ;50.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+119;medicamentos_em_uso;3;;;;1;67182836491;FRANCISCO OSWALDO  WALCZAK;;;;;;;;;;;;;;;sinvastatina;20.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+119;morbidades_prvias;1;;;;1;67182836491;FRANCISCO OSWALDO  WALCZAK;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+120;;;2025-06-30;-16.6887424;-49.2732416;1;07915373153;ALBINO IVO  CAPILE FERREIRA;1;1953-09-04;71;1;2;1;10.0;10;2;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;2;0;0;1;2;;2;1;1;2;2;2;Thaina Laune Rodrigues de Oliveira
+120;medicamentos_em_uso;1;;;;1;07915373153;ALBINO IVO  CAPILE FERREIRA;;;;;;;;;;;;;;;sinvastatina;40.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+120;medicamentos_em_uso;2;;;;1;07915373153;ALBINO IVO  CAPILE FERREIRA;;;;;;;;;;;;;;;losartana potássica;50.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+120;morbidades_prvias;1;;;;1;07915373153;ALBINO IVO  CAPILE FERREIRA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+121;;;2025-06-30;-16.7473294;-49.2289485;1;13894129204;SALETE  SAUTIRO FERNANDES;2;1950-03-23;75;1;2;6;70.0;10;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;0;0;1;2;;2;1;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+121;medicamentos_em_uso;1;;;;1;13894129204;SALETE  SAUTIRO FERNANDES;;;;;;;;;;;;;;;rosuvastatina;20.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+121;medicamentos_em_uso;2;;;;1;13894129204;SALETE  SAUTIRO FERNANDES;;;;;;;;;;;;;;;mirtazapina;30.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+121;morbidades_prvias;1;;;;1;13894129204;SALETE  SAUTIRO FERNANDES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;Depressão;;;;;;;;;;;;;;
+122;;;2025-06-30;-16.6887424;-49.2732416;1;13201433187;MARLI  IGNACIO MIRANDA;2;1950-02-11;75;3;2;6;66.0;6;1;1;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;1;1;2;1;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+122;medicamentos_em_uso;1;;;;1;13201433187;MARLI  IGNACIO MIRANDA;;;;;;;;;;;;;;;metformina;800.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+122;medicamentos_em_uso;2;;;;1;13201433187;MARLI  IGNACIO MIRANDA;;;;;;;;;;;;;;;Hidroclorotiazida;25.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+122;medicamentos_em_uso;3;;;;1;13201433187;MARLI  IGNACIO MIRANDA;;;;;;;;;;;;;;;losartana potássica;50.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+122;medicamentos_em_uso;4;;;;1;13201433187;MARLI  IGNACIO MIRANDA;;;;;;;;;;;;;;;cloridrato de propranolol;40.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+122;morbidades_prvias;1;;;;1;13201433187;MARLI  IGNACIO MIRANDA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+123;;;2025-06-30;-16.6887424;-49.2732416;1;61704415187;ATAGIVAN  GOMES LIMA;1;1974-02-01;51;3;4;6;76.0;4;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+123;medicamentos_em_uso;1;;;;1;61704415187;ATAGIVAN  GOMES LIMA;;;;;;;;;;;;;;;insulina glargina;30.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+123;medicamentos_em_uso;2;;;;1;61704415187;ATAGIVAN  GOMES LIMA;;;;;;;;;;;;;;;Olmesartana Medoxomila;20.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+123;medicamentos_em_uso;3;;;;1;61704415187;ATAGIVAN  GOMES LIMA;;;;;;;;;;;;;;;;;1.0;1.0;Fosfato de sitagliptina;50.0;cloridrato de metformina;50.0;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+123;morbidades_prvias;1;;;;1;61704415187;ATAGIVAN  GOMES LIMA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+124;;;2025-06-30;-16.6887424;-49.2732416;1;05831369153;LUIZ  BERNARDINO SENA;1;1940-10-01;84;3;1;7;79.0;7;2;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;2;0;0;1;2;;2;1;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+124;medicamentos_em_uso;1;;;;1;05831369153;LUIZ  BERNARDINO SENA;;;;;;;;;;;;;;;anlodipino;5.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+124;medicamentos_em_uso;2;;;;1;05831369153;LUIZ  BERNARDINO SENA;;;;;;;;;;;;;;;sinvastatina;20.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+124;medicamentos_em_uso;3;;;;1;05831369153;LUIZ  BERNARDINO SENA;;;;;;;;;;;;;;;losartana potássica;50.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+124;medicamentos_em_uso;4;;;;1;05831369153;LUIZ  BERNARDINO SENA;;;;;;;;;;;;;;;Ácido acetilsalicílico;100.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+124;morbidades_prvias;1;;;;1;05831369153;LUIZ  BERNARDINO SENA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;;;;;;;;;;;;;;;
+125;;;2025-06-30;-16.6887424;-49.2732416;1;75488698191;MARIA  PEREIRA DA SILVA;2;1949-12-25;75;3;1;4;52.0;4;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+125;medicamentos_em_uso;1;;;;1;75488698191;MARIA  PEREIRA DA SILVA;;;;;;;;;;;;;;;sinvastatina;20.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+125;medicamentos_em_uso;2;;;;1;75488698191;MARIA  PEREIRA DA SILVA;;;;;;;;;;;;;;;atenolol;25.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+125;medicamentos_em_uso;3;;;;1;75488698191;MARIA  PEREIRA DA SILVA;;;;;;;;;;;;;;;Hidroclorotiazida ;25.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+125;morbidades_prvias;1;;;;1;75488698191;MARIA  PEREIRA DA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+126;;;2025-06-30;-16.6887424;-49.2732416;1;21598800191;SEBASTIAO  VARGAS MACHADO;1;1944-04-30;81;3;2;15;186.0;6;1;1;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;1;0;2;;2;1;2;1;1;1;Thaina Laune Rodrigues de Oliveira
+126;medicamentos_em_uso;1;;;;1;21598800191;SEBASTIAO  VARGAS MACHADO;;;;;;;;;;;;;;;Espironolactona;25.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+126;medicamentos_em_uso;2;;;;1;21598800191;SEBASTIAO  VARGAS MACHADO;;;;;;;;;;;;;;;losartana potássica;50.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+126;morbidades_prvias;1;;;;1;21598800191;SEBASTIAO  VARGAS MACHADO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+127;;;2025-06-30;-16.7473385;-49.2289518;1;04011287172;ANA  FERNANDES GONçALVES ;2;1945-03-08;80;1;4;5;57.0;9;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+127;medicamentos_em_uso;1;;;;1;04011287172;ANA  FERNANDES GONçALVES ;;;;;;;;;;;;;;;metformina;500.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+127;medicamentos_em_uso;2;;;;1;04011287172;ANA  FERNANDES GONçALVES ;;;;;;;;;;;;;;;Hidroclorotiazida;25.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+127;medicamentos_em_uso;3;;;;1;04011287172;ANA  FERNANDES GONçALVES ;;;;;;;;;;;;;;;sinvastatina;25.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+127;medicamentos_em_uso;4;;;;1;04011287172;ANA  FERNANDES GONçALVES ;;;;;;;;;;;;;;;salbutamol;100.0;1.0;0.0;;;;;;;;;;;;;4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+127;medicamentos_em_uso;5;;;;1;04011287172;ANA  FERNANDES GONçALVES ;;;;;;;;;;;;;;;atenolol;25.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+127;morbidades_prvias;1;;;;1;04011287172;ANA  FERNANDES GONçALVES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+128;;;2025-06-30;-16.7473296;-49.2289555;1;19309120134;DILZEO  BORGES MALTA;1;1947-10-01;77;1;2;5;61.0;1;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;1;1;2;1;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+128;medicamentos_em_uso;1;;;;1;19309120134;DILZEO  BORGES MALTA;;;;;;;;;;;;;;;metformina;450.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+128;medicamentos_em_uso;2;;;;1;19309120134;DILZEO  BORGES MALTA;;;;;;;;;;;;;;;Hidroclorotiazida;25.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+128;medicamentos_em_uso;3;;;;1;19309120134;DILZEO  BORGES MALTA;;;;;;;;;;;;;;;losartana potássica;50.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+128;morbidades_prvias;1;;;;1;19309120134;DILZEO  BORGES MALTA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;;;;;;;;;;;;;;;
+129;;;2025-06-30;-16.6887424;-49.2732416;1;02804949478;MARCELO  NOVAES;1;1966-10-08;58;1;4;5;61.0;1;2;1;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4;2;0;0;1;2;;1;2;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+129;medicamentos_em_uso;1;;;;1;02804949478;MARCELO  NOVAES;;;;;;;;;;;;;;;metformina;850.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+129;medicamentos_em_uso;2;;;;1;02804949478;MARCELO  NOVAES;;;;;;;;;;;;;;;;;1.0;1.0;Olmesartana Medoxomila;40.0;Besilato Anlodipino;5.0;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+129;medicamentos_em_uso;3;;;;1;02804949478;MARCELO  NOVAES;;;;;;;;;;;;;;;Espironolactona;25.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+129;medicamentos_em_uso;4;;;;1;02804949478;MARCELO  NOVAES;;;;;;;;;;;;;;;Indapamida;1.5;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+129;morbidades_prvias;1;;;;1;02804949478;MARCELO  NOVAES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+130;;;2025-06-30;-16.6887424;-49.2732416;1;08600244153;SEBASTIAO  LEANDRO NETTO;1;1952-07-18;72;1;3;0;2.0;2;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;1;1;1;1;1;2;2;1;Thaina Laune Rodrigues de Oliveira
+130;medicamentos_em_uso;1;;;;1;08600244153;SEBASTIAO  LEANDRO NETTO;;;;;;;;;;;;;;;;;0.0;0.0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+130;morbidades_prvias;1;;;;1;08600244153;SEBASTIAO  LEANDRO NETTO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;;;;;;;;;;;;;;;
+131;;;2025-07-01;;;2;45741891187;GERALDA  PEREIRA DA SILVA;2;1957-04-29;68;3;5;1;7.0;7;1;2;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;1;0;2;;2;1;2;2;1;1;Marcos Souza
+131;medicamentos_em_uso;1;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;lavotiroxina;75.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+131;medicamentos_em_uso;2;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;AAS;100.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+131;medicamentos_em_uso;3;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;amiodarona;100.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+131;medicamentos_em_uso;4;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;cloridrato de tiamina;300.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+131;medicamentos_em_uso;5;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;carvedilol;25.0;1.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+131;medicamentos_em_uso;6;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;furosemida;40.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+131;medicamentos_em_uso;7;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;metformina;500.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+131;medicamentos_em_uso;8;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;;;1.0;1.0;diosmina;450.0;hesperidina;50.0;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+131;medicamentos_em_uso;9;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;ibandronato de sódio;150.0;1.0;0.0;;;;;;;;;;;;;7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+131;medicamentos_em_uso;10;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;;;1.0;0.0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+131;morbidades_prvias;1;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;1;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;1;0;0;1;arritmia;;;;;;;;;;;;;;
+131;morbidades_prvias;2;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;insuficiencia venosa;;;;;;;;;;;;;;
+131;morbidades_prvias;3;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;ITU;;;;;;;;;;;;;;
+131;morbidades_prvias;4;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;obesidade grau I;;;;;;;;;;;;;;
+131;morbidades_prvias;5;;;;2;45741891187;GERALDA  PEREIRA DA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;hipotiroidismo;;;;;;;;;;;;;;
+132;;;2025-07-01;-16.8331828;-49.3056669;2;70995800197;ILMA APARECIDA  MENDONCA;2;1947-08-31;77;3;3;3;40.0;4;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;2;0;0;1;1;1;1;1;1;1;1;1;THAYNARA MACEDO
+132;medicamentos_em_uso;1;;;;2;70995800197;ILMA APARECIDA  MENDONCA;;;;;;;;;;;;;;;FLUOXETINA ;20.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+132;medicamentos_em_uso;2;;;;2;70995800197;ILMA APARECIDA  MENDONCA;;;;;;;;;;;;;;;OLANZAPINA ;5.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+132;medicamentos_em_uso;3;;;;2;70995800197;ILMA APARECIDA  MENDONCA;;;;;;;;;;;;;;;AAS;100.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+132;medicamentos_em_uso;4;;;;2;70995800197;ILMA APARECIDA  MENDONCA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+132;morbidades_prvias;1;;;;2;70995800197;ILMA APARECIDA  MENDONCA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;1;ESQUIZOFRENIA;;;;;;;;;;;;;;
+133;;;2025-07-01;-16.6920192;-49.3453312;2;01430889128;IZABEL  RODRIGUES DA SILVA;2;1952-10-17;72;3;1;1;17.0;5;1;2;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;1;0;0;2;;1;2;3;2;1;2;Fernanda Ramos Parreira
+133;medicamentos_em_uso;1;;;;2;01430889128;IZABEL  RODRIGUES DA SILVA;;;;;;;;;;;;;;;Muvinlax;0.8;0.0;0.0;;;;;;;;;;;;;5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+133;medicamentos_em_uso;2;;;;2;01430889128;IZABEL  RODRIGUES DA SILVA;;;;;;;;;;;;;;;losartana potássica;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+133;medicamentos_em_uso;3;;;;2;01430889128;IZABEL  RODRIGUES DA SILVA;;;;;;;;;;;;;;;Quetiapina;200.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+133;medicamentos_em_uso;4;;;;2;01430889128;IZABEL  RODRIGUES DA SILVA;;;;;;;;;;;;;;;vitaminaD;10000.0;0.0;0.0;;;;;;;;;;;;;5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+133;medicamentos_em_uso;5;;;;2;01430889128;IZABEL  RODRIGUES DA SILVA;;;;;;;;;;;;;;;noripurum;100.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+133;medicamentos_em_uso;6;;;;2;01430889128;IZABEL  RODRIGUES DA SILVA;;;;;;;;;;;;;;;Escitalopran;5.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+133;medicamentos_em_uso;7;;;;2;01430889128;IZABEL  RODRIGUES DA SILVA;;;;;;;;;;;;;;;Domperidona ;10.0;0.0;0.0;;;;;;;;;;;;;3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+133;morbidades_prvias;1;;;;2;01430889128;IZABEL  RODRIGUES DA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;1;Depressão;;;;;;;;;;;;;;
+134;;;2025-07-01;;;2;79083242153;MARIA FERREIRA DA SILVA;2;1944-08-02;80;1;1;13;156.0;0;1;1;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;2;1;2;2;Marcos Souza
+134;medicamentos_em_uso;1;;;;2;79083242153;MARIA FERREIRA DA SILVA;;;;;;;;;;;;;;;losartana;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+134;medicamentos_em_uso;2;;;;2;79083242153;MARIA FERREIRA DA SILVA;;;;;;;;;;;;;;;risperidona;2.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+134;medicamentos_em_uso;3;;;;2;79083242153;MARIA FERREIRA DA SILVA;;;;;;;;;;;;;;;quetiapina;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+134;medicamentos_em_uso;4;;;;2;79083242153;MARIA FERREIRA DA SILVA;;;;;;;;;;;;;;;alprazolam;1.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+134;medicamentos_em_uso;5;;;;2;79083242153;MARIA FERREIRA DA SILVA;;;;;;;;;;;;;;;ecitalopram;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+134;medicamentos_em_uso;6;;;;2;79083242153;MARIA FERREIRA DA SILVA;;;;;;;;;;;;;;;ferro;100.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+134;morbidades_prvias;1;;;;2;79083242153;MARIA FERREIRA DA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;1;depressão;;;;;;;;;;;;;;
+135;;;2025-07-01;;;2;01720111677;MARIA ZILDA DE SOUZA SILVA;2;1960-08-06;64;3;1;7;81.0;9;1;2;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;1;2;1;1;Marcos Souza
+135;medicamentos_em_uso;1;;;;2;01720111677;MARIA ZILDA DE SOUZA SILVA;;;;;;;;;;;;;;;risperidona;3.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+135;medicamentos_em_uso;2;;;;2;01720111677;MARIA ZILDA DE SOUZA SILVA;;;;;;;;;;;;;;;clonazepam;0.5;0.0;0.0;;;;;;;;;;;;;3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+135;medicamentos_em_uso;3;;;;2;01720111677;MARIA ZILDA DE SOUZA SILVA;;;;;;;;;;;;;;;sinvastatina;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+135;medicamentos_em_uso;4;;;;2;01720111677;MARIA ZILDA DE SOUZA SILVA;;;;;;;;;;;;;;;pantoprazol;40.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+135;medicamentos_em_uso;5;;;;2;01720111677;MARIA ZILDA DE SOUZA SILVA;;;;;;;;;;;;;;;;;0.0;1.0;metocoplamida;7.0;dimeticona;40.0;pepsina;50.0;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+135;medicamentos_em_uso;6;;;;2;01720111677;MARIA ZILDA DE SOUZA SILVA;;;;;;;;;;;;;;;quetiapina;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+135;medicamentos_em_uso;7;;;;2;01720111677;MARIA ZILDA DE SOUZA SILVA;;;;;;;;;;;;;;;prometazina;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+135;medicamentos_em_uso;8;;;;2;01720111677;MARIA ZILDA DE SOUZA SILVA;;;;;;;;;;;;;;;vitamina D;1000.0;0.0;0.0;;;;;;;;;;;;;7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+135;morbidades_prvias;1;;;;2;01720111677;MARIA ZILDA DE SOUZA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+136;;;2025-07-01;-16.6920192;-49.3453312;2;62384368168;MARIA  DE FATIMA SANTOS;2;1949-10-10;75;3;3;2;26.0;2;2;2;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;2;1;0;0;2;;1;1;3;1;1;2;Fernanda Ramos Parreira
+136;medicamentos_em_uso;1;;;;2;62384368168;MARIA  DE FATIMA SANTOS;;;;;;;;;;;;;;;Losartana ;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+136;medicamentos_em_uso;2;;;;2;62384368168;MARIA  DE FATIMA SANTOS;;;;;;;;;;;;;;;risperidona;2.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+136;medicamentos_em_uso;3;;;;2;62384368168;MARIA  DE FATIMA SANTOS;;;;;;;;;;;;;;;Quetiapina;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+136;medicamentos_em_uso;4;;;;2;62384368168;MARIA  DE FATIMA SANTOS;;;;;;;;;;;;;;;Alprazolam;1.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+136;medicamentos_em_uso;5;;;;2;62384368168;MARIA  DE FATIMA SANTOS;;;;;;;;;;;;;;;noripurum;100.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+136;medicamentos_em_uso;6;;;;2;62384368168;MARIA  DE FATIMA SANTOS;;;;;;;;;;;;;;;escitalopram;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+136;morbidades_prvias;1;;;;2;62384368168;MARIA  DE FATIMA SANTOS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+137;;;2025-07-01;-16.8331852;-49.3056615;2;75997398153;NAIR MARIA  DE OLIVIERA;2;1935-06-25;90;3;3;6;78.0;6;1;2;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;2;0;1;0;2;;1;2;2;1;1;2;THAYNARA MACEDO NAVES
+137;medicamentos_em_uso;1;;;;2;75997398153;NAIR MARIA  DE OLIVIERA;;;;;;;;;;;;;;;DESVENLAFEXINA;100.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+137;medicamentos_em_uso;2;;;;2;75997398153;NAIR MARIA  DE OLIVIERA;;;;;;;;;;;;;;;ESPIRINILACTONA;25.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+137;medicamentos_em_uso;3;;;;2;75997398153;NAIR MARIA  DE OLIVIERA;;;;;;;;;;;;;;;ATORVASTATINA ;20.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+137;medicamentos_em_uso;4;;;;2;75997398153;NAIR MARIA  DE OLIVIERA;;;;;;;;;;;;;;;LOSARTANA ;50.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+137;medicamentos_em_uso;5;;;;2;75997398153;NAIR MARIA  DE OLIVIERA;;;;;;;;;;;;;;;SOOMALGIM;100.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+137;medicamentos_em_uso;6;;;;2;75997398153;NAIR MARIA  DE OLIVIERA;;;;;;;;;;;;;;;DONAREM;50.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+137;medicamentos_em_uso;7;;;;2;75997398153;NAIR MARIA  DE OLIVIERA;;;;;;;;;;;;;;;CLONAZEPAN;2.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+137;medicamentos_em_uso;8;;;;2;75997398153;NAIR MARIA  DE OLIVIERA;;;;;;;;;;;;;;;ACIDO FOLICO;5.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+137;medicamentos_em_uso;9;;;;2;75997398153;NAIR MARIA  DE OLIVIERA;;;;;;;;;;;;;;;RISPIRIDONA;1.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+137;morbidades_prvias;1;;;;2;75997398153;NAIR MARIA  DE OLIVIERA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;1;BIPOLARIDADE;;;;;;;;;;;;;;
+138;;;2025-07-01;-16.6920192;-49.3453312;2;47223525172;SEBASTIANA  MARTA LUCIANO DA SIL;2;1945-05-16;80;3;2;10;120.0;0;1;3;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;4;1;1;0;0;1;2;1;4;3;2;1;2;Fernanda Ramos Parreira
+138;medicamentos_em_uso;1;;;;2;47223525172;SEBASTIANA  MARTA LUCIANO DA SIL;;;;;;;;;;;;;;;zolpidem;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+138;medicamentos_em_uso;2;;;;2;47223525172;SEBASTIANA  MARTA LUCIANO DA SIL;;;;;;;;;;;;;;;nortriptilina;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+138;medicamentos_em_uso;3;;;;2;47223525172;SEBASTIANA  MARTA LUCIANO DA SIL;;;;;;;;;;;;;;;atorvastatina;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+138;medicamentos_em_uso;4;;;;2;47223525172;SEBASTIANA  MARTA LUCIANO DA SIL;;;;;;;;;;;;;;;sinvastatina;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+138;medicamentos_em_uso;5;;;;2;47223525172;SEBASTIANA  MARTA LUCIANO DA SIL;;;;;;;;;;;;;;;cloridrato de trazodona;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+138;medicamentos_em_uso;6;;;;2;47223525172;SEBASTIANA  MARTA LUCIANO DA SIL;;;;;;;;;;;;;;;Quetiapina;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+138;medicamentos_em_uso;7;;;;2;47223525172;SEBASTIANA  MARTA LUCIANO DA SIL;;;;;;;;;;;;;;;Vitamina D;10000.0;0.0;0.0;;;;;;;;;;;;;7;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+138;morbidades_prvias;1;;;;2;47223525172;SEBASTIANA  MARTA LUCIANO DA SIL;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;1;Depressão;;;;;;;;;;;;;;
+138;morbidades_prvias;2;;;;2;47223525172;SEBASTIANA  MARTA LUCIANO DA SIL;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;Miopatia congenita;;;;;;;;;;;;;;
+139;;;2025-07-01;;;2;66151988604;ANGELA MARIA DE CASTRO;2;1957-09-17;67;3;5;1;15.0;3;1;2;0;1;0;4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;2;0;0;1;1;2;1;1;1;2;1;1;Marcos Souza
+139;medicamentos_em_uso;1;;;;2;66151988604;ANGELA MARIA DE CASTRO;;;;;;;;;;;;;;;levotiroxina;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+139;medicamentos_em_uso;2;;;;2;66151988604;ANGELA MARIA DE CASTRO;;;;;;;;;;;;;;;losartana;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+139;medicamentos_em_uso;3;;;;2;66151988604;ANGELA MARIA DE CASTRO;;;;;;;;;;;;;;;donepezila;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+139;medicamentos_em_uso;4;;;;2;66151988604;ANGELA MARIA DE CASTRO;;;;;;;;;;;;;;;quetiapina;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+139;medicamentos_em_uso;5;;;;2;66151988604;ANGELA MARIA DE CASTRO;;;;;;;;;;;;;;;canabis;0.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+139;medicamentos_em_uso;6;;;;2;66151988604;ANGELA MARIA DE CASTRO;;;;;;;;;;;;;;;calcio;0.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+139;medicamentos_em_uso;7;;;;2;66151988604;ANGELA MARIA DE CASTRO;;;;;;;;;;;;;;;quetiapine;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+139;medicamentos_em_uso;8;;;;2;66151988604;ANGELA MARIA DE CASTRO;;;;;;;;;;;;;;;quetiapine;50.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+139;medicamentos_em_uso;9;;;;2;66151988604;ANGELA MARIA DE CASTRO;;;;;;;;;;;;;;;vitamina D;10000.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+139;medicamentos_em_uso;10;;;;2;66151988604;ANGELA MARIA DE CASTRO;;;;;;;;;;;;;;;prometazina;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+139;morbidades_prvias;1;;;;2;66151988604;ANGELA MARIA DE CASTRO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;;;;;;;;;;;;;;
+140;;;2025-07-01;-16.8331724;-49.3056611;2;22562575172;ORESTINA PEREIRA SENE;2;1931-01-12;94;3;2;0;1.0;1;1;2;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;0;0;1;2;;2;2;2;2;2;2;THAYNARA MACEDO NAVES
+140;medicamentos_em_uso;1;;;;2;22562575172;ORESTINA PEREIRA SENE;;;;;;;;;;;;;;;ARADOIS;50.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+140;medicamentos_em_uso;2;;;;2;22562575172;ORESTINA PEREIRA SENE;;;;;;;;;;;;;;;PROPANOLOL;40.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+140;medicamentos_em_uso;3;;;;2;22562575172;ORESTINA PEREIRA SENE;;;;;;;;;;;;;;;HIDROCLOROTIAZIDA;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+140;morbidades_prvias;1;;;;2;22562575172;ORESTINA PEREIRA SENE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+141;;;2025-07-01;-16.6920192;-49.3453312;2;49142615100;MARLY MARIA  DA SILVA;2;1953-10-08;71;2;5;2;19.0;7;2;1;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;1;3;2;1;2;2;Fernanda Ramos Parreira
+141;medicamentos_em_uso;1;;;;2;49142615100;MARLY MARIA  DA SILVA;;;;;;;;;;;;;;;lamotrigina;100.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+141;medicamentos_em_uso;2;;;;2;49142615100;MARLY MARIA  DA SILVA;;;;;;;;;;;;;;;olanzapina;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+141;medicamentos_em_uso;3;;;;2;49142615100;MARLY MARIA  DA SILVA;;;;;;;;;;;;;;; rivaroxabana;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+141;medicamentos_em_uso;4;;;;2;49142615100;MARLY MARIA  DA SILVA;;;;;;;;;;;;;;;pregabalina;150.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+141;medicamentos_em_uso;5;;;;2;49142615100;MARLY MARIA  DA SILVA;;;;;;;;;;;;;;;sinvastatina	;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+141;medicamentos_em_uso;6;;;;2;49142615100;MARLY MARIA  DA SILVA;;;;;;;;;;;;;;;Vitamina D;2000.0;0.0;0.0;;;;;;;;;;;;;5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+141;medicamentos_em_uso;7;;;;2;49142615100;MARLY MARIA  DA SILVA;;;;;;;;;;;;;;;furosemida;40.0;0.0;0.0;;;;;;;;;;;;;4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+141;morbidades_prvias;1;;;;2;49142615100;MARLY MARIA  DA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;1;Bipolar;;;;;;;;;;;;;;
+142;;;2025-07-01;;;2;44296819291;ANA  DE PAULA LIMA;2;1933-02-20;92;2;2;6;69.0;9;1;2;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;0;0;1;1;2;1;2;2;1;2;2;Marcos Souza
+142;medicamentos_em_uso;1;;;;2;44296819291;ANA  DE PAULA LIMA;;;;;;;;;;;;;;;losartana ;50.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+142;medicamentos_em_uso;2;;;;2;44296819291;ANA  DE PAULA LIMA;;;;;;;;;;;;;;;levotiroxana;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+142;medicamentos_em_uso;3;;;;2;44296819291;ANA  DE PAULA LIMA;;;;;;;;;;;;;;;rosuvastatin;20.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+142;medicamentos_em_uso;4;;;;2;44296819291;ANA  DE PAULA LIMA;;;;;;;;;;;;;;;AAS;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+142;medicamentos_em_uso;5;;;;2;44296819291;ANA  DE PAULA LIMA;;;;;;;;;;;;;;;galantamina;8.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+142;medicamentos_em_uso;6;;;;2;44296819291;ANA  DE PAULA LIMA;;;;;;;;;;;;;;;cloridrato de propafenona;150.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+142;medicamentos_em_uso;7;;;;2;44296819291;ANA  DE PAULA LIMA;;;;;;;;;;;;;;;paroxetina;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+142;medicamentos_em_uso;8;;;;2;44296819291;ANA  DE PAULA LIMA;;;;;;;;;;;;;;;quetiapina;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+142;medicamentos_em_uso;9;;;;2;44296819291;ANA  DE PAULA LIMA;;;;;;;;;;;;;;;prometazina;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+142;morbidades_prvias;1;;;;2;44296819291;ANA  DE PAULA LIMA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;1;hipoterioidismo;;;;;;;;;;;;;;
+142;morbidades_prvias;2;;;;2;44296819291;ANA  DE PAULA LIMA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;arritmia;;;;;;;;;;;;;;
+142;morbidades_prvias;3;;;;2;44296819291;ANA  DE PAULA LIMA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;depressão;;;;;;;;;;;;;;
+143;;;2025-07-01;-16.8328576;-49.3056337;2;47900407120;IRACINA  GOMES MARTINS ;2;1954-05-05;71;3;5;5;56.0;8;1;2;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;1;0;0;1;1;1;1;3;2;1;1;Fernanda Ramos Parreira
+143;medicamentos_em_uso;1;;;;2;47900407120;IRACINA  GOMES MARTINS ;;;;;;;;;;;;;;;Losartana	;50.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+143;medicamentos_em_uso;2;;;;2;47900407120;IRACINA  GOMES MARTINS ;;;;;;;;;;;;;;;escitalopram;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+143;medicamentos_em_uso;3;;;;2;47900407120;IRACINA  GOMES MARTINS ;;;;;;;;;;;;;;;Propatilnitrato;10.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+143;medicamentos_em_uso;4;;;;2;47900407120;IRACINA  GOMES MARTINS ;;;;;;;;;;;;;;;noripurum;100.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+143;medicamentos_em_uso;5;;;;2;47900407120;IRACINA  GOMES MARTINS ;;;;;;;;;;;;;;;Vitamina D;10000.0;0.0;0.0;;;;;;;;;;;;;5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+143;medicamentos_em_uso;6;;;;2;47900407120;IRACINA  GOMES MARTINS ;;;;;;;;;;;;;;;bisoprolol;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+143;medicamentos_em_uso;7;;;;2;47900407120;IRACINA  GOMES MARTINS ;;;;;;;;;;;;;;;espironolactona;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+143;medicamentos_em_uso;8;;;;2;47900407120;IRACINA  GOMES MARTINS ;;;;;;;;;;;;;;;ácido acetilsalicílico;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+143;medicamentos_em_uso;9;;;;2;47900407120;IRACINA  GOMES MARTINS ;;;;;;;;;;;;;;;rosuvastatina;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+143;morbidades_prvias;1;;;;2;47900407120;IRACINA  GOMES MARTINS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+144;;;2025-07-01;-16.8331798;-49.305664;2;25242784172;SILMA QUIRINO JORGE;2;1948-08-21;76;3;2;2;24.0;0;1;2;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;1;2;1;1;THAYNARA MACEDO NAVES
+144;medicamentos_em_uso;1;;;;2;25242784172;SILMA QUIRINO JORGE;;;;;;;;;;;;;;;TELMISARTANA;80.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+144;medicamentos_em_uso;2;;;;2;25242784172;SILMA QUIRINO JORGE;;;;;;;;;;;;;;;CLOZAPINA;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+144;medicamentos_em_uso;3;;;;2;25242784172;SILMA QUIRINO JORGE;;;;;;;;;;;;;;;ZIDER;10.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+144;medicamentos_em_uso;4;;;;2;25242784172;SILMA QUIRINO JORGE;;;;;;;;;;;;;;;;;0.0;1.0;DIOSMINA ;900.0;HESPERIDINA ;100.0;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+144;medicamentos_em_uso;5;;;;2;25242784172;SILMA QUIRINO JORGE;;;;;;;;;;;;;;;CANABIDIOL;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+144;medicamentos_em_uso;6;;;;2;25242784172;SILMA QUIRINO JORGE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+144;morbidades_prvias;1;;;;2;25242784172;SILMA QUIRINO JORGE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+145;;;2025-07-01;-16.8331874;-49.3056635;2;24261351987;MARIA  NASCIMENTO DOREA;2;1960-05-27;65;3;3;10;117.0;9;2;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;2;0;0;1;2;;1;1;2;2;2;1;Fernanda Ramos Parreira
+145;medicamentos_em_uso;1;;;;2;24261351987;MARIA  NASCIMENTO DOREA;;;;;;;;;;;;;;;prometazina;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+145;medicamentos_em_uso;2;;;;2;24261351987;MARIA  NASCIMENTO DOREA;;;;;;;;;;;;;;;risperidona;3.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+145;medicamentos_em_uso;3;;;;2;24261351987;MARIA  NASCIMENTO DOREA;;;;;;;;;;;;;;;carbonato de lítio;300.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+145;medicamentos_em_uso;4;;;;2;24261351987;MARIA  NASCIMENTO DOREA;;;;;;;;;;;;;;;esomeprazol;40.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+145;medicamentos_em_uso;5;;;;2;24261351987;MARIA  NASCIMENTO DOREA;;;;;;;;;;;;;;;sinvastatina;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+145;medicamentos_em_uso;6;;;;2;24261351987;MARIA  NASCIMENTO DOREA;;;;;;;;;;;;;;;carbamazepina;200.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+145;morbidades_prvias;1;;;;2;24261351987;MARIA  NASCIMENTO DOREA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;DPOC;;;;;;;;;;;;;;
+145;morbidades_prvias;2;;;;2;24261351987;MARIA  NASCIMENTO DOREA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;Hepatite C;;;;;;;;;;;;;;
+146;;;2025-07-01;;;2;13665553172;GERALDA ROSA SOARES;2;1937-12-05;87;3;3;1;11.0;11;1;1;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;2;0;1;0;1;1;1;1;2;1;1;2;Marcos Souza
+146;medicamentos_em_uso;1;;;;2;13665553172;GERALDA ROSA SOARES;;;;;;;;;;;;;;;risperidona;1.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+146;medicamentos_em_uso;2;;;;2;13665553172;GERALDA ROSA SOARES;;;;;;;;;;;;;;;AAS;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+146;medicamentos_em_uso;3;;;;2;13665553172;GERALDA ROSA SOARES;;;;;;;;;;;;;;;clonazepam;2.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+146;medicamentos_em_uso;4;;;;2;13665553172;GERALDA ROSA SOARES;;;;;;;;;;;;;;;escitalopram;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+146;morbidades_prvias;1;;;;2;13665553172;GERALDA ROSA SOARES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;1;TOC;;;;;;;;;;;;;;
+147;;;2025-07-01;-16.6920192;-49.3453312;2;19839537172;SEBASTIAO  DO NASCIMENTO;1;1944-04-16;81;3;5;1;10.0;10;1;1;0;1;0;4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;2;0;0;1;1;2;2;1;2;1;2;1;Fernanda Ramos Parreira
+147;medicamentos_em_uso;1;;;;2;19839537172;SEBASTIAO  DO NASCIMENTO;;;;;;;;;;;;;;;Levotiroxina Sodica;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+147;medicamentos_em_uso;2;;;;2;19839537172;SEBASTIAO  DO NASCIMENTO;;;;;;;;;;;;;;;quetiapina;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+147;medicamentos_em_uso;3;;;;2;19839537172;SEBASTIAO  DO NASCIMENTO;;;;;;;;;;;;;;;memantina;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+147;medicamentos_em_uso;4;;;;2;19839537172;SEBASTIAO  DO NASCIMENTO;;;;;;;;;;;;;;;risperidona;1.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+147;medicamentos_em_uso;5;;;;2;19839537172;SEBASTIAO  DO NASCIMENTO;;;;;;;;;;;;;;;citalopram;20.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+147;morbidades_prvias;1;;;;2;19839537172;SEBASTIAO  DO NASCIMENTO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;1;Hipotireiodismo;;;;;;;;;;;;;;
+148;;;2025-07-01;-16.8331733;-49.3056654;2;21308640153;BELCHIORINA  BARBOSA;2;1946-08-19;78;3;2;19;223.0;7;1;2;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;2;0;1;0;1;2;1;1;2;1;1;3;THAYNARA MACEDO NAVES
+148;medicamentos_em_uso;1;;;;2;21308640153;BELCHIORINA  BARBOSA;;;;;;;;;;;;;;;CARBAMAZEPINA ;200.0;0.0;0.0;;;;;;;;;;;;;3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+148;medicamentos_em_uso;2;;;;2;21308640153;BELCHIORINA  BARBOSA;;;;;;;;;;;;;;;DULOXETINA;30.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+148;medicamentos_em_uso;3;;;;2;21308640153;BELCHIORINA  BARBOSA;;;;;;;;;;;;;;;RISPIRIDONA ;1.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+148;medicamentos_em_uso;4;;;;2;21308640153;BELCHIORINA  BARBOSA;;;;;;;;;;;;;;;ROSUVASTATINA;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+148;medicamentos_em_uso;5;;;;2;21308640153;BELCHIORINA  BARBOSA;;;;;;;;;;;;;;;LORAZEPAM;2.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+148;medicamentos_em_uso;6;;;;2;21308640153;BELCHIORINA  BARBOSA;;;;;;;;;;;;;;;PANTOPRAZOL;40.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+148;medicamentos_em_uso;7;;;;2;21308640153;BELCHIORINA  BARBOSA;;;;;;;;;;;;;;;LOSARTANA;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+148;medicamentos_em_uso;8;;;;2;21308640153;BELCHIORINA  BARBOSA;;;;;;;;;;;;;;;HIDROCLOROTIAZIDA;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+148;medicamentos_em_uso;9;;;;2;21308640153;BELCHIORINA  BARBOSA;;;;;;;;;;;;;;;ANLODIPINO;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+148;medicamentos_em_uso;10;;;;2;21308640153;BELCHIORINA  BARBOSA;;;;;;;;;;;;;;;QUETIAPINA ;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+148;medicamentos_em_uso;11;;;;2;21308640153;BELCHIORINA  BARBOSA;;;;;;;;;;;;;;;DOMPERIDONA;10.0;0.0;0.0;;;;;;;;;;;;;3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+148;morbidades_prvias;1;;;;2;21308640153;BELCHIORINA  BARBOSA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+149;;;2025-07-01;;;2;77490649153;SILVéRIO  BASTOS DO NASCIMENTO;1;1955-06-08;70;2;3;1;11.0;11;1;1;1;0;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;1;2;1;1;1;2;2;1;Marcos Souza
+149;medicamentos_em_uso;1;;;;2;77490649153;SILVéRIO  BASTOS DO NASCIMENTO;;;;;;;;;;;;;;;fenitoína;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+149;medicamentos_em_uso;2;;;;2;77490649153;SILVéRIO  BASTOS DO NASCIMENTO;;;;;;;;;;;;;;;donepezila;5.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+149;medicamentos_em_uso;3;;;;2;77490649153;SILVéRIO  BASTOS DO NASCIMENTO;;;;;;;;;;;;;;;quetiapine;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+149;medicamentos_em_uso;4;;;;2;77490649153;SILVéRIO  BASTOS DO NASCIMENTO;;;;;;;;;;;;;;;rosuvastatina;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+149;morbidades_prvias;1;;;;2;77490649153;SILVéRIO  BASTOS DO NASCIMENTO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;;;;;;;;;;;;;;
+150;;;2025-07-01;-16.8331894;-49.3056663;2;32209223172;DEUZELINA  DA SILVA MARINS;2;1949-02-09;76;3;5;2;24.0;0;1;2;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;1;0;0;2;;1;2;2;1;1;3;Fernanda Ramos Parreira
+150;medicamentos_em_uso;1;;;;2;32209223172;DEUZELINA  DA SILVA MARINS;;;;;;;;;;;;;;;Quetiapina;100.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+150;medicamentos_em_uso;2;;;;2;32209223172;DEUZELINA  DA SILVA MARINS;;;;;;;;;;;;;;;Risperidona;2.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+150;medicamentos_em_uso;3;;;;2;32209223172;DEUZELINA  DA SILVA MARINS;;;;;;;;;;;;;;;Vitamina D;10000.0;0.0;0.0;;;;;;;;;;;;;5;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+150;medicamentos_em_uso;4;;;;2;32209223172;DEUZELINA  DA SILVA MARINS;;;;;;;;;;;;;;;donepezila;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+150;morbidades_prvias;1;;;;2;32209223172;DEUZELINA  DA SILVA MARINS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;;;;;;;;;;;;;;;
+151;;;2025-07-01;;;2;28987292800;VALDEMAR  DE AFONSO;1;1938-06-10;87;3;4;0;1.0;1;1;2;1;0;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;0;1;0;2;;2;2;3;1;1;1;Marcos Souza
+151;medicamentos_em_uso;1;;;;2;28987292800;VALDEMAR  DE AFONSO;;;;;;;;;;;;;;;lacosamida;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+151;medicamentos_em_uso;2;;;;2;28987292800;VALDEMAR  DE AFONSO;;;;;;;;;;;;;;;passiflora;0.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+151;morbidades_prvias;1;;;;2;28987292800;VALDEMAR  DE AFONSO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;1;insuficiência venosa crônica;;;;;;;;;;;;;;
+152;;;2025-07-01;-16.8331865;-49.3056668;2;71276644124;MARIA JOSE DOS SANTOS;2;1932-12-20;92;3;1;0;2.0;2;2;2;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;1;2;1;1;THAYNARA MACEDO NAVES
+152;medicamentos_em_uso;1;;;;2;71276644124;MARIA JOSE DOS SANTOS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+152;morbidades_prvias;1;;;;2;71276644124;MARIA JOSE DOS SANTOS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+153;;;2025-07-01;-16.6920192;-49.3453312;2;52160181153;ANA  DE ARAUJO MENDANHA;2;1933-07-04;91;3;5;8;95.0;11;1;2;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;2;0;0;1;2;;1;2;2;1;1;3;Fernanda Ramos Parreira
+153;medicamentos_em_uso;1;;;;2;52160181153;ANA  DE ARAUJO MENDANHA;;;;;;;;;;;;;;;pantoprazol;40.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+153;medicamentos_em_uso;2;;;;2;52160181153;ANA  DE ARAUJO MENDANHA;;;;;;;;;;;;;;;Escitalopram;15.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+153;medicamentos_em_uso;3;;;;2;52160181153;ANA  DE ARAUJO MENDANHA;;;;;;;;;;;;;;;clonazepam;2.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+153;medicamentos_em_uso;4;;;;2;52160181153;ANA  DE ARAUJO MENDANHA;;;;;;;;;;;;;;;Levotiroxina Sódica;62.5;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+153;medicamentos_em_uso;5;;;;2;52160181153;ANA  DE ARAUJO MENDANHA;;;;;;;;;;;;;;;Quetiapina;100.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+153;medicamentos_em_uso;6;;;;2;52160181153;ANA  DE ARAUJO MENDANHA;;;;;;;;;;;;;;;amitriptilina;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+153;medicamentos_em_uso;7;;;;2;52160181153;ANA  DE ARAUJO MENDANHA;;;;;;;;;;;;;;;Memantina;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+153;medicamentos_em_uso;8;;;;2;52160181153;ANA  DE ARAUJO MENDANHA;;;;;;;;;;;;;;;ácido acetilsalicílico ;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+153;medicamentos_em_uso;9;;;;2;52160181153;ANA  DE ARAUJO MENDANHA;;;;;;;;;;;;;;;Olanzapina;5.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+153;medicamentos_em_uso;10;;;;2;52160181153;ANA  DE ARAUJO MENDANHA;;;;;;;;;;;;;;;Sinvastatina;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+153;medicamentos_em_uso;11;;;;2;52160181153;ANA  DE ARAUJO MENDANHA;;;;;;;;;;;;;;;risperidona;1.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+153;morbidades_prvias;1;;;;2;52160181153;ANA  DE ARAUJO MENDANHA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;1;Depressão;;;;;;;;;;;;;;
+154;;;2025-07-01;;;2;42637260149;SIDENEZ PEREIRA DA SILVA;1;1939-11-13;85;3;3;3;40.0;4;1;2;1;0;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;2;0;0;1;1;1;1;1;2;1;2;2;Marcos Souza
+154;medicamentos_em_uso;1;;;;2;42637260149;SIDENEZ PEREIRA DA SILVA;;;;;;;;;;;;;;;mesilato de doxazosina;2.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+154;medicamentos_em_uso;2;;;;2;42637260149;SIDENEZ PEREIRA DA SILVA;;;;;;;;;;;;;;;escitalopram;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+154;medicamentos_em_uso;3;;;;2;42637260149;SIDENEZ PEREIRA DA SILVA;;;;;;;;;;;;;;;losartana;50.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+154;medicamentos_em_uso;4;;;;2;42637260149;SIDENEZ PEREIRA DA SILVA;;;;;;;;;;;;;;;clopidrogel;75.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+154;medicamentos_em_uso;5;;;;2;42637260149;SIDENEZ PEREIRA DA SILVA;;;;;;;;;;;;;;;quetiapina;50.0;0.0;0.0;;;;;;;;;;;;;4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+154;medicamentos_em_uso;6;;;;2;42637260149;SIDENEZ PEREIRA DA SILVA;;;;;;;;;;;;;;;memantina;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+154;medicamentos_em_uso;7;;;;2;42637260149;SIDENEZ PEREIRA DA SILVA;;;;;;;;;;;;;;;vitamina D;10000.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+154;medicamentos_em_uso;8;;;;2;42637260149;SIDENEZ PEREIRA DA SILVA;;;;;;;;;;;;;;;ferro;100.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+154;medicamentos_em_uso;9;;;;2;42637260149;SIDENEZ PEREIRA DA SILVA;;;;;;;;;;;;;;;carbamazepina;200.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+154;morbidades_prvias;1;;;;2;42637260149;SIDENEZ PEREIRA DA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;;;;;;;;;;;;;;;
+155;;;2025-07-02;;;5;43396194187;BENEDITA RODRIGUES DOS SANTOS;2;1945-10-04;79;3;3;1;9.0;9;1;2;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;1;0;0;2;;2;1;2;1;2;1;Thuane
+155;medicamentos_em_uso;1;;;;5;43396194187;BENEDITA RODRIGUES DOS SANTOS;;;;;;;;;;;;;;;acido acetilsalissilico;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+155;medicamentos_em_uso;2;;;;5;43396194187;BENEDITA RODRIGUES DOS SANTOS;;;;;;;;;;;;;;;anlodipino;5.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+155;medicamentos_em_uso;3;;;;5;43396194187;BENEDITA RODRIGUES DOS SANTOS;;;;;;;;;;;;;;;amitriptilina;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+155;medicamentos_em_uso;4;;;;5;43396194187;BENEDITA RODRIGUES DOS SANTOS;;;;;;;;;;;;;;;glicazida;60.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+155;medicamentos_em_uso;5;;;;5;43396194187;BENEDITA RODRIGUES DOS SANTOS;;;;;;;;;;;;;;;metformina;500.0;0.0;0.0;;;;;;;;;;;;;3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+155;medicamentos_em_uso;6;;;;5;43396194187;BENEDITA RODRIGUES DOS SANTOS;;;;;;;;;;;;;;;Haloperidol;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+155;medicamentos_em_uso;7;;;;5;43396194187;BENEDITA RODRIGUES DOS SANTOS;;;;;;;;;;;;;;;losartana;50.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+155;medicamentos_em_uso;8;;;;5;43396194187;BENEDITA RODRIGUES DOS SANTOS;;;;;;;;;;;;;;;prebalina;75.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+155;medicamentos_em_uso;9;;;;5;43396194187;BENEDITA RODRIGUES DOS SANTOS;;;;;;;;;;;;;;;Risperidona;2.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+155;medicamentos_em_uso;10;;;;5;43396194187;BENEDITA RODRIGUES DOS SANTOS;;;;;;;;;;;;;;;sertralina;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+155;morbidades_prvias;1;;;;5;43396194187;BENEDITA RODRIGUES DOS SANTOS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+156;;;2025-07-02;;;5;06184387502;CELINA VIEIRA BONFIM;2;1939-04-20;86;3;1;1;7.0;7;1;2;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;1;1;1;1;2;1;Thuane
+156;medicamentos_em_uso;1;;;;5;06184387502;CELINA VIEIRA BONFIM;;;;;;;;;;;;;;;Prometazina;25.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+156;medicamentos_em_uso;2;;;;5;06184387502;CELINA VIEIRA BONFIM;;;;;;;;;;;;;;;Risperidona;2.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+156;morbidades_prvias;1;;;;5;06184387502;CELINA VIEIRA BONFIM;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+157;;;2025-07-02;;;5;16781830163;JOSé  VIEIRA SANDIM;1;1959-04-06;66;1;4;1;7.0;7;1;2;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;1;0;2;;1;1;2;1;1;1;Thuane
+157;medicamentos_em_uso;1;;;;5;16781830163;JOSé  VIEIRA SANDIM;;;;;;;;;;;;;;;Anlondipino;5.0;;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+157;medicamentos_em_uso;2;;;;5;16781830163;JOSé  VIEIRA SANDIM;;;;;;;;;;;;;;;Carbamazepina;200.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+157;medicamentos_em_uso;3;;;;5;16781830163;JOSé  VIEIRA SANDIM;;;;;;;;;;;;;;;Duloxetina;60.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+157;medicamentos_em_uso;4;;;;5;16781830163;JOSé  VIEIRA SANDIM;;;;;;;;;;;;;;;Gabapentina;300.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+157;medicamentos_em_uso;5;;;;5;16781830163;JOSé  VIEIRA SANDIM;;;;;;;;;;;;;;;Losartana;50.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+157;medicamentos_em_uso;6;;;;5;16781830163;JOSé  VIEIRA SANDIM;;;;;;;;;;;;;;;levotiroxina;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+157;medicamentos_em_uso;7;;;;5;16781830163;JOSé  VIEIRA SANDIM;;;;;;;;;;;;;;;Sinvastatina;40.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+157;morbidades_prvias;1;;;;5;16781830163;JOSé  VIEIRA SANDIM;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;1;0;0;1;0;0;0;0;0;0;;;;;;;;;;;;;;;
+158;;;2025-07-02;;;5;06100180197;LOURDES MARIA RIBEIRO DOS SANTOS;2;1945-05-08;80;1;3;1;12.0;0;1;1;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;1;1;2;1;1;1;Thuane
+158;medicamentos_em_uso;1;;;;5;06100180197;LOURDES MARIA RIBEIRO DOS SANTOS;;;;;;;;;;;;;;;Carbamazepina;200.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+158;medicamentos_em_uso;2;;;;5;06100180197;LOURDES MARIA RIBEIRO DOS SANTOS;;;;;;;;;;;;;;;Diazepam;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+158;medicamentos_em_uso;3;;;;5;06100180197;LOURDES MARIA RIBEIRO DOS SANTOS;;;;;;;;;;;;;;;Escitalopram;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+158;medicamentos_em_uso;4;;;;5;06100180197;LOURDES MARIA RIBEIRO DOS SANTOS;;;;;;;;;;;;;;;Gabapentina;300.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+158;medicamentos_em_uso;5;;;;5;06100180197;LOURDES MARIA RIBEIRO DOS SANTOS;;;;;;;;;;;;;;;Quetiapina;200.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+158;medicamentos_em_uso;6;;;;5;06100180197;LOURDES MARIA RIBEIRO DOS SANTOS;;;;;;;;;;;;;;;Levotiroxina sódica;37.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+158;medicamentos_em_uso;7;;;;5;06100180197;LOURDES MARIA RIBEIRO DOS SANTOS;;;;;;;;;;;;;;;Mirtazapina;45.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+158;medicamentos_em_uso;8;;;;5;06100180197;LOURDES MARIA RIBEIRO DOS SANTOS;;;;;;;;;;;;;;;Press plus;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+158;medicamentos_em_uso;9;;;;5;06100180197;LOURDES MARIA RIBEIRO DOS SANTOS;;;;;;;;;;;;;;;Sinvastatina;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+158;morbidades_prvias;1;;;;5;06100180197;LOURDES MARIA RIBEIRO DOS SANTOS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+159;;;2025-07-02;;;5;26304325134;LUISMAR RODRIGUES TRIGUEIRO;1;1963-02-28;62;3;2;1;10.0;10;1;2;1;0;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;1;1;1;2;2;1;Thuane
+159;medicamentos_em_uso;1;;;;5;26304325134;LUISMAR RODRIGUES TRIGUEIRO;;;;;;;;;;;;;;;Gabapentina;300.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+159;medicamentos_em_uso;2;;;;5;26304325134;LUISMAR RODRIGUES TRIGUEIRO;;;;;;;;;;;;;;;Quetiapina;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+159;medicamentos_em_uso;3;;;;5;26304325134;LUISMAR RODRIGUES TRIGUEIRO;;;;;;;;;;;;;;;Losartana;50.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+159;medicamentos_em_uso;4;;;;5;26304325134;LUISMAR RODRIGUES TRIGUEIRO;;;;;;;;;;;;;;;Baclofeno;10.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+159;medicamentos_em_uso;5;;;;5;26304325134;LUISMAR RODRIGUES TRIGUEIRO;;;;;;;;;;;;;;;cloridrato de oxibutinina;5.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+159;medicamentos_em_uso;6;;;;5;26304325134;LUISMAR RODRIGUES TRIGUEIRO;;;;;;;;;;;;;;;venlafaxina;75.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+159;morbidades_prvias;1;;;;5;26304325134;LUISMAR RODRIGUES TRIGUEIRO;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;1;0;0;0;;;;;;;;;;;;;;;
+160;;;2025-07-02;;;5;74841769153;MAGALI DELGADO DA SILVA;2;1963-09-29;61;3;1;23;274.0;10;2;2;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;2;0;0;1;2;;1;1;1;2;2;1;Thuane
+160;medicamentos_em_uso;1;;;;5;74841769153;MAGALI DELGADO DA SILVA;;;;;;;;;;;;;;;Metformina;850.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+160;medicamentos_em_uso;2;;;;5;74841769153;MAGALI DELGADO DA SILVA;;;;;;;;;;;;;;;Prometazina;25.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+160;medicamentos_em_uso;3;;;;5;74841769153;MAGALI DELGADO DA SILVA;;;;;;;;;;;;;;;Glibenclamida;5.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+160;medicamentos_em_uso;4;;;;5;74841769153;MAGALI DELGADO DA SILVA;;;;;;;;;;;;;;;Risperidona;2.0;0.0;0.0;;;;;;;;;;;;;3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+160;medicamentos_em_uso;5;;;;5;74841769153;MAGALI DELGADO DA SILVA;;;;;;;;;;;;;;;Paroxetina;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+160;medicamentos_em_uso;6;;;;5;74841769153;MAGALI DELGADO DA SILVA;;;;;;;;;;;;;;;insulina nph;15.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+160;morbidades_prvias;1;;;;5;74841769153;MAGALI DELGADO DA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;1;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+161;;;2025-07-02;;;5;05832489187;RAIMUNDO  GONçALVES GUIMARãES;1;1943-01-01;82;3;2;1;6.0;6;1;2;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;1;0;2;;2;1;2;1;1;2;Thuane
+161;medicamentos_em_uso;1;;;;5;05832489187;RAIMUNDO  GONçALVES GUIMARãES;;;;;;;;;;;;;;;Prometazina;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+161;medicamentos_em_uso;2;;;;5;05832489187;RAIMUNDO  GONçALVES GUIMARãES;;;;;;;;;;;;;;;Haloperidol;5.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+161;medicamentos_em_uso;3;;;;5;05832489187;RAIMUNDO  GONçALVES GUIMARãES;;;;;;;;;;;;;;;Risperidona;2.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+161;medicamentos_em_uso;4;;;;5;05832489187;RAIMUNDO  GONçALVES GUIMARãES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+161;morbidades_prvias;1;;;;5;05832489187;RAIMUNDO  GONçALVES GUIMARãES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;;;;;;;;;;;;;;;
+162;;;2025-07-18;-16.8329065;-49.3053935;2;21706450125;CARMOSINA DA SILVA OLIVEIRA;2;1947-04-21;78;2;2;9;108.0;0;1;2;1;0;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;0;1;0;1;2;1;1;2;1;1;2;THAYNARA MACEDO NAVES
+162;medicamentos_em_uso;1;;;;2;21706450125;CARMOSINA DA SILVA OLIVEIRA;;;;;;;;;;;;;;;LOSARTANA;50.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+162;medicamentos_em_uso;2;;;;2;21706450125;CARMOSINA DA SILVA OLIVEIRA;;;;;;;;;;;;;;;HIDROCLORTIAZIDA;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+162;medicamentos_em_uso;3;;;;2;21706450125;CARMOSINA DA SILVA OLIVEIRA;;;;;;;;;;;;;;;ESCITALOPRAM;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+162;medicamentos_em_uso;4;;;;2;21706450125;CARMOSINA DA SILVA OLIVEIRA;;;;;;;;;;;;;;;;;0.0;1.0;VALPROATO DE SODIO;333.0;ACIDO VALPRICO;145.0;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+162;medicamentos_em_uso;5;;;;2;21706450125;CARMOSINA DA SILVA OLIVEIRA;;;;;;;;;;;;;;;Dicloridrato de pramipexol;0.375;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+162;medicamentos_em_uso;6;;;;2;21706450125;CARMOSINA DA SILVA OLIVEIRA;;;;;;;;;;;;;;;ATENOLOL;25.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+162;medicamentos_em_uso;7;;;;2;21706450125;CARMOSINA DA SILVA OLIVEIRA;;;;;;;;;;;;;;;METILDOPA ;250.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+162;morbidades_prvias;1;;;;2;21706450125;CARMOSINA DA SILVA OLIVEIRA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+163;;;2025-07-18;-16.8329091;-49.3053856;2;36066010182;CLEMENCIA MARIA  DE OLIVEIRA LIMA ;2;1951-11-23;73;1;4;0;3.0;3;1;2;1;0;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;1;2;2;1;THAYNARA MACEO NAVES
+163;medicamentos_em_uso;1;;;;2;36066010182;CLEMENCIA MARIA  DE OLIVEIRA LIMA ;;;;;;;;;;;;;;;GLICAZIDA ;60.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+163;medicamentos_em_uso;2;;;;2;36066010182;CLEMENCIA MARIA  DE OLIVEIRA LIMA ;;;;;;;;;;;;;;;LOSARTANA;50.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+163;medicamentos_em_uso;3;;;;2;36066010182;CLEMENCIA MARIA  DE OLIVEIRA LIMA ;;;;;;;;;;;;;;;ATENOLOL;25.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+163;medicamentos_em_uso;4;;;;2;36066010182;CLEMENCIA MARIA  DE OLIVEIRA LIMA ;;;;;;;;;;;;;;;GALANTAMINA;24.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+163;medicamentos_em_uso;5;;;;2;36066010182;CLEMENCIA MARIA  DE OLIVEIRA LIMA ;;;;;;;;;;;;;;;QUETIAPINA ;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+163;medicamentos_em_uso;6;;;;2;36066010182;CLEMENCIA MARIA  DE OLIVEIRA LIMA ;;;;;;;;;;;;;;;METFORMINA ;500.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+163;medicamentos_em_uso;7;;;;2;36066010182;CLEMENCIA MARIA  DE OLIVEIRA LIMA ;;;;;;;;;;;;;;;SINVASTATINA ;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+163;medicamentos_em_uso;8;;;;2;36066010182;CLEMENCIA MARIA  DE OLIVEIRA LIMA ;;;;;;;;;;;;;;;QUETIAPINA ;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+163;morbidades_prvias;1;;;;2;36066010182;CLEMENCIA MARIA  DE OLIVEIRA LIMA ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;;;;;;;;;;;;;;;
+164;;;2025-07-18;-16.8329684;-49.3053748;2;28292376104;DIVINA  SILVA ;2;1938-11-01;86;1;1;4;53.0;5;2;2;0;1;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;2;0;1;0;2;;2;1;2;1;1;1;THAYNARA MACEDO NAVES
+164;medicamentos_em_uso;1;;;;2;28292376104;DIVINA  SILVA ;;;;;;;;;;;;;;;HIDROCLOROTIAZIDA;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+164;medicamentos_em_uso;2;;;;2;28292376104;DIVINA  SILVA ;;;;;;;;;;;;;;;ANLODIPINO ;5.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+164;medicamentos_em_uso;3;;;;2;28292376104;DIVINA  SILVA ;;;;;;;;;;;;;;;LOSARTANA ;50.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+164;medicamentos_em_uso;4;;;;2;28292376104;DIVINA  SILVA ;;;;;;;;;;;;;;;QUETIAPINA ;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+164;medicamentos_em_uso;5;;;;2;28292376104;DIVINA  SILVA ;;;;;;;;;;;;;;;DULOXETINA ;60.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+164;medicamentos_em_uso;6;;;;2;28292376104;DIVINA  SILVA ;;;;;;;;;;;;;;;PREGABALINA ;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+164;morbidades_prvias;1;;;;2;28292376104;DIVINA  SILVA ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;1;ATROSE;;;;;;;;;;;;;;
+165;;;2025-07-18;-16.8329138;-49.3054011;2;03865401104;ILMA APARECIDA MENDONÇA;2;1947-08-31;77;1;3;3;41.0;5;1;1;1;0;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;1;2;2;1;THAYNARA MACEDO NAVES
+165;medicamentos_em_uso;1;;;;2;03865401104;ILMA APARECIDA MENDONÇA;;;;;;;;;;;;;;;FLUOXETINA ;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+165;medicamentos_em_uso;2;;;;2;03865401104;ILMA APARECIDA MENDONÇA;;;;;;;;;;;;;;;ACIDO ACETIL SALICILICO;100.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+165;medicamentos_em_uso;3;;;;2;03865401104;ILMA APARECIDA MENDONÇA;;;;;;;;;;;;;;;OLANZAPINA;5.0;1.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+165;morbidades_prvias;1;;;;2;03865401104;ILMA APARECIDA MENDONÇA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;ESQUIZOFRENIA ;;;;;;;;;;;;;;
+166;;;2025-07-18;-16.8328832;-49.3053532;2;84033266100;MARIA ALICE  GUIMARAES DAHER;2;1947-02-06;78;1;2;3;35.0;11;1;2;1;0;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;0;1;0;1;1;2;2;2;2;1;3;THAYNARA MACEDO NAVES
+166;medicamentos_em_uso;1;;;;2;84033266100;MARIA ALICE  GUIMARAES DAHER;;;;;;;;;;;;;;;ENALAPRIL;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+166;medicamentos_em_uso;2;;;;2;84033266100;MARIA ALICE  GUIMARAES DAHER;;;;;;;;;;;;;;;DESVENLAFEXINA ;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+166;medicamentos_em_uso;3;;;;2;84033266100;MARIA ALICE  GUIMARAES DAHER;;;;;;;;;;;;;;;QUETIAPINA ;25.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+166;medicamentos_em_uso;4;;;;2;84033266100;MARIA ALICE  GUIMARAES DAHER;;;;;;;;;;;;;;;PROMETAZINA ;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+166;medicamentos_em_uso;5;;;;2;84033266100;MARIA ALICE  GUIMARAES DAHER;;;;;;;;;;;;;;;QUETIPINA ;200.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+166;medicamentos_em_uso;6;;;;2;84033266100;MARIA ALICE  GUIMARAES DAHER;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+166;morbidades_prvias;1;;;;2;84033266100;MARIA ALICE  GUIMARAES DAHER;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+167;;;2025-07-18;-16.8328889;-49.3053568;2;62384368168;MARIA DE FATIMA SANTOS;2;1949-10-10;75;3;2;2;27.0;3;1;2;1;0;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;0;1;0;1;1;1;1;2;1;1;3;THAYNARA MACEDO NAVES
+167;medicamentos_em_uso;1;;;;2;62384368168;MARIA DE FATIMA SANTOS;;;;;;;;;;;;;;;LOSARTANA ;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+167;medicamentos_em_uso;2;;;;2;62384368168;MARIA DE FATIMA SANTOS;;;;;;;;;;;;;;;RISPERIDONA ;2.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+167;medicamentos_em_uso;3;;;;2;62384368168;MARIA DE FATIMA SANTOS;;;;;;;;;;;;;;;QUETIAPINA ;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+167;medicamentos_em_uso;4;;;;2;62384368168;MARIA DE FATIMA SANTOS;;;;;;;;;;;;;;;ALPRAZOLAM;1.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+167;medicamentos_em_uso;5;;;;2;62384368168;MARIA DE FATIMA SANTOS;;;;;;;;;;;;;;;ECITALOPRAM ;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+167;morbidades_prvias;1;;;;2;62384368168;MARIA DE FATIMA SANTOS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+168;;;2025-07-18;-16.8328913;-49.3053941;2;01440823146;MARIA  DOMINGAS DA MATA;2;1949-02-05;76;3;1;4;54.0;6;2;2;0;1;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;2;0;1;0;1;1;2;2;3;2;1;1;THAYNARA MACEDO NAVES
+168;medicamentos_em_uso;1;;;;2;01440823146;MARIA  DOMINGAS DA MATA;;;;;;;;;;;;;;;HIDROCLOROTIAZIDA;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+168;medicamentos_em_uso;2;;;;2;01440823146;MARIA  DOMINGAS DA MATA;;;;;;;;;;;;;;;ANLODIPINO ;5.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+168;medicamentos_em_uso;3;;;;2;01440823146;MARIA  DOMINGAS DA MATA;;;;;;;;;;;;;;;ACIDO ACETIL SALICILICO;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+168;medicamentos_em_uso;4;;;;2;01440823146;MARIA  DOMINGAS DA MATA;;;;;;;;;;;;;;;CAPTOPRIL;25.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+168;medicamentos_em_uso;5;;;;2;01440823146;MARIA  DOMINGAS DA MATA;;;;;;;;;;;;;;;CARBAMAZEPINA ;200.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+168;medicamentos_em_uso;6;;;;2;01440823146;MARIA  DOMINGAS DA MATA;;;;;;;;;;;;;;;SINVASTATINA ;40.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+168;medicamentos_em_uso;7;;;;2;01440823146;MARIA  DOMINGAS DA MATA;;;;;;;;;;;;;;;DESVENLAFAXINA ;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+168;medicamentos_em_uso;8;;;;2;01440823146;MARIA  DOMINGAS DA MATA;;;;;;;;;;;;;;;QUETIAPINA ;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+168;morbidades_prvias;1;;;;2;01440823146;MARIA  DOMINGAS DA MATA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;EPLEPSIA;;;;;;;;;;;;;;
+169;;;2025-07-18;-16.8329319;-49.3053834;2;71276644124;MARIA JOSE  DOS SANTOS;2;1932-12-20;92;3;1;0;3.0;3;2;2;1;0;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;1;2;1;1;THAYNARA MACEDO NAVES
+169;medicamentos_em_uso;1;;;;2;71276644124;MARIA JOSE  DOS SANTOS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+169;morbidades_prvias;1;;;;2;71276644124;MARIA JOSE  DOS SANTOS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+170;;;2025-07-18;-16.8328974;-49.305388;2;0172011677;MARIA ZITA  DE SOUZA SILVA;2;1960-08-06;64;3;1;7;82.0;10;1;2;1;0;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;2;2;1;1;THAYNARA MACEDO NAVES
+170;medicamentos_em_uso;1;;;;2;0172011677;MARIA ZITA  DE SOUZA SILVA;;;;;;;;;;;;;;;RISPERIDONA ;3.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+170;medicamentos_em_uso;2;;;;2;0172011677;MARIA ZITA  DE SOUZA SILVA;;;;;;;;;;;;;;;CLONAZEPAN ;0.5;0.0;0.0;;;;;;;;;;;;;3;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+170;medicamentos_em_uso;3;;;;2;0172011677;MARIA ZITA  DE SOUZA SILVA;;;;;;;;;;;;;;;SINVASTATINA ;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+170;medicamentos_em_uso;4;;;;2;0172011677;MARIA ZITA  DE SOUZA SILVA;;;;;;;;;;;;;;;PANTOPRAZOL;40.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+170;medicamentos_em_uso;5;;;;2;0172011677;MARIA ZITA  DE SOUZA SILVA;;;;;;;;;;;;;;;;;0.0;1.0;CLORIDRATO DE METROCLOPRAMIDA ;7.0;DIMETICONA ;40.0;PEPSINA ;50.0;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+170;medicamentos_em_uso;6;;;;2;0172011677;MARIA ZITA  DE SOUZA SILVA;;;;;;;;;;;;;;;QUETIAPINA ;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+170;medicamentos_em_uso;7;;;;2;0172011677;MARIA ZITA  DE SOUZA SILVA;;;;;;;;;;;;;;;PROMETAZINA ;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+170;morbidades_prvias;1;;;;2;0172011677;MARIA ZITA  DE SOUZA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;AUTISTA ;;;;;;;;;;;;;;
+171;;;2025-07-18;-16.8328974;-49.305388;2;13499599104;SEDENI PEREIRA  NEVES;1;1951-04-04;74;3;3;1;8.0;8;1;1;1;0;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;1;2;2;1;THAYNARA MACEDO NAVES
+171;medicamentos_em_uso;1;;;;2;13499599104;SEDENI PEREIRA  NEVES;;;;;;;;;;;;;;;OLANZAPINA ;10.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+171;medicamentos_em_uso;2;;;;2;13499599104;SEDENI PEREIRA  NEVES;;;;;;;;;;;;;;;QUETIAPINA ;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+171;medicamentos_em_uso;3;;;;2;13499599104;SEDENI PEREIRA  NEVES;;;;;;;;;;;;;;;Acido Acetil Salicílico;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+171;medicamentos_em_uso;4;;;;2;13499599104;SEDENI PEREIRA  NEVES;;;;;;;;;;;;;;;DIVALPROATO DE SODIO;250.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+171;medicamentos_em_uso;5;;;;2;13499599104;SEDENI PEREIRA  NEVES;;;;;;;;;;;;;;;ALPRAZOLAM;1.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+171;morbidades_prvias;1;;;;2;13499599104;SEDENI PEREIRA  NEVES;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+172;;;2025-07-18;-16.8329611;-49.3053784;2;51782812172;SILAS MOREIRA  BARROS;1;1964-04-25;61;3;3;1;11.0;11;1;2;1;0;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;1;0;2;;2;1;1;2;2;1;THAYNARA MACEDO NAVES 
+172;medicamentos_em_uso;1;;;;2;51782812172;SILAS MOREIRA  BARROS;;;;;;;;;;;;;;;PREGABALINA ;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+172;medicamentos_em_uso;2;;;;2;51782812172;SILAS MOREIRA  BARROS;;;;;;;;;;;;;;;DULOXETINA ;60.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+172;morbidades_prvias;1;;;;2;51782812172;SILAS MOREIRA  BARROS;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;NEUROPATIA;;;;;;;;;;;;;;
+173;;;2025-07-18;-16.8329695;-49.3053624;2;25242784172;SILMA QUIRINO JORGE ;2;1958-08-21;66;1;2;2;24.0;0;1;2;1;0;0;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;0;1;0;2;;1;1;2;1;1;3;THAYNARA MACEDO NAVES
+173;medicamentos_em_uso;1;;;;2;25242784172;SILMA QUIRINO JORGE ;;;;;;;;;;;;;;;CLOZAPINA ;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+173;medicamentos_em_uso;2;;;;2;25242784172;SILMA QUIRINO JORGE ;;;;;;;;;;;;;;;;;0.0;1.0;DIOSMINA ;900.0;HISERIDINA ;100.0;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+173;medicamentos_em_uso;3;;;;2;25242784172;SILMA QUIRINO JORGE ;;;;;;;;;;;;;;;CANABIDIOL;20.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+173;medicamentos_em_uso;4;;;;2;25242784172;SILMA QUIRINO JORGE ;;;;;;;;;;;;;;;MEMANTINA ;10.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+173;medicamentos_em_uso;5;;;;2;25242784172;SILMA QUIRINO JORGE ;;;;;;;;;;;;;;;TELMISARTANA ;80.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+173;morbidades_prvias;1;;;;2;25242784172;SILMA QUIRINO JORGE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;1;0;0;0;0;;;;;;;;;;;;;;;
+174;;;2025-07-18;-16.83289;-49.3054072;2;05614112120;VALTER SALUSTIANO  DA SILVA;1;1951-07-31;73;3;2;1;12.0;0;1;2;1;0;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;2;1;0;0;1;2;;2;1;1;2;2;1;THAYNARA MACEDO NAVES
+174;medicamentos_em_uso;1;;;;2;05614112120;VALTER SALUSTIANO  DA SILVA;;;;;;;;;;;;;;;RISPERIDONA ;1.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+174;morbidades_prvias;1;;;;2;05614112120;VALTER SALUSTIANO  DA SILVA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;;;;;;;;;;;;;;;
+175;;;2025-07-18;-16.8329348;-49.305384;2;11830379100;WALDIR DE PAULA  BARBOSA;1;1956-06-02;69;3;3;1;8.0;8;1;2;1;0;0;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;3;1;0;1;0;2;;1;1;3;2;2;1;THAYNARA MACEDO NAVES
+175;medicamentos_em_uso;1;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;ATORVASTATINA ;40.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+175;medicamentos_em_uso;2;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;ACIDO ACETIL SALICILICO;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+175;medicamentos_em_uso;3;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;METROPOLOL;25.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+175;medicamentos_em_uso;4;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;APIXABANA ;5.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+175;medicamentos_em_uso;5;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;FUROSEMIDA;40.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+175;medicamentos_em_uso;6;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;QUETIAPINA ;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+175;medicamentos_em_uso;7;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;CARBAMAZEPINA ;200.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+175;medicamentos_em_uso;8;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;ESPIRINOLACTONA ;25.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+175;medicamentos_em_uso;9;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;PREGABALINA ;50.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+175;medicamentos_em_uso;10;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;FENITOINA ;100.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+175;medicamentos_em_uso;11;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;LEVETIRACETAM ;500.0;0.0;0.0;;;;;;;;;;;;;2;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+175;medicamentos_em_uso;12;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;PANTOPRAZOL;40.0;0.0;0.0;;;;;;;;;;;;;1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+175;morbidades_prvias;1;;;;2;11830379100;WALDIR DE PAULA  BARBOSA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;SEQUELAS DE AVC;;;;;;;;;;;;;;
