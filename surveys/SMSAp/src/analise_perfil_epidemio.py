@@ -165,7 +165,7 @@ def plot_barh(data, title, xlabel, ylabel, filename, obs=2, show_text=True, show
 
 # ----------------------------------------
 
-def plot_percentual_por_ilpi(pivot_df: pd.DataFrame, output_path: str):
+def plot_percentual_por_ilpi(pivot_df: pd.DataFrame, output_path: str, title=str, legend_title=str):
     """
     Gera um gráfico de barras empilhadas mostrando o percentual de faixas de tempo de instituição por ILPI.
 
@@ -220,15 +220,15 @@ def plot_percentual_por_ilpi(pivot_df: pd.DataFrame, output_path: str):
     # Eixos e legenda
     plt.xlabel('ILPI')
     plt.ylabel('Número de Residentes')
-    plt.title('Distribuição de Faixa Tempo de Instituição por ILPI (% por ILPI)')
+    plt.title(title)
     plt.xticks(rotation=0)
-    plt.legend(title='Faixa Tempo Instituição', bbox_to_anchor=(1.0, 1), loc='upper left')
+    plt.legend(title=legend_title, bbox_to_anchor=(1.0, 1), loc='upper left')
 
     # Salvar e exibir
     plt.tight_layout()
     plt.savefig(output_path, dpi=300, bbox_inches='tight')
     print(f"✅ Gráfico salvo como imagem: {output_path}")
-    plt.show()    
+    plt.show()     
 
 # ----------------------------------------
 
@@ -923,9 +923,9 @@ plt.scatter(x, df_idade['elder_age'], color='gray', alpha=0.6, label='Residentes
 plt.axhline(y=media_idade, color='red', linestyle='--', linewidth=1.5, label=f'Média: {media_idade:.1f}')
 
 # Eixos
-plt.xlabel('Idade')
+plt.xlabel('Residentes')
 plt.ylabel('Idade')
-plt.title('Idade dos Residentes com Linha de Média')
+plt.title('Idade dos Residentes - Linha Média')
 
 # Legenda
 plt.legend()
@@ -999,44 +999,46 @@ elder_age_bins = {
 bins = [60] + [v[1] for v in elder_age_bins.values()]
 labels = list(elder_age_bins.keys())
 
-# Garante que estamos trabalhando com uma cópia
-df_idade = df_idade.copy()
+# Cópia do data frame para criar novo data frame
+idade_count = df_idade.copy()
 
 # Cria a coluna de faixa etária
-df_idade['elder_age_bin'] = pd.cut(df_idade['elder_age'],bins=bins,labels=labels,right=False)
+idade_count['elder_age_bin'] = pd.cut(idade_count['elder_age'],bins=bins,labels=labels,right=False)
 
 # Deleta a coluna 'elder_age' original
-df_idade = df_idade.drop(columns=['elder_age'])
+idade_count = idade_count.drop(columns=['elder_age'])
 
 # Filtra apenas as linhas com faixa etária atribuída (i.e., que não são NaN) e
 # Exibe a contagem de residentes por faixa etária
-df_idade = df_idade[df_idade['elder_age_bin'].notna()].value_counts().sort_index()
-df_idade
+idade_count = idade_count[idade_count['elder_age_bin'].notna()].value_counts().sort_index()
+idade_count
 
 # %%
 # Cria um DataFrame a partir da série de contagem
-df_idade = df_idade.reset_index()
-df_idade
+idade_count = idade_count.reset_index()
+idade_count
 # %%
 # Renomeia as colunas
-df_idade = df_idade.rename(columns={'institution_name': 'ILPI', 'elder_age_bin': 'Faixa Etária', 'count': 'Número de Residentes'}) 
-df_idade
+idade_count = idade_count.rename(columns={'institution_name': 'ILPI', 'elder_age_bin': 'Faixa Etária', 'count': 'Número de Residentes'}) 
+idade_count
 
 # %%
 # Salvando a tabela de idades
 salvar_tabela_como_imagem(
-    df_idade,
+    idade_count,
     '../tables/02_tabela_idade.png',
     largura_max_coluna=25
 )
 # %%
 
 # Pivot da tabela para formato wide (um DataFrame por faixa etária por ILPI)
-pivot_df = df_idade.pivot(index='ILPI', columns='Faixa Etária', values='Número de Residentes')
+pivot_df = idade_count.pivot(index='ILPI', columns='Faixa Etária', values='Número de Residentes')
 
 plot_percentual_por_ilpi(
     pivot_df,
-    '../plots/02_grafico_faixa_etaria_por_ilpi.png'
+    '../plots/02_grafico_faixa_etaria_por_ilpi.png',
+    title='Distribuíção por Faica Etária dos Residentes por ILPI (% por ILPI)',
+    legend_title='Faixa Etária',
     )
 # %%
 ## --------------------
@@ -1083,7 +1085,7 @@ salvar_tabela_como_imagem(
 )                             
 # %%
 
-plot_bar_flex_auto(
+plot_bar_flex_unificado(
     df_raca_grouped,
     title='Distribuíção por Raça/Cor dos Residentes',
     xlabel='Raça/Cor', ylabel='Número de residentes',
@@ -1092,19 +1094,10 @@ plot_bar_flex_auto(
     show_text=False,
     value_format='absolute',
     orientation='v',
-    xtick_rotation=0
-)
+    xtick_rotation=0,
+    col_categoria='race',
+    col_valor='total'
 
-plot_bar_flex_auto(
-    df_raca_grouped,
-    title='Distribuíção por Raça/Cor dos Residentes (%)',
-    xlabel='Raça/Cor', ylabel='Número de residentes',
-    filename='../plots/03_grafico_raca_geral_percentual.png',
-    show_values=True,
-    show_text=False,
-    value_format='percent',
-    orientation='v',
-    xtick_rotation=0
 )
 
 # %%
@@ -1205,6 +1198,7 @@ df_escolaridade_grouped['scholarship'] = df_escolaridade_grouped['scholarship'].
     4: '8 anos ou mais',
     5: 'não há registro',
 })
+df_escolaridade_grouped.rename(columns={'scholarship': 'escolaridade'}, inplace=True)
 df_escolaridade_grouped
 # %%
 salvar_tabela_como_imagem(
@@ -1213,28 +1207,43 @@ salvar_tabela_como_imagem(
     largura_max_coluna=25,
                           )
 # %%
+plot_bar_flex_unificado(
+    df_escolaridade_grouped,
+    title='Escolaridade Geral dos Residentes',
+    xlabel='Tempo de estudo', ylabel='Número de Residentes',
+    filename='../plots/04_grafico_escolaridade_residente_por_ILPI.png',
+    show_text=False,
+    value_format='absolute',
+    orientation='v',
+    xtick_rotation=0,
+    col_categoria='escolaridade',
+    col_valor='total'
 
-plot_bar_flex_auto(df_escolaridade_grouped,
-                   col_categoria='scholarship',
-                   col_valor='total',
-                   #col_grupo='institution_name',
-                   value_format='absolute',  # Texto em %
-                   orientation='v',
-                   title='Escolaridade Geral dos Residentes',
-                   xlabel='Tempo de estudo', ylabel='Número de Residentes',
-                   filename='../plots/04_grafico_escolaridade_residente_por_ILPI.png',
-                   show_text=False)
+)
 
-plot_bar_flex_auto(df_escolaridade_grouped,
-                   col_categoria='scholarship',
-                   col_valor='total',
-                   #col_grupo='institution_name',
-                   value_format='percent',  # Texto em %
-                   orientation='v',
-                   title='Escolaridade Geral dos Residentes',
-                   xlabel='Tempo de estudo', ylabel='Número de Residentes',
-                   filename='../plots/04_grafico_escolaridade_residente_por_ILPI_percentual.png',
-                   show_text=False)
+## %%
+#
+#plot_bar_flex_auto(df_escolaridade_grouped,
+#                   col_categoria='scholarship',
+#                   col_valor='total',
+#                   #col_grupo='institution_name',
+#                   value_format='absolute',  # Texto em %
+#                   orientation='v',
+#                   title='Escolaridade Geral dos Residentes',
+#                   xlabel='Tempo de estudo', ylabel='Número de Residentes',
+#                   filename='../plots/04_grafico_escolaridade_residente_por_ILPI.png',
+#                   show_text=False)
+#
+#plot_bar_flex_auto(df_escolaridade_grouped,
+#                   col_categoria='scholarship',
+#                   col_valor='total',
+#                   #col_grupo='institution_name',
+#                   value_format='percent',  # Texto em %
+#                   orientation='v',
+#                   title='Escolaridade Geral dos Residentes',
+#                   xlabel='Tempo de estudo', ylabel='Número de Residentes',
+#                   filename='../plots/04_grafico_escolaridade_residente_por_ILPI_percentual.png',
+#                   show_text=False)
 # %%
 # Cria um Data Frame escolaridade por ILPI
 df_escolar_inst = df_escolaridade.groupby(['institution_name', 'scholarship']).size().reset_index(name='total')
@@ -1244,7 +1253,7 @@ df_escolar_inst
 # Calcula proporção de cada escolaridade
 df_escolar_inst['proporcao'] = df_escolar_inst['total'] / df_escolar_inst.groupby('institution_name')['total'].transform('sum')
 df_escolar_inst['proporcao'] = (df_escolar_inst['proporcao']).round(2)
-df_escolar_inst     
+df_escolar_inst
 # %%
 # Define um dicionário para mapear os códigos de escolaridade para strings
 df_escolar_inst['scholarship'] = df_escolar_inst['scholarship'].replace({ 
@@ -1254,6 +1263,8 @@ df_escolar_inst['scholarship'] = df_escolar_inst['scholarship'].replace({
     4: '8 anos ou mais',
     5: 'não há registro',
 })
+
+df_escolar_inst.rename(columns={'scholarship': 'escolaridade'}, inplace=True)
 df_escolar_inst
 # %%
 salvar_tabela_como_imagem(
@@ -1263,32 +1274,47 @@ salvar_tabela_como_imagem(
 )
 # %%
 # Criando gráfico escolaridade por ILPI absoluto
-plot_bar_flex_unificado(df_escolar_inst,
-                        col_categoria='institution_name',
-                        col_valor='total',
-                        col_grupo='scholarship',
-                        title='Distribuíção por escolaridade por instituição',
-                        xlabel='Tempo de estudo', ylabel='Número de residentes',
-                        filename='../plots/04_grafico_escolaridade_por_ILPI_absoluto.png',
-                        orientation='v',
-                        value_format='absolute',
-                        show_values=True,
-                        show_text=False
-)
+plot_bar_flex_unificado(
+    df_escolar_inst,
+    title='Distribuíção por escolaridade por instituição',
+    xlabel='Tempo de estudo', ylabel='Número de residentes',
+    filename='../plots/04_grafico_escolaridade_por_ILPI_absoluto.png',
+    show_text=False,
+    value_format='percent',
+    orientation='v',
+    xtick_rotation=0,
+    col_categoria='institution_name',
+    col_valor='total'
 
-# Criando gráfico escolaridade por ILPI absoluto
-plot_bar_flex_unificado(df_escolar_inst,
-                        col_categoria='institution_name',
-                        col_valor='total',
-                        col_grupo='scholarship',
-                        title='Distribuíção percentual por escolaridade por instituição',
-                        xlabel='Tempo de estudo', ylabel='Número de residentes',
-                        filename='../plots/04_grafico_proporcao_escolaridade_por_ILPI.png',
-                        orientation='v',
-                        value_format='percent',
-                        show_values=True,
-                        show_text=False
 )
+## %%
+## Criando gráfico escolaridade por ILPI absoluto
+#plot_bar_flex_unificado(df_escolar_inst,
+#                        col_categoria='institution_name',
+#                        col_valor='total',
+#                        col_grupo='escolaridade',
+#                        title='Distribuíção por escolaridade por instituição',
+#                        xlabel='Tempo de estudo', ylabel='Número de residentes',
+#                        filename='../plots/04_grafico_escolaridade_por_ILPI_absoluto.png',
+#                        orientation='v',
+#                        value_format='absolute',
+#                        show_values=True,
+#                        show_text=False
+#)
+## %%
+## Criando gráfico escolaridade por ILPI absoluto
+#plot_bar_flex_unificado(df_escolar_inst,
+#                        col_categoria='institution_name',
+#                        col_valor='total',
+#                        col_grupo='escolaridade',
+#                        title='Distribuíção percentual por escolaridade por instituição',
+#                        xlabel='Tempo de estudo', ylabel='Número de residentes',
+#                        filename='../plots/04_grafico_proporcao_escolaridade_por_ILPI.png',
+#                        orientation='v',
+#                        value_format='percent',
+#                        show_values=True,
+#                        show_text=False
+#)
 # %%
 
 ## --------------------
@@ -1323,33 +1349,48 @@ salvar_tabela_como_imagem(
     largura_max_coluna=25,
 )
 # %%
-# Configura o tamanho do gráfico
-plot_bar_flex_auto(temp_instit_grouped,
-                        #col_categoria='institution_name',
-                        col_valor='total',
-                        #col_grupo='institut_time_years',
-                        title='Tempo de Institucionalização dos Residentes',
-                        xlabel='Tempo de instituíção', ylabel='Número de residentes',
-                        filename='../plots/05_grafico_tempo_instit.png',
-                        orientation='v',
-                        value_format='absolute',
-                        show_values=True,
-                        show_text=False
-)
+# Criando gráfico escolaridade por ILPI absoluto
+plot_bar_flex_unificado(
+    temp_instit_grouped,
+    title='Tempo de Institucionalização dos Residentes',
+    xlabel='Tempo de instituíção', ylabel='Número de residentes',
+    filename='../plots/05_grafico_tempo_instit.png',
+    show_text=False,
+    value_format='absolute',
+    orientation='v',
+    xtick_rotation=0,
+    col_categoria='institut_time_years',
+    col_valor='total'
 
-# Criando gráfico tempo institucionalização por ILPI absoluto
-plot_bar_flex_auto(temp_instit_grouped,
-                        #col_categoria='institution_name',
-                        col_valor='total',
-                        #col_grupo='institut_time_years',
-                        title='Tempo de Institucionalização dos Residentes Percentual',
-                        xlabel='Tempo de instituíção', ylabel='Número de residentes',
-                        filename='../plots/05_grafico_proporcao_tempo_instit.png',
-                        orientation='v',
-                        value_format='percent',
-                        show_values=True,
-                        show_text=False
 )
+# %%
+## Configura o tamanho do gráfico
+#plot_bar_flex_auto(temp_instit_grouped,
+#                        #col_categoria='institution_name',
+#                        col_valor='total',
+#                        #col_grupo='institut_time_years',
+#                        title='Tempo de Institucionalização dos Residentes',
+#                        xlabel='Tempo de instituíção', ylabel='Número de residentes',
+#                        filename='../plots/05_grafico_tempo_instit.png',
+#                        orientation='v',
+#                        value_format='absolute',
+#                        show_values=True,
+#                        show_text=False
+#)
+#
+## Criando gráfico tempo institucionalização por ILPI absoluto
+#plot_bar_flex_auto(temp_instit_grouped,
+#                        #col_categoria='institution_name',
+#                        col_valor='total',
+#                        #col_grupo='institut_time_years',
+#                        title='Tempo de Institucionalização dos Residentes Percentual',
+#                        xlabel='Tempo de instituíção', ylabel='Número de residentes',
+#                        filename='../plots/05_grafico_proporcao_tempo_instit.png',
+#                        orientation='v',
+#                        value_format='percent',
+#                        show_values=True,
+#                        show_text=False
+#)
 
 # %%
 # Define os intervalos tempo instituíção para as categorias
@@ -1390,7 +1431,6 @@ temp_instit
 # Renomeia as colunas
 temp_instit = temp_instit.rename(columns={'institution_name': 'ILPI', 'inst_time_bin': 'Faixa Tempo Instituíção', 'count': 'Número de Residentes'}) 
 temp_instit
-
 # %%
 # Salvando a tabela de idades
 salvar_tabela_como_imagem(
@@ -1400,7 +1440,6 @@ salvar_tabela_como_imagem(
 )
 
 # %%
-
 # Configura o tamanho do gráfico
 plot_bar_flex_unificado(temp_instit,
                         #col_categoria='Faixa Tempo Instituíção',
@@ -1414,7 +1453,7 @@ plot_bar_flex_unificado(temp_instit,
                         show_values=True,
                         show_text=False
 )
-
+# %%
 # Criando gráfico tempo institucionalização por ILPI absoluto
 plot_bar_flex_unificado(temp_instit,
                         #col_categoria='Faixa Tempo Instituíção',
@@ -1441,7 +1480,6 @@ suporte.head(20)
 # Filtra apenas as linhas que existam dados de suporte familiar
 suporte_gruped = suporte[suporte['family_support'].notna()].astype({'family_support':'int64'})
 suporte_gruped.head(20)
-#%%
 # %%
 # Agrupa por 'family_support', usa .size() para contar quantas vezes cada suporte aparece e
 # renomeia a coluna de contagem para 'total'
@@ -1460,6 +1498,7 @@ suporte_gruped['family_support'] = suporte_gruped['family_support'].replace({
     3: 'Não consta no prontuário',
 })
 
+suporte_gruped.rename(columns={'family_support': 'suporte_familiar'}, inplace=True)
 suporte_gruped
 # %%
 # Salva a tabela geral de suporte familiar
@@ -1480,7 +1519,7 @@ plot_bar_flex_unificado(
     value_format='absolute',
     show_values=True,
     show_text=False,
-    col_categoria='family_support',
+    col_categoria='suporte_familiar',
     col_valor='total',
 )
 # %%
@@ -1567,6 +1606,7 @@ grau_dependencia_gruped['dependence_degree'] = grau_dependencia_gruped['dependen
     3: 'Totalmente dependente',
 })
 
+grau_dependencia_gruped.rename(columns={'dependence_degree' : 'grau_dependencia'}, inplace=True)
 grau_dependencia_gruped
 # %%
 # Salva a tabela geral de grau_dependencia 
@@ -1587,7 +1627,7 @@ plot_bar_flex_unificado(
     value_format='absolute',
     show_values=True,
     show_text=False,
-    col_categoria='dependence_degree',
+    col_categoria='grau_dependencia',
     col_valor='total',
 )
 # %%
@@ -1608,6 +1648,7 @@ grau_dependencia_inst['dependence_degree'] = grau_dependencia_inst['dependence_d
     3: 'Não consta no prontuário',
 })
 
+grau_dependencia_inst.rename(columns={'dependence_degree' : 'grau_dependencia'}, inplace=True)
 grau_dependencia_inst
 # %%
 # Salvando a tabela de grau_dependencia familiar por ILPI
@@ -1622,9 +1663,9 @@ plot_bar_flex_unificado(
     grau_dependencia_inst,
     title='Frequência do Grau de Dependência dos Residentes por ILPI',
     xlabel='', ylabel='Número de residentes',
-    filename='../plots/07_grafico_grau_dependencia_familiar_por_ILPI.png',
+    filename='../plots/07_grafico_grau_dependencia_por_ILPI.png',
     orientation='v',
-    value_format='absolute',
+    value_format='percent',
     show_values=True,
     show_text=False,
     col_categoria='institution_name',
@@ -1634,7 +1675,7 @@ plot_bar_flex_unificado(
 ## --------------------
 ## ----- 8 - Tipo de Vínculo
 ## --------------------
-# %%
+
 # Define um dicionário para mapear os códigos tipos de vinculo para strings
 vinculo_cols = { 
     'link_type___1': 'Privado',
@@ -1691,16 +1732,16 @@ vinculo_inst
 # Salvando a tabela de vinculo familiar por ILPI
 salvar_tabela_como_imagem(
     vinculo_inst,
-    '../tables/08_tabela_vinculo_famil_por_ILPI.png',
+    '../tables/08_tabela_tipo_vinculo_por_ILPI.png',
     largura_max_coluna=25,
 )
 # %%
 # Gráfico vinculo familiar por ILPI absoluto
 plot_bar_flex_unificado(
     vinculo_inst,
-    title='Frequência do Vínculo Familiar dos Residentes por ILPI',
+    title='Frequência do Tipo de Vínculo dos Residentes com a ILPI',
     xlabel='', ylabel='Número de residentes',
-    filename='../plots/08_grafico_vinculo_familiar_por_ILPI.png',
+    filename='../plots/08_grafico_vinculo_por_ILPI.png',
     orientation='v',
     value_format='absolute',
     show_values=True,
@@ -1754,6 +1795,7 @@ fonte_renda_gruped['elder_income_source'] = fonte_renda_gruped['elder_income_sou
     5: 'Não sabe'
 })
 
+fonte_renda_gruped.rename(columns={'elder_income_source' :  'fonte_renda_residente'}, inplace=True)
 fonte_renda_gruped
 # %%
 # Salva a tabela geral de fonte_renda_gruped
@@ -1774,10 +1816,9 @@ plot_bar_flex_unificado(
     value_format='absolute',
     show_values=True,
     show_text=False,
-    col_categoria='elder_income_source',
+    col_categoria='fonte_renda_residente',
     col_valor='total',
 )
-# %%
 # %%
 # Agrupa por 'institutuin_name' e 'lelder_income_source', usa .size() para contar quantas vezes cada suporte aparece e
 # renomeia a coluna de contagem para 'total'
@@ -1798,12 +1839,13 @@ fonte_renda_inst['elder_income_source'] = fonte_renda_inst['elder_income_source'
     5: 'Não sabe'
 })
 
+fonte_renda_inst.rename(columns={'elder_income_source' : 'fonte_renda_residente'}, inplace=True)
 fonte_renda_inst
 # %%
 # Salvando a tabela de fonte_renda familiar por ILPI
 salvar_tabela_como_imagem(
     fonte_renda_inst,
-    '../tables/09_tabela_fonte_renda_famil_por_ILPI.png',
+    '../tables/09_tabela_fonte_renda_por_ILPI.png',
     largura_max_coluna=25,
 )
 # %%
@@ -1812,7 +1854,7 @@ plot_bar_flex_unificado(
     fonte_renda_inst,
     title='Frequência da Fonte de Renda dos Residentes por ILPI',
     xlabel='', ylabel='Número de residentes',
-    filename='../plots/09_grafico_fonte_renda_familiar_por_ILPI.png',
+    filename='../plots/09_grafico_fonte_renda_por_ILPI.png',
     orientation='v',
     value_format='absolute',
     show_values=True,
@@ -1878,7 +1920,7 @@ salvar_tabela_como_imagem(
 plot_bar_flex_unificado(
     medic_registro_grouped,
     title='Frequência de Registro de Medicamentos do Residente',
-    xlabel='',ylabel='Registro',
+    xlabel='',ylabel='Total de Registros',
     filename='../plots/10_gráfico_registro_medicamentos.png',
     orientation='v', 
     value_format='absolute',
@@ -1898,6 +1940,10 @@ medic_registro_instit['proporcao'] = medic_registro_instit['total'] / medic_regi
 medic_registro_instit['proporcao'] = medic_registro_instit['proporcao'].round(2)
 medic_registro_instit
 # %%
+# Mapeia a coluna recorded e atribui valor "sim e não"
+medic_registro_instit['recorded'] = medic_registro_instit['recorded'].map({1: 'Sim', 0: 'Não'})
+medic_registro_instit
+# %%
 # Salva a tabela de registro de medicamentos por ILPI
 salvar_tabela_como_imagem(
     medic_registro_instit,
@@ -1907,9 +1953,9 @@ salvar_tabela_como_imagem(
 # %%
 # Gráfico registro medicamentos por ILPI percentagem
 plot_bar_flex_unificado(
-    fonte_renda_inst,
+    medic_registro_instit,
     title='Frequência do Registro de Medicamentos dos Residentes por ILPI',
-    xlabel='', ylabel='Número de residentes',
+    xlabel='', ylabel='Total de Registros',
     filename='../plots/10_grafico_registro_medic_por_ILPI_percent.png',
     orientation='v',
     value_format='percent',
@@ -1993,6 +2039,7 @@ estado_saude_grouped['health_condition'] = estado_saude_grouped['health_conditio
     3 : 'regular',
     4 : 'ruim ou péssimo',
 })
+estado_saude_grouped.rename(columns={'health_condition' : 'estado_saude'}, inplace=True)
 estado_saude_grouped
 # %%
 salvar_tabela_como_imagem(
@@ -2002,15 +2049,16 @@ salvar_tabela_como_imagem(
                           )
 
 # %%
+
 plot_bar_flex_unificado(
     estado_saude_grouped,
     title='Frequência de Estado de Saúde do Residente',
-    xlabel='',ylabel='Registro',
+    xlabel='',ylabel='Número de Residentes',
     filename='../plots/12_grafico_estado_saude_residentes.png',
     orientation='v', 
     value_format='absolute',
     col_valor='total',
-    col_categoria='health_condition',
+    col_categoria='estado_saude',
     show_values=True,
     show_text=False
 )
@@ -2032,6 +2080,7 @@ estado_saude_instit['health_condition'] = estado_saude_instit['health_condition'
     3 : 'regular',
     4 : 'ruim ou péssimo',
 })
+estado_saude_instit.rename(columns={'health_condition' : 'estado_saude'}, inplace=True)
 estado_saude_instit
 # %%
 # Salva a tabela de Estado de Saúde por ILPI
@@ -2180,6 +2229,7 @@ comp_fragilidade = extrair_comp_fragilidade(df)
 comp_fragilidade
 
 # %%
+# Fazendo o merge tabelas
 df['dependence_degree']
 
 # %%
@@ -2222,18 +2272,32 @@ df['dependence_degree']
 #    'falls_number':(lambda x: x == 3)
 #}
 # %%
+# Agrupar tabelas de interesse
+
+df_score = df_morbidades.merge(comp_fragilidade, how='right')
+df_score
+
+# %%
+df_idade.head()
+# %%
 
 condicao_atencao = {
+    'elder_age': (lambda x: x < 70),
+    'soma_mobidities': (lambda x: x <= 3),
     'soma_fragilidades': (lambda x: x in [2, 3]),
 
 }
 
 condicao_alerta = {
+    'elder_age': (lambda x: x > 70 & x < 80),
+    'soma_mobidities': (lambda x: x in [4, 5] ),
     'soma_fragilidades': (lambda x: x in [3, 4]),
     
 }
 
 condicao_critica = {
+    'elder_age': (lambda x: x >= 81),
+    'soma_mobidities': (lambda x: x >= 6),
     'soma_fragilidades': (lambda x: x>= 4),
     
 }
@@ -2259,4 +2323,9 @@ salvar_tabela_como_imagem(
 )
 # %%
 df.head()
+# %%
+
+ 
+# %%
+
 # %%

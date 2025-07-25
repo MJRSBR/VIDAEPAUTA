@@ -43,7 +43,7 @@ def etl_df_redcap(df, campos_chave, campo_discriminador='institution_name'):
 #
 #pd.set_option('display.max_colwidth', None)  # Permite exibir a coluna inteira
 # %%
-df = pd.read_csv("../../../data/SMSap/PerfilEpidemiolgicos_DATA_2025-06-24_1507.csv",
+df = pd.read_csv("../../../data/SMSap/PerfilEpidemiolgicos_DATA_2025-07-24_1004.csv",
                  sep=";")
 df.head()
 
